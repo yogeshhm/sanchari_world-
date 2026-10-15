@@ -6,8 +6,11 @@ const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 const toast = (message) => { const el=$('#toast'); el.textContent=message; el.classList.add('show'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),3200); };
 $('#year').textContent = new Date().getFullYear();
 const today = new Date(); const localToday = new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().slice(0,10); ['#travelDate','#formDate'].forEach(s=>{const el=$(s); if(el){el.min=localToday;}});
-const hamburger=$('#hamburger'), nav=$('#nav'); hamburger.addEventListener('click',()=>{const open=nav.classList.toggle('open');hamburger.setAttribute('aria-expanded',String(open));hamburger.textContent=open?'×':'☰';});
+const hamburger=$('#hamburger'), nav=$('#nav');
+hamburger.addEventListener('click',()=>{const open=nav.classList.toggle('open');hamburger.setAttribute('aria-expanded',String(open));hamburger.textContent=open?'×':'☰';});
 $$('#nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');hamburger.setAttribute('aria-expanded','false');hamburger.textContent='☰';}));
+document.addEventListener('click', e => { if (!nav.contains(e.target) && !hamburger.contains(e.target) && nav.classList.contains('open')) { nav.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); hamburger.textContent = '☰'; } });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (nav.classList.contains('open')) { nav.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); hamburger.textContent = '☰'; } const d = $('#bookingDialog'); if (d && d.open) { d.close(); } } });
 // Update active nav link while scrolling.
 const sections=$$('main section[id]'); if('IntersectionObserver' in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){$$('#nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+entry.target.id));}}),{rootMargin:'-35% 0px -55% 0px'});sections.forEach(s=>observer.observe(s));}
 // Destination carousel controls: cycle card order without hiding content on small screens.

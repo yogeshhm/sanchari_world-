@@ -6,14 +6,19 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 82px
+    scroll-padding-top: 82px;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
     font-family: 'DM Sans', sans-serif;
     color: #092536;
     background: #f7f5ee;
-    line-height: 1.55
+    line-height: 1.55;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 a {
@@ -1728,113 +1733,168 @@ img {
     }
 }
 
-@media(max-width:1200px) {
+/* ==========================================================================
+   COMPREHENSIVE FULL-SITE RESPONSIVE SYSTEM
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. LAPTOPS & DESKTOPS (<= 1200px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
     .topbar {
+        padding-inline: clamp(20px, 3vw, 36px);
         gap: 16px;
-        padding-inline: 25px
     }
 
-    .logo b {
-        font-size: 23px
+    .hero {
+        padding: 110px clamp(20px, 3.5vw, 40px) 50px;
     }
 
-    .nav {
-        gap: 16px
+    .hero-main-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
     }
 
-    .nav a {
-        font-size: 12px
+    .hero h1 {
+        font-size: clamp(38px, 4.4vw, 56px);
+    }
+
+    .search-bar {
+        grid-template-columns: 1.1fr 1.1fr 1fr 1fr auto;
+        padding: 10px 12px;
     }
 
     .destination-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr))
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
     }
 
     .destination-card {
-        height: 190px
+        height: 190px;
     }
 
     .vehicle-grid,
     .package-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr))
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .about {
+        gap: 40px;
     }
 
     .footer-main {
-        grid-template-columns: repeat(3, 1fr)
+        grid-template-columns: 1.2fr 1fr 1fr 1.2fr;
+        gap: 30px 20px;
     }
 
-    .footer-main>.logo,
-    .footer-main>p {
-        grid-column: auto;
-        grid-row: auto
-    }
-
-    .footer-main>p {
-        margin-top: 0
+    .footer-main > div:nth-child(5) {
+        grid-column: 1 / -1;
     }
 }
 
-@media(max-width:800px) {
+/* --------------------------------------------------------------------------
+   2. TABLETS IN LANDSCAPE & PORTRAIT (<= 992px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
     .topbar {
-        height: 68px
+        height: 72px;
     }
 
     .hamburger {
-        display: block;
-        margin-left: auto
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffc44d;
+        font-size: 26px;
+        margin-left: auto;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .hamburger:hover {
+        background: rgba(255, 255, 255, 0.16);
     }
 
     .top-plan {
-        padding: 10px 14px
-    }
-
-    .top-plan span {
-        display: none
+        padding: 10px 18px;
+        font-size: 13px;
     }
 
     .nav {
         display: none;
         position: absolute;
-        top: 68px;
+        top: 72px;
         left: 0;
         right: 0;
-        background: #031b29f8;
-        padding: 10px 24px 22px;
+        background: rgba(3, 24, 38, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 2px solid rgba(255, 196, 77, 0.25);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+        padding: 18px 24px 28px;
         flex-direction: column;
         align-items: stretch;
-        gap: 0;
-        border-top: 1px solid #ffffff18
+        gap: 6px;
+        max-height: calc(100vh - 72px);
+        overflow-y: auto;
+        z-index: 100;
+        animation: navSlideDown 0.25s ease-out;
+    }
+
+    @keyframes navSlideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .nav.open {
-        display: flex
+        display: flex;
     }
 
     .nav a {
-        padding: 12px 0;
-        border-bottom: 1px solid #ffffff13
+        padding: 14px 18px;
+        border-radius: 10px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #e2edf1;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    .nav a.active:after {
-        display: none
+    .nav a:hover,
+    .nav a.active {
+        background: rgba(255, 196, 77, 0.12);
+        color: #ffc44d;
+    }
+
+    .nav a.active::after {
+        display: none;
+    }
+
+    .social-rail {
+        display: none;
     }
 
     .hero {
         min-height: auto;
-        padding: 95px 20px 50px;
+        padding: 100px 24px 50px;
     }
 
     .hero-main-row {
         grid-template-columns: 1fr;
-        gap: 36px;
+        gap: 40px;
     }
 
-    .hero-inner {
-        gap: 36px;
+    .hero-copy {
+        max-width: 100%;
     }
 
-    .hero h1 {
-        font-size: clamp(36px, 7vw, 48px);
+    .hero-desc {
+        max-width: 100%;
     }
 
     .hero-showcase {
@@ -1843,30 +1903,27 @@ img {
 
     .showcase-card {
         max-width: 100%;
+        width: 100%;
     }
 
     .showcase-img {
-        height: 360px;
+        height: 380px;
     }
 
     .floating-pill.pill-fleet {
-        right: 10px;
+        right: 12px;
         top: 20px;
     }
 
     .floating-pill.pill-rating {
-        left: 10px;
+        left: 12px;
         bottom: 25px;
-    }
-
-    .social-rail {
-        display: none;
     }
 
     .search-bar {
         grid-template-columns: 1fr 1fr;
-        padding: 12px;
         gap: 10px;
+        padding: 14px;
         border-radius: 20px;
     }
 
@@ -1875,143 +1932,190 @@ img {
         height: 52px;
     }
 
-    .hero-trust-bar {
-        font-size: 12px;
-        gap: 8px 14px;
-        margin-top: -6px;
-    }
-
-    .social-rail {
-        left: 8px;
-        top: 25%
-    }
-
     .section-pad {
-        padding: 52px 22px
+        padding: 60px 24px;
     }
 
     .section-heading {
         align-items: flex-start;
-        flex-direction: column
+        flex-direction: column;
+        gap: 12px;
     }
 
     .section-heading .text-link {
-        align-self: flex-start
+        align-self: flex-start;
     }
 
-    .vehicles .section-heading {
-        align-items: flex-start
-    }
-
-    .custom-sticker {
-        right: 7%;
-        width: 90px;
-        height: 90px;
-        font-size: 9px
+    .destination-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
     }
 
     .about,
     .contact-section {
         grid-template-columns: 1fr;
-        gap: 35px
+        gap: 40px;
     }
 
     .about-photo {
-        min-height: 330px;
-        margin-right: 10px
+        min-height: 340px;
+        box-shadow: none;
+        border: 4px solid #fff;
     }
 
-    .contact-intro>p {
-        max-width: 100%
+    .photo-badge {
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .custom-sticker {
+        right: 5%;
+        width: 95px;
+        height: 95px;
+        font-size: 9px;
     }
 
     .footer-main {
-        grid-template-columns: repeat(2, 1fr)
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px 20px;
     }
 
-    .footer-main>.logo {
-        grid-column: 1/-1
-    }
-
-    .footer-main>p {
-        grid-column: 1/-1
-    }
-
-    .footer-bottom {
-        gap: 10px;
-        flex-wrap: wrap
+    .footer-main > .logo,
+    .footer-main > p {
+        grid-column: 1 / -1;
     }
 }
 
-@media(max-width:520px) {
+/* --------------------------------------------------------------------------
+   3. MOBILE PHONES (<= 768px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    /* Prevent iOS Safari input zoom */
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+
+    .topbar {
+        height: 66px;
+        padding-inline: 16px;
+    }
+
     .logo-mark {
-        font-size: 32px
+        font-size: 32px;
     }
 
     .logo b {
-        font-size: 20px
+        font-size: 21px;
     }
 
     .logo small {
         font-size: 7px;
-        letter-spacing: 1.8px
+        letter-spacing: 1.8px;
     }
 
-    .topbar {
-        padding-inline: 14px;
-        gap: 10px
+    .top-plan {
+        padding: 8px 14px;
+        font-size: 12px;
     }
 
     .hero {
-        padding: 85px 16px 40px;
+        padding: 85px 16px 36px;
     }
 
     .hero-badge {
         font-size: 11px;
-        padding: 5px 12px;
+        padding: 6px 14px;
+        margin-bottom: 16px;
     }
 
     .hero h1 {
-        font-size: 34px;
-        letter-spacing: -1px;
+        font-size: clamp(34px, 8vw, 44px);
+        letter-spacing: -1.2px;
+        margin-bottom: 14px;
     }
 
     .hero-desc {
         font-size: 14px;
-        margin-bottom: 22px;
+        line-height: 1.65;
+        margin-bottom: 24px;
     }
 
     .hero-cta-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
         width: 100%;
+        margin-bottom: 28px;
     }
 
     .hero-cta-btn {
-        width: 100%;
+        padding: 13px 18px;
+        font-size: 14px;
         justify-content: center;
+        text-align: center;
     }
 
     .benefits-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 16px;
+        padding-top: 18px;
     }
 
-    .search-bar {
-        grid-template-columns: 1fr;
-        padding: 10px;
-        gap: 8px;
+    .benefit-item {
+        gap: 10px;
     }
 
-    .search-btn {
-        height: 50px;
+    .b-icon {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .b-text strong {
+        font-size: 12px;
+    }
+
+    .b-text small {
+        font-size: 10px;
     }
 
     .showcase-img {
         height: 320px;
+        border-radius: 20px;
+        padding: 16px;
+    }
+
+    .showcase-content {
+        margin: -16px;
+        padding: 30px 16px 16px;
+        border-radius: 0 0 20px 20px;
+    }
+
+    .showcase-content h3 {
+        font-size: 19px;
     }
 
     .floating-pill {
         padding: 8px 12px;
+        border-radius: 14px;
         gap: 8px;
+    }
+
+    .floating-pill.pill-fleet {
+        right: 8px;
+        top: 12px;
+    }
+
+    .floating-pill.pill-rating {
+        left: 8px;
+        bottom: 16px;
+    }
+
+    .pill-icon, .pill-star {
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+        border-radius: 8px;
     }
 
     .floating-pill strong {
@@ -2019,119 +2123,250 @@ img {
     }
 
     .floating-pill small {
-        font-size: 10px;
+        font-size: 9px;
     }
 
-    .social-rail {
-        display: none;
+    .search-bar {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 12px;
+        border-radius: 18px;
+    }
+
+    .search-bar label {
+        padding: 10px 14px;
+    }
+
+    .search-btn {
+        height: 50px;
+        font-size: 15px;
+    }
+
+    .hero-trust-bar {
+        font-size: 11px;
+        gap: 6px 12px;
+    }
+
+    .section-pad {
+        padding: 48px 16px;
     }
 
     .destination-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 10px
+        gap: 10px;
     }
 
     .destination-card {
-        height: 180px;
-        padding: 12px
+        height: 175px;
+        padding: 12px;
+        border-radius: 12px;
     }
 
-    .destination-card:last-child {
-        display: none
+    .destination-label b {
+        font-size: 13px;
+    }
+
+    .destination-label small {
+        font-size: 9px;
     }
 
     .vehicle-grid,
     .package-grid {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .vehicle-card {
+        max-width: 100%;
     }
 
     .vehicle-media {
-        height: 205px
-    }
-
-    .package-image {
-        height: 200px
+        height: 190px;
     }
 
     .package-filters {
-        gap: 5px
+        display: flex;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 6px;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .package-filters::-webkit-scrollbar {
+        display: none;
     }
 
     .filter-btn {
-        padding: 8px 11px
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .package-image {
+        height: 190px;
     }
 
     .custom-trip {
-        padding: 40px 24px;
-        min-height: 320px
+        padding: 36px 20px;
+        min-height: 280px;
     }
 
     .custom-copy {
-        max-width: 75%
+        max-width: 100%;
     }
 
     .custom-copy h2 {
-        font-size: 35px
+        font-size: 32px;
     }
 
     .custom-sticker {
-        right: 15px;
-        top: 68%;
-        width: 77px;
-        height: 77px;
-        font-size: 8px
-    }
-
-    .about-features {
-        grid-template-columns: 1fr
+        position: static;
+        transform: none;
+        margin-top: 20px;
+        width: 80px;
+        height: 80px;
+        font-size: 8px;
+        display: inline-grid;
     }
 
     .about-photo {
-        min-height: 290px
+        min-height: 260px;
+        border-radius: 14px;
+    }
+
+    .photo-badge {
+        padding: 12px 16px;
+        border-radius: 10px;
+    }
+
+    .photo-badge b {
+        font-size: 17px;
+    }
+
+    .about-features {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .contact-form {
+        padding: 24px 18px;
+        border-radius: 16px;
     }
 
     .form-grid {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
+        gap: 14px;
     }
 
     .form-grid .full {
-        grid-column: auto
+        grid-column: auto;
     }
 
     .form-top {
+        flex-direction: column;
         align-items: flex-start;
-        gap: 10px;
-        flex-direction: column
+        gap: 6px;
+    }
+
+    .submit-btn {
+        padding: 14px 18px;
+        font-size: 14px;
+    }
+
+    .footer {
+        padding: 40px 16px 0;
     }
 
     .footer-main {
-        grid-template-columns: 1fr 1fr;
-        gap: 22px 14px
-    }
-
-    .footer-main>div:nth-last-child(1) {
-        grid-column: 1/-1
+        grid-template-columns: 1fr;
+        gap: 26px;
     }
 
     .footer-bottom {
-        font-size: 8px
+        flex-direction: column;
+        text-align: center;
+        gap: 8px;
+        padding: 18px 0;
+        font-size: 11px;
     }
 
-    .hero:after {
-        background-size: 115% auto;
-        background-position: 115% 84%;
-        opacity: .45
+    .whatsapp {
+        width: 46px;
+        height: 46px;
+        right: max(16px, env(safe-area-inset-right, 16px));
+        bottom: max(16px, env(safe-area-inset-bottom, 16px));
+    }
+
+    .booking-dialog {
+        padding: 24px 18px;
+        width: min(440px, calc(100vw - 28px));
+        border-radius: 16px;
+    }
+
+    .booking-dialog h2 {
+        font-size: 24px;
     }
 }
 
-@media(prefers-reduced-motion:reduce) {
+/* --------------------------------------------------------------------------
+   4. ULTRA-COMPACT MOBILE PHONES (<= 400px / 360px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 400px) {
+    .topbar {
+        padding-inline: 12px;
+        gap: 8px;
+    }
 
+    .logo-mark {
+        font-size: 28px;
+    }
+
+    .logo b {
+        font-size: 18px;
+    }
+
+    .top-plan span {
+        display: none;
+    }
+
+    .top-plan {
+        padding: 8px 12px;
+    }
+
+    .hero-cta-group {
+        grid-template-columns: 1fr;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .destination-card {
+        height: 160px;
+    }
+
+    .floating-pill {
+        display: none;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   5. ACCESSIBILITY & PREFERS REDUCED MOTION
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
     *,
     *::before,
     *::after {
         scroll-behavior: auto !important;
-        animation-duration: .01ms !important;
+        animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important
+        transition-duration: 0.01ms !important;
     }
 }
