@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore India and beyond with Sanchari World. Discover destinations, curated holiday packages and comfortable vehicle rentals.">
+    <title>Sanchari World | Explore · Travel · Discover</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="topbar"><a class="logo" href="#home" aria-label="Sanchari World home"><span
+                class="logo-mark">⌁</span><span><b>Sanchari World<sup>✈</sup></b><small>EXPLORE · TRAVEL ·
+                    DISCOVER</small></span></a><button class="hamburger" id="hamburger" aria-label="Open navigation"
+            aria-expanded="false">☰</button>
+        <nav class="nav" id="nav"><a class="active" href="#home">Home</a><a href="#destinations">Destinations</a><a
+                href="#packages">Packages</a><a href="#vehicles">Vehicles</a><a href="#about">About Us</a><a
+                href="#contact">Contact</a></nav><a class="plan-btn top-plan" href="#contact">✈ <span>Plan Your
+                Trip</span></a>
+    </header>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-bg"></div>
+            <div class="hero-shade"></div>
+            <div class="social-rail"><a href="#contact" aria-label="Facebook">f</a><a href="#contact"
+                    aria-label="Instagram">◎</a><a href="#contact" aria-label="YouTube">▶</a><a href="#contact"
+                    aria-label="WhatsApp">◉</a></div>
+            <div class="hero-copy reveal">
+                <div class="kicker"><i></i> YOUR JOURNEY, OUR PASSION</div>
+                <h1>Explore the World<br><em>with Sanchari World</em></h1>
+                <p>From breathtaking mountains to pristine beaches, from historic cities<br class="desktop"> to hidden
+                    gems — we take you there, comfortably and safely.</p>
+                <div class="benefits">
+                    <div><span class="benefit-icon">✧</span><b>Amazing<br>Destinations</b></div>
+                    <div><span class="benefit-icon">♢</span><b>Safe & Comfortable<br>Travel</b></div>
+                    <div><span class="benefit-icon">♧</span><b>24/7<br>Support</b></div>
+                    <div><span class="benefit-icon">☆</span><b>Memorable<br>Experiences</b></div>
+                </div>
+            </div>
+            <form class="search-bar" id="quickSearch"><label><span class="field-icon">●</span><span
+                        class="field-text">From<select name="from" required>
+                            <option value="">Choose starting location</option>
+                            <option>Bengaluru</option>
+                            <option>Mysuru</option>
+                            <option>Mangaluru</option>
+                            <option>Chennai</option>
+                            <option>Hyderabad</option>
+                        </select></span></label><label><span class="field-icon">●</span><span
+                        class="field-text">To<select name="destination" required>
+                            <option value="">Choose destination</option>
+                            <option>Coorg</option>
+                            <option>Chikmagalur</option>
+                            <option>Gokarna</option>
+                            <option>Ooty</option>
+                            <option>Kerala</option>
+                            <option>Goa</option>
+                            <option>Hampi</option>
+                            <option>Mysuru</option>
+                        </select></span></label><label><span class="field-icon">▦</span><span class="field-text">Travel
+                        Date<input type="date" name="date" id="travelDate" required></span></label><label><span
+                        class="field-icon">♙</span><span class="field-text">Passengers<select name="passengers">
+                            <option>1 Person</option>
+                            <option>2 Persons</option>
+                            <option>3–5 Persons</option>
+                            <option>6–10 Persons</option>
+                            <option>10+ Persons</option>
+                        </select></span></label><button class="search-btn" type="submit">⌕ Search Trips
+                    <span>➜</span></button></form>
+            <div class="hero-note">✦ Curated journeys · Transparent pricing · Local expertise</div>
+        </section>
+        <section class="destinations dark-section section-pad" id="destinations">
+            <div class="section-heading light-heading">
+                <div>
+                    <div class="kicker"><i></i> TOP DESTINATIONS</div>
+                    <h2>Explore Popular Destinations</h2>
+                </div><a class="text-link" href="#packages">View all destinations <span>→</span></a>
+            </div>
+            <div class="destination-grid"><a class="destination-card paris" href="#packages"><span
+                        class="destination-label"><b>Coorg</b><small>Karnataka · India</small></span><span
+                        class="round-arrow">↗</span></a><a class="destination-card bali" href="#packages"><span
+                        class="destination-label"><b>Kerala</b><small>God's Own Country</small></span><span
+                        class="round-arrow">↗</span></a><a class="destination-card dubai" href="#packages"><span
+                        class="destination-label"><b>Hampi</b><small>Heritage · Karnataka</small></span><span
+                        class="round-arrow">↗</span></a><a class="destination-card swiss" href="#packages"><span
+                        class="destination-label"><b>Chikmagalur</b><small>Coffee country</small></span><span
+                        class="round-arrow">↗</span></a><a class="destination-card maldives" href="#packages"><span
+                        class="destination-label"><b>Gokarna</b><small>Coastal escape</small></span><span
+                        class="round-arrow">↗</span></a><a class="destination-card nyc" href="#packages"><span
+                        class="destination-label"><b>Mysuru</b><small>Culture · Karnataka</small></span><span
+                        class="round-arrow">↗</span></a><a class="destination-card santorini" href="#packages"><span
+                        class="destination-label"><b>Ooty</b><small>Nilgiri Hills</small></span><span
+                        class="round-arrow">↗</span></a></div>
+            <div class="destination-controls"><button id="destPrev"
+                    aria-label="Previous destinations">←</button><span>Handpicked places for your next
+                    story</span><button id="destNext" aria-label="Next destinations">→</button></div>
+        </section>
+        <section class="vehicles section-pad" id="vehicles">
+            <div class="section-heading">
+                <div>
+                    <div class="kicker"><i></i> OUR VEHICLES</div>
+                    <h2>Travel in Comfort</h2>
+                    <p>Choose from our premium fleet for a safe, comfortable<br class="desktop"> and enjoyable journey.
+                    </p>
+                </div><a class="dark-btn" href="#contact">View All Vehicles <span>→</span></a>
+            </div>
+            <div class="vehicle-grid">
+                <article class="vehicle-card" tabindex="0" data-vehicle="Sedan">
+                    <div class="vehicle-media"><img
+                            src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=85"
+                            alt="Premium sedan car"><video muted loop playsinline preload="none"
+                            poster="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=85">
+                            <source src="assets/videos/sedan.mp4" type="video/mp4">
+                        </video><span class="video-hint">▶ HOVER TO PREVIEW</span><span class="vehicle-tag">UP TO 4
+                            PEOPLE</span></div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-icon">▰</div>
+                        <div class="vehicle-copy">
+                            <h3>Sedan</h3>
+                            <p>Perfect for family & business trips</p><small>AC · 3 bags · Comfortable ride</small>
+                        </div>
+                    </div>
+                    <div class="vehicle-bottom"><b>From ₹12/km <small>*sample rate</small></b><button
+                            class="book-vehicle" data-type="Sedan">Book Now <span>→</span></button></div>
+                </article>
+                <article class="vehicle-card" tabindex="0" data-vehicle="SUV">
+                    <div class="vehicle-media"><img
+                            src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=85"
+                            alt="Sport utility vehicle"><video muted loop playsinline preload="none"
+                            poster="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=85">
+                            <source src="assets/videos/suv.mp4" type="video/mp4">
+                        </video><span class="video-hint">▶ HOVER TO PREVIEW</span><span class="vehicle-tag">UP TO 6
+                            PEOPLE</span></div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-icon">▰</div>
+                        <div class="vehicle-copy">
+                            <h3>SUV</h3>
+                            <p>More space for more comfort</p><small>AC · 4 bags · Road-trip ready</small>
+                        </div>
+                    </div>
+                    <div class="vehicle-bottom"><b>From ₹16/km <small>*sample rate</small></b><button
+                            class="book-vehicle" data-type="SUV">Book Now <span>→</span></button></div>
+                </article>
+                <article class="vehicle-card" tabindex="0" data-vehicle="Tempo Traveller">
+                    <div class="vehicle-media"><img
+                            src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=900&q=85"
+                            alt="Passenger minibus"><video muted loop playsinline preload="none"
+                            poster="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=900&q=85">
+                            <source src="assets/videos/tempo-traveller.mp4" type="video/mp4">
+                        </video><span class="video-hint">▶ HOVER TO PREVIEW</span><span class="vehicle-tag">UP TO 12
+                            PEOPLE</span></div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-icon">▰</div>
+                        <div class="vehicle-copy">
+                            <h3>Tempo Traveller</h3>
+                            <p>Ideal for group tours</p><small>AC · Group seating · Luggage space</small>
+                        </div>
+                    </div>
+                    <div class="vehicle-bottom"><b>From ₹22/km <small>*sample rate</small></b><button
+                            class="book-vehicle" data-type="Tempo Traveller">Book Now <span>→</span></button></div>
+                </article>
+                <article class="vehicle-card featured-vehicle" tabindex="0" data-vehicle="Luxury Bus">
+                    <div class="vehicle-media"><img
+                            src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=85"
+                            alt="Luxury coach bus"><video muted loop playsinline preload="none"
+                            poster="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1000&q=85">
+                            <source src="assets/videos/luxury-bus.mp4" type="video/mp4">
+                        </video><span class="video-hint">▶ HOVER TO PREVIEW</span><span class="vehicle-tag">UP TO 40
+                            PEOPLE</span></div>
+                    <div class="vehicle-info">
+                        <div class="vehicle-icon">▰</div>
+                        <div class="vehicle-copy">
+                            <h3>Luxury Bus</h3>
+                            <p>Best for long journeys</p><small>Reclining seats · AC · Group travel</small>
+                        </div>
+                    </div>
+                    <div class="vehicle-bottom"><b>Custom quote <small>based on route</small></b><button
+                            class="book-vehicle" data-type="Luxury Bus">Book Now <span>→</span></button></div>
+                </article>
+            </div>
+            <p class="video-note">Vehicle preview: hover or focus a card to play its video. Add your own MP4 clips in
+                <code>assets/videos/</code>; animated image motion is used until a clip is added.</p>
+        </section>
+        <section class="packages section-pad" id="packages">
+            <div class="section-heading">
+                <div>
+                    <div class="kicker"><i></i> TRAVEL MADE PERSONAL</div>
+                    <h2>Find Your Perfect Getaway</h2>
+                    <p>Thoughtfully designed trips for every kind of traveller.</p>
+                </div>
+                <div class="package-filters" role="group" aria-label="Filter packages"><button class="filter-btn active"
+                        data-filter="all">All trips</button><button class="filter-btn"
+                        data-filter="nature">Nature</button><button class="filter-btn"
+                        data-filter="culture">Culture</button><button class="filter-btn"
+                        data-filter="beach">Beach</button></div>
+            </div>
+            <div class="package-grid">
+                <article class="package-card" data-category="nature">
+                    <div class="package-image kerala"><span>BESTSELLER</span><button class="save-trip"
+                            aria-label="Save Coorg package">♡</button></div>
+                    <div class="package-body"><small>KARNATAKA · 3 DAYS / 2 NIGHTS</small>
+                        <h3>Coorg Green Escape</h3>
+                        <p>Coffee estates, misty hills and quiet forest trails.</p>
+                        <div class="package-meta"><span>◷ 3 days</span><span>★ 4.9</span><span>♙ Small groups</span>
+                        </div>
+                        <div class="package-bottom"><b>₹6,999 <small>/ person</small></b><button class="package-book"
+                                data-package="Coorg Green Escape">Explore ↗</button></div>
+                    </div>
+                </article>
+                <article class="package-card" data-category="beach">
+                    <div class="package-image goa"><span>BEACH FAVOURITE</span><button class="save-trip"
+                            aria-label="Save Gokarna package">♡</button></div>
+                    <div class="package-body"><small>KARNATAKA · 2 DAYS / 1 NIGHT</small>
+                        <h3>Gokarna Coastal Break</h3>
+                        <p>Golden beaches, sunset viewpoints and coastal cafés.</p>
+                        <div class="package-meta"><span>◷ 2 days</span><span>★ 4.8</span><span>♙ Couple / family</span>
+                        </div>
+                        <div class="package-bottom"><b>₹4,499 <small>/ person</small></b><button class="package-book"
+                                data-package="Gokarna Coastal Break">Explore ↗</button></div>
+                    </div>
+                </article>
+                <article class="package-card" data-category="culture">
+                    <div class="package-image hampi"><span>HERITAGE</span><button class="save-trip"
+                            aria-label="Save Hampi package">♡</button></div>
+                    <div class="package-body"><small>HISTORIC KARNATAKA · 2 DAYS / 1 NIGHT</small>
+                        <h3>Hampi Heritage Trail</h3>
+                        <p>Ancient temples, monumental ruins and golden-hour views.</p>
+                        <div class="package-meta"><span>◷ 2 days</span><span>★ 4.9</span><span>♙ Guided tour</span>
+                        </div>
+                        <div class="package-bottom"><b>₹5,499 <small>/ person</small></b><button class="package-book"
+                                data-package="Hampi Heritage Trail">Explore ↗</button></div>
+                    </div>
+                </article>
+                <article class="package-card" data-category="nature">
+                    <div class="package-image chikmagalur"><span>HILL STATION</span><button class="save-trip"
+                            aria-label="Save Chikmagalur package">♡</button></div>
+                    <div class="package-body"><small>KARNATAKA · 2 DAYS / 1 NIGHT</small>
+                        <h3>Chikmagalur Peaks</h3>
+                        <p>Mountain roads, coffee plantations and panoramic peaks.</p>
+                        <div class="package-meta"><span>◷ 2 days</span><span>★ 4.7</span><span>♙ Adventure</span></div>
+                        <div class="package-bottom"><b>₹5,999 <small>/ person</small></b><button class="package-book"
+                                data-package="Chikmagalur Peaks">Explore ↗</button></div>
+                    </div>
+                </article>
+            </div>
+            <p class="disclaimer">Package prices and ratings are sample demo content. Confirm current pricing,
+                availability and inclusions before publishing.</p>
+        </section>
+        <section class="custom-trip" id="custom">
+            <div class="custom-bg"></div>
+            <div class="custom-overlay"></div>
+            <div class="custom-copy">
+                <div class="kicker"><i></i> LET'S PLAN YOUR NEXT ADVENTURE</div>
+                <h2>Custom Trips for<br><em>Every Dream</em></h2>
+                <p>Tell us your dream destination, and we'll create a personalized travel experience just for you.</p><a
+                    class="plan-btn" href="#contact">✈ Plan Custom Trip <span>➜</span></a>
+            </div>
+            <div class="custom-sticker">YOUR DREAM<br>TRIP, YOUR WAY ✳</div>
+        </section>
+        <section class="about section-pad" id="about">
+            <div class="about-photo">
+                <div class="photo-badge"><b>Every mile</b><span>has a story.</span></div>
+            </div>
+            <div class="about-copy">
+                <div class="kicker"><i></i> OUR STORY</div>
+                <h2>Travel better.<br><em>Discover more.</em></h2>
+                <p>Sanchari World is built around a simple idea: every journey should feel special. We help travellers
+                    discover new destinations with thoughtful planning, comfortable transport and personal service.</p>
+                <p>Whether you're planning a family holiday, a group tour, a business trip or a spontaneous weekend
+                    away, we'll help you make the most of every mile.</p>
+                <div class="about-features"><span>✓ Carefully planned itineraries</span><span>✓ Comfortable vehicle
+                        options</span><span>✓ Friendly travel assistance</span><span>✓ Trips tailored to your
+                        budget</span></div><a class="dark-btn" href="#contact">Plan with our team →</a>
+            </div>
+        </section>
+        <section class="contact-section section-pad" id="contact">
+            <div class="contact-intro">
+                <div class="kicker"><i></i> START YOUR JOURNEY</div>
+                <h2>Let's make your<br><em>next trip happen.</em></h2>
+                <p>Share a few details and our travel team can help shape your itinerary.</p>
+                <div class="contact-detail"><span>✉</span>
+                    <div><b>Email us</b><small>hello@sanchariworld.com</small></div>
+                </div>
+                <div class="contact-detail"><span>☎</span>
+                    <div><b>Call our team</b><small>+91 98765 43210 (demo contact)</small></div>
+                </div>
+                <div class="contact-detail"><span>⌖</span>
+                    <div><b>Based in</b><small>Bengaluru, Karnataka, India</small></div>
+                </div>
+            </div>
+            <form class="contact-form" id="tripForm">
+                <div class="form-top">
+                    <h3>Plan your trip</h3><span>✦ Personalised for you</span>
+                </div>
+                <div class="form-grid"><label>Your name<input name="name" required placeholder="Enter your full name"
+                            minlength="2"></label><label>Email address<input name="email" type="email" required
+                            placeholder="you@example.com"></label><label>Phone number<input name="phone" type="tel"
+                            required pattern="[0-9+() -]{8,18}"
+                            placeholder="+91 98765 43210"></label><label>Destination<input name="destination"
+                            id="formDestination" required
+                            placeholder="Where would you like to go?"></label><label>Travel date<input name="date"
+                            id="formDate" type="date" required></label><label>Travellers<select name="travellers">
+                            <option>1 person</option>
+                            <option>2 people</option>
+                            <option>3–5 people</option>
+                            <option>6–10 people</option>
+                            <option>10+ people</option>
+                        </select></label><label class="full">Trip type<select name="type" id="formType">
+                            <option>Holiday package</option>
+                            <option>Custom trip</option>
+                            <option>Vehicle rental</option>
+                            <option>Group tour</option>
+                            <option>Business travel</option>
+                        </select></label><label class="full">Your preferences<textarea name="message" rows="3"
+                            placeholder="Budget, places to visit, preferred vehicle..."></textarea></label></div><button
+                    class="submit-btn" type="submit">Send Trip Enquiry <span>➜</span></button>
+                <p class="form-note" id="formNote">Demo form: submission opens your email app. Set your business email
+                    in script.js before publishing.</p>
+            </form>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-main"><a class="logo" href="#home"><span class="logo-mark">⌁</span><span><b>Sanchari
+                        World</b><small>EXPLORE · TRAVEL · DISCOVER</small></span></a>
+            <p>Every journey tells a story.<br>Let's make yours unforgettable.</p>
+            <div>
+                <h4>Quick Links</h4><a href="#home">Home</a><a href="#destinations">Destinations</a><a
+                    href="#packages">Packages</a><a href="#vehicles">Vehicles</a>
+            </div>
+            <div>
+                <h4>Explore</h4><a href="#about">About Us</a><a href="#contact">Contact</a><a href="#contact">Terms &
+                    Conditions</a><a href="#contact">Privacy Policy</a>
+            </div>
+            <div>
+                <h4>Contact Us</h4><span>☎ +91 98765 43210</span><span>✉ hello@sanchariworld.com</span><span>⌖
+                    Bengaluru, Karnataka, India</span>
+            </div>
+            <div class="newsletter">
+                <h4>Travel notes, occasionally.</h4>
+                <p>Get travel ideas and new package updates.</p>
+                <form id="newsletterForm"><input type="email" required placeholder="Enter your email"
+                        aria-label="Email for newsletter"><button aria-label="Subscribe">➜</button></form><small
+                    id="newsletterStatus"></small>
+            </div>
+        </div>
+        <div class="footer-bottom"><span>© <span id="year"></span> Sanchari World. All rights
+                reserved.</span><span>Travel &nbsp; | &nbsp; Explore &nbsp; | &nbsp; Discover</span></div>
+    </footer>
+    <a class="whatsapp" id="whatsappLink" href="#contact" aria-label="WhatsApp Sanchari World">◉</a>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog id="bookingDialog" class="booking-dialog"><button class="dialog-close" id="closeDialog"
+            aria-label="Close dialog">×</button>
+        <div class="kicker"><i></i> YOUR NEXT ADVENTURE</div>
+        <h2 id="dialogTitle">Let's plan your trip</h2>
+        <p id="dialogText">Tell us where you'd like to go and we'll help with the details.</p><button class="dark-btn"
+            id="dialogContinue">Continue to enquiry →</button>
+    </dialog>
+    <script src="script.js"></script>
+</body>
+
+</html>
