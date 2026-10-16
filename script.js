@@ -1,232 +1,205 @@
 /**
- * Sanchari World — Main Application Logic (Option 2 Redesign)
- * Features:
- *  - Mobile glassmorphic drawer toggle & keyboard accessibility
- *  - Hero background video autoplay resilience & dynamic video switcher
- *  - Dual search booking engine tabs (Seater Booking vs Custom Tour Planning)
- *  - Dynamic Seater Fleet category filtering (4-seater, 6/7-seater, Tempo, Bus)
- *  - Universal booking dialog modal with prefilled data
- *  - Direct WhatsApp links & Mailto trip enquiry generator
- *  - Newsletter local subscription storage
- *  - Sticky header elevation on scroll & active link Spy (IntersectionObserver)
+ * Sanchari World — Option 2 Application Logic
+ * Modern Boutique Luxury & Split Tour Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
     'use strict';
 
-    // 1. CONSTANTS & CONFIGURATION
+    // 1. BUSINESS CONFIGURATION
     const BUSINESS_EMAIL = 'hello@sanchariworld.com';
-    const WHATSAPP_NUMBER = '919876543210'; // Replace with verified business WhatsApp
-    const DEFAULT_WA_MESSAGE = 'Hello Sanchari World! I would like to enquire about your custom tours and seater vehicle services.';
+    const WHATSAPP_NUMBER = '919876543210';
+    const DEFAULT_WA_MSG = 'Hello Sanchari World! I would like to enquire about your custom tours and seater vehicle rentals.';
 
-    // Helper shorthand functions
+    // Helper utilities
     const $ = (selector, root = document) => root.querySelector(selector);
     const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
-    // 2. TOAST POPUP NOTIFICATION SYSTEM
-    const toastEl = $('#toastPopup');
-    let toastTimeout = null;
+    // 2. TOAST POPUP NOTIFICATION
+    const toastEl = $('#studioToast');
+    let toastTimer = null;
 
     function showToast(message, duration = 3800) {
         if (!toastEl) return;
         toastEl.textContent = message;
         toastEl.classList.add('show');
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => {
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
             toastEl.classList.remove('show');
         }, duration);
     }
 
     // 3. AUTO-UPDATE YEAR
-    const yearEl = $('#currentYear');
+    const yearEl = $('#studioYear');
     if (yearEl) {
         yearEl.textContent = new Date().getFullYear();
     }
 
     // 4. RESTRICT DATE PICKERS TO TODAY ONWARDS
     const today = new Date();
-    const localDateStr = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
+    const minDateStr = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
         .toISOString()
         .slice(0, 10);
 
-    const dateInputs = ['#rentalDate', '#tourStartDate', '#formTravelDate', '#modalDate'];
-    dateInputs.forEach(selector => {
-        const input = $(selector);
-        if (input) {
-            input.min = localDateStr;
-        }
+    ['#engineDate', '#engineTourDate', '#clientDate', '#mDate'].forEach(sel => {
+        const input = $(sel);
+        if (input) input.min = minDateStr;
     });
 
-    // 5. STICKY HEADER & ACTIVE SCROLL SPY
-    const header = $('#topHeader');
+    // 5. STICKY HEADER & SCROLL SHADOW
+    const header = $('#siteHeader');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
+        if (window.scrollY > 30) {
             header?.classList.add('scrolled');
         } else {
             header?.classList.remove('scrolled');
         }
     }, { passive: true });
 
-    // Active Navigation Link Spy via IntersectionObserver
-    const navAnchors = $$('#navLinks .nav-link');
+    // Active Navigation Spy (IntersectionObserver)
+    const navAnchors = $$('.nav-item');
     const sections = $$('main section[id]');
     if ('IntersectionObserver' in window && sections.length > 0) {
-        const navObserver = new IntersectionObserver(entries => {
+        const spyObserver = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const currentId = entry.target.id;
+                    const id = entry.target.id;
                     navAnchors.forEach(link => {
                         const href = link.getAttribute('href');
-                        link.classList.toggle('active', href === `#${currentId}`);
+                        link.classList.toggle('active', href === `#${id}`);
                     });
                 }
             });
-        }, { rootMargin: '-30% 0px -50% 0px' });
+        }, { rootMargin: '-25% 0px -55% 0px' });
 
-        sections.forEach(sec => navObserver.observe(sec));
+        sections.forEach(s => spyObserver.observe(s));
     }
 
-    // 6. MOBILE NAVIGATION TOGGLE
-    const menuToggle = $('#menuToggle');
-    const navLinks = $('#navLinks');
+    // 6. MOBILE MENU DRAWER TOGGLE
+    const mobileTrigger = $('#mobileMenuTrigger');
+    const navMenu = $('#navMenu');
 
     function closeMobileNav() {
-        if (navLinks && navLinks.classList.contains('open')) {
-            navLinks.classList.remove('open');
-            menuToggle?.classList.remove('active');
-            menuToggle?.setAttribute('aria-expanded', 'false');
+        if (navMenu && navMenu.classList.contains('open')) {
+            navMenu.classList.remove('open');
+            mobileTrigger?.classList.remove('active');
+            mobileTrigger?.setAttribute('aria-expanded', 'false');
             document.body.style.overflow = '';
         }
     }
 
     function toggleMobileNav() {
-        if (!navLinks) return;
-        const isOpen = navLinks.classList.toggle('open');
-        menuToggle?.classList.toggle('active', isOpen);
-        menuToggle?.setAttribute('aria-expanded', String(isOpen));
-        // Prevent background scrolling when menu open on mobile
+        if (!navMenu) return;
+        const isOpen = navMenu.classList.toggle('open');
+        mobileTrigger?.classList.toggle('active', isOpen);
+        mobileTrigger?.setAttribute('aria-expanded', String(isOpen));
         document.body.style.overflow = isOpen ? 'hidden' : '';
     }
 
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', toggleMobileNav);
+    if (mobileTrigger && navMenu) {
+        mobileTrigger.addEventListener('click', toggleMobileNav);
 
-        // Close on navigation click
-        $$('a', navLinks).forEach(link => {
+        $$('a', navMenu).forEach(link => {
             link.addEventListener('click', closeMobileNav);
         });
 
-        // Close when clicking outside
         document.addEventListener('click', (e) => {
-            if (navLinks.classList.contains('open') &&
-                !navLinks.contains(e.target) &&
-                !menuToggle.contains(e.target)) {
+            if (navMenu.classList.contains('open') &&
+                !navMenu.contains(e.target) &&
+                !mobileTrigger.contains(e.target)) {
                 closeMobileNav();
             }
         });
 
-        // Close on Escape key
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeMobileNav();
-            }
+            if (e.key === 'Escape') closeMobileNav();
         });
     }
 
     // 7. HERO VIDEO & INTERACTIVE SWITCHER
-    const heroVideo = $('#heroBgVideo');
-    const switcherBtns = $$('#videoSwitcher .switcher-btn');
+    const heroVid = $('#splitHeroVideo');
+    const dockBtns = $$('.dock-btn');
 
-    if (heroVideo) {
-        heroVideo.muted = true;
-        heroVideo.defaultMuted = true;
-        heroVideo.playsInline = true;
+    if (heroVid) {
+        heroVid.muted = true;
+        heroVid.defaultMuted = true;
+        heroVid.playsInline = true;
 
         const attemptPlay = () => {
-            const playPromise = heroVideo.play();
-            if (playPromise && playPromise.catch) {
-                playPromise.catch(() => {
-                    // Autoplay prevented by browser power saver or permission
-                });
-            }
+            const prom = heroVid.play();
+            if (prom && prom.catch) prom.catch(() => {});
         };
 
         attemptPlay();
 
-        // Browser gesture fallback for autoplay resilience
-        ['click', 'touchstart', 'scroll'].forEach(event => {
-            window.addEventListener(event, () => {
-                if (heroVideo.paused) attemptPlay();
+        ['click', 'touchstart', 'scroll'].forEach(evt => {
+            window.addEventListener(evt, () => {
+                if (heroVid.paused) attemptPlay();
             }, { once: true, passive: true });
         });
 
-        // Video switcher controls
-        switcherBtns.forEach(btn => {
+        // Switch between Mountain and Coastal videos
+        dockBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                switcherBtns.forEach(b => b.classList.remove('active'));
+                dockBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
                 const newSrc = btn.dataset.src;
                 if (!newSrc) return;
 
-                heroVideo.pause();
-                heroVideo.src = newSrc;
-                heroVideo.load();
-                heroVideo.play().catch(() => {});
+                heroVid.pause();
+                heroVid.src = newSrc;
+                heroVid.load();
+                heroVid.play().catch(() => {});
 
                 showToast(`Switched view to ${btn.textContent.trim()}`);
             });
         });
     }
 
-    // 8. DUAL SEARCH ENGINE TABS (BOOK SEATER vs PLAN CUSTOM TOUR)
-    const tabSeater = $('#tabSeater');
-    const tabTour = $('#tabTour');
-    const seaterPane = $('#seaterPane');
-    const tourPane = $('#tourPane');
+    // 8. DUAL ENGINE BOOKING TABS (SEATER vs CUSTOM TOUR)
+    const tabSeater = $('#tabSeaterEngine');
+    const tabTour = $('#tabTourEngine');
+    const seaterForm = $('#seaterEngineForm');
+    const tourForm = $('#tourEngineForm');
 
-    function switchSearchTab(targetTab) {
-        if (targetTab === 'seater') {
-            tabSeater?.classList.add('active');
-            tabSeater?.setAttribute('aria-selected', 'true');
-            tabTour?.classList.remove('active');
-            tabTour?.setAttribute('aria-selected', 'false');
+    tabSeater?.addEventListener('click', () => {
+        tabSeater.classList.add('active');
+        tabSeater.setAttribute('aria-selected', 'true');
+        tabTour?.classList.remove('active');
+        tabTour?.setAttribute('aria-selected', 'false');
 
-            seaterPane?.classList.add('active');
-            tourPane?.classList.remove('active');
-        } else {
-            tabTour?.classList.add('active');
-            tabTour?.setAttribute('aria-selected', 'true');
-            tabSeater?.classList.remove('active');
-            tabSeater?.setAttribute('aria-selected', 'false');
+        seaterForm?.classList.add('active');
+        tourForm?.classList.remove('active');
+    });
 
-            tourPane?.classList.add('active');
-            seaterPane?.classList.remove('active');
-        }
-    }
+    tabTour?.addEventListener('click', () => {
+        tabTour.classList.add('active');
+        tabTour.setAttribute('aria-selected', 'true');
+        tabSeater?.classList.remove('active');
+        tabSeater?.setAttribute('aria-selected', 'false');
 
-    tabSeater?.addEventListener('click', () => switchSearchTab('seater'));
-    tabTour?.addEventListener('click', () => switchSearchTab('tour'));
+        tourForm?.classList.add('active');
+        seaterForm?.classList.remove('active');
+    });
 
-    // Tab 1 Form Handler: Seater Search -> Forward to enquiry
-    if (seaterPane) {
-        seaterPane.addEventListener('submit', (e) => {
+    // Seater Tab submit -> Pre-fills enquiry form
+    if (seaterForm) {
+        seaterForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const formData = new FormData(seaterPane);
-            const seater = formData.get('seaterType') || 'Seater Vehicle';
-            const pickup = formData.get('pickupCity') || '';
-            const drop = formData.get('destination') || '';
-            const date = formData.get('date') || '';
+            const data = new FormData(seaterForm);
+            const seater = data.get('seaterType') || 'Seater Vehicle';
+            const pickup = data.get('pickupCity') || '';
+            const drop = data.get('destination') || '';
+            const date = data.get('date') || '';
 
-            // Prefill main enquiry form
-            const categoryInput = $('#serviceCategory');
-            const routeInput = $('#tripRoute');
-            const dateInput = $('#formTravelDate');
-            const notesInput = $('#userNotes');
+            const serviceSelect = $('#clientService');
+            const routeInput = $('#clientRoute');
+            const dateInput = $('#clientDate');
+            const notesInput = $('#clientNotes');
 
-            if (categoryInput) {
-                // Find matching option or set closest
-                for (let opt of categoryInput.options) {
+            if (serviceSelect) {
+                for (let opt of serviceSelect.options) {
                     if (opt.value.toLowerCase().includes(seater.toLowerCase().split(' ')[0])) {
                         opt.selected = true;
                         break;
@@ -235,66 +208,62 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             if (routeInput) routeInput.value = `${pickup} to ${drop}`;
             if (dateInput) dateInput.value = date;
-            if (notesInput) notesInput.value = `Vehicle Requested: ${seater}\nRoute: ${pickup} to ${drop}\nDate: ${date}`;
-
-            // Smooth scroll to contact section
-            const contactSection = $('#contact');
-            contactSection?.scrollIntoView({ behavior: 'smooth' });
-            $('#userName')?.focus();
-
-            showToast(`Selected ${seater} for ${pickup} to ${drop}. Fill details below to get instant quote!`);
-        });
-    }
-
-    // Tab 2 Form Handler: Custom Tour Search -> Forward to enquiry
-    if (tourPane) {
-        tourPane.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(tourPane);
-            const destination = formData.get('destination') || '';
-            const duration = formData.get('duration') || '';
-            const pax = formData.get('passengers') || '';
-            const date = formData.get('date') || '';
-
-            // Prefill main enquiry form
-            const categoryInput = $('#serviceCategory');
-            const routeInput = $('#tripRoute');
-            const dateInput = $('#formTravelDate');
-            const notesInput = $('#userNotes');
-
-            if (categoryInput) categoryInput.value = 'Custom Tour Planning';
-            if (routeInput) routeInput.value = destination;
-            if (dateInput) dateInput.value = date;
             if (notesInput) {
-                notesInput.value = `Custom Tour Request:\nDestination: ${destination}\nDuration: ${duration}\nTravellers: ${pax}\nStart Date: ${date}`;
+                notesInput.value = `Seater Requirement: ${seater}\nRoute: ${pickup} to ${drop}\nTravel Date: ${date}`;
             }
 
-            const contactSection = $('#contact');
-            contactSection?.scrollIntoView({ behavior: 'smooth' });
-            $('#userName')?.focus();
+            $('#contact')?.scrollIntoView({ behavior: 'smooth' });
+            $('#clientName')?.focus();
 
-            showToast(`Custom tour to ${destination} pre-filled. Complete your contact details below!`);
+            showToast(`Selected ${seater}. Complete your details below for an instant quote!`);
         });
     }
 
-    // 9. SEATER FLEET FILTER PILLS
-    const fleetPills = $$('.fleet-pill');
-    const seaterCards = $$('.seater-card');
+    // Custom Tour Tab submit -> Pre-fills enquiry form
+    if (tourForm) {
+        tourForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const data = new FormData(tourForm);
+            const dest = data.get('destination') || '';
+            const duration = data.get('duration') || '';
+            const pax = data.get('passengers') || '';
+            const date = data.get('date') || '';
 
-    fleetPills.forEach(pill => {
-        pill.addEventListener('click', () => {
-            fleetPills.forEach(p => p.classList.remove('active'));
-            pill.classList.add('active');
+            const serviceSelect = $('#clientService');
+            const routeInput = $('#clientRoute');
+            const dateInput = $('#clientDate');
+            const notesInput = $('#clientNotes');
 
-            const filter = pill.dataset.filter || 'all';
+            if (serviceSelect) serviceSelect.value = 'Custom Tour Planning';
+            if (routeInput) routeInput.value = dest;
+            if (dateInput) dateInput.value = date;
+            if (notesInput) {
+                notesInput.value = `Custom Tour Plan:\nDestination: ${dest}\nDuration: ${duration}\nTravellers: ${pax}\nStart Date: ${date}`;
+            }
 
-            seaterCards.forEach(card => {
+            $('#contact')?.scrollIntoView({ behavior: 'smooth' });
+            $('#clientName')?.focus();
+
+            showToast(`Custom tour to ${dest} pre-filled. Complete your details below!`);
+        });
+    }
+
+    // 9. SEATERS CATEGORY FILTER
+    const filterBtns = $$('.filter-btn');
+    const vehicleCards = $$('.luxury-vehicle-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.dataset.filter || 'all';
+
+            vehicleCards.forEach(card => {
                 const category = card.dataset.category || '';
                 if (filter === 'all' || category === filter) {
-                    card.classList.remove('hidden');
                     card.style.display = '';
                 } else {
-                    card.classList.add('hidden');
                     card.style.display = 'none';
                 }
             });
@@ -302,153 +271,147 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 10. UNIVERSAL BOOKING MODAL
-    const bookingModal = $('#bookingModal');
-    const modalTitle = $('#modalTitle');
-    const modalSubtitle = $('#modalSubtitle');
-    const modalSelectedItem = $('#modalSelectedItem');
-    const modalServiceType = $('#modalServiceType');
-    const closeModalBtn = $('#closeModalBtn');
-    const cancelModalBtn = $('#cancelModalBtn');
-    const modalForm = $('#modalForm');
+    const modal = $('#studioBookingModal');
+    const modalTitle = $('#modalStudioTitle');
+    const modalSubtitle = $('#modalStudioSubtitle');
+    const modalItemHolder = $('#modalItemHolder');
+    const modalTypeHolder = $('#modalTypeHolder');
+    const modalClose = $('#studioModalClose');
+    const modalCancel = $('#studioModalCancel');
+    const modalForm = $('#studioModalForm');
 
-    function openBookingModal(itemName, itemType) {
-        if (!bookingModal) return;
+    function openModal(item, type) {
+        if (!modal) return;
+        if (modalTitle) modalTitle.textContent = `Book ${item}`;
+        if (modalSubtitle) modalSubtitle.textContent = `Provide your details for ${type}. We will confirm availability and share quote.`;
+        if (modalItemHolder) modalItemHolder.value = item;
+        if (modalTypeHolder) modalTypeHolder.value = type;
 
-        if (modalTitle) modalTitle.textContent = `Book ${itemName}`;
-        if (modalSubtitle) modalSubtitle.textContent = `Provide your contact and travel date for ${itemType}. Our concierge will confirm availability.`;
-        if (modalSelectedItem) modalSelectedItem.value = itemName;
-        if (modalServiceType) modalServiceType.value = itemType;
-
-        if (typeof bookingModal.showModal === 'function') {
-            bookingModal.showModal();
+        if (typeof modal.showModal === 'function') {
+            modal.showModal();
         } else {
-            // Fallback for older browsers without dialog support
-            const contactSection = $('#contact');
-            if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' });
-                const tripRoute = $('#tripRoute');
-                if (tripRoute) tripRoute.value = itemName;
-            }
+            $('#contact')?.scrollIntoView({ behavior: 'smooth' });
+            const route = $('#clientRoute');
+            if (route) route.value = item;
         }
     }
 
-    function closeBookingModal() {
-        if (bookingModal && typeof bookingModal.close === 'function' && bookingModal.open) {
-            bookingModal.close();
+    function closeModal() {
+        if (modal && typeof modal.close === 'function' && modal.open) {
+            modal.close();
         }
     }
 
-    // Attach click listeners to all open-booking buttons
-    $$('.open-booking').forEach(btn => {
+    $$('.open-modal-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             const item = btn.dataset.item || 'Service Booking';
             const type = btn.dataset.type || 'Custom Service';
-            openBookingModal(item, type);
+            openModal(item, type);
         });
     });
 
-    closeModalBtn?.addEventListener('click', closeBookingModal);
-    cancelModalBtn?.addEventListener('click', closeBookingModal);
+    modalClose?.addEventListener('click', closeModal);
+    modalCancel?.addEventListener('click', closeModal);
 
-    // Close when clicking modal backdrop
-    bookingModal?.addEventListener('click', (e) => {
-        if (e.target === bookingModal) {
-            closeBookingModal();
-        }
+    modal?.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
     });
 
-    // Modal Form Submission
+    // Modal Form Submission -> Opens WhatsApp with prefilled message
     modalForm?.addEventListener('submit', (e) => {
         e.preventDefault();
-        const name = $('#modalName')?.value || '';
-        const phone = $('#modalPhone')?.value || '';
-        const date = $('#modalDate')?.value || '';
-        const route = $('#modalRoute')?.value || '';
-        const item = modalSelectedItem?.value || 'Selected Service';
+        const name = $('#mName')?.value || '';
+        const phone = $('#mPhone')?.value || '';
+        const date = $('#mDate')?.value || '';
+        const route = $('#mRoute')?.value || '';
+        const item = modalItemHolder?.value || 'Requested Service';
 
-        closeBookingModal();
+        closeModal();
         modalForm.reset();
 
-        showToast(`Thank you ${name}! Booking request for ${item} received. Opening WhatsApp...`);
+        showToast(`Thank you ${name}! Opening WhatsApp with your enquiry for ${item}...`);
 
-        // Construct pre-filled WhatsApp message
         const waText = encodeURIComponent(
-            `*New Booking Request — Sanchari World*\n\n` +
+            `*New Booking Request (Option 2) — Sanchari World*\n\n` +
             `• *Service/Vehicle*: ${item}\n` +
             `• *Name*: ${name}\n` +
             `• *Phone*: ${phone}\n` +
-            `• *Date*: ${date}\n` +
-            `• *Pickup & Route*: ${route}\n\n` +
-            `Please share the rate card and confirmation.`
+            `• *Travel Date*: ${date}\n` +
+            `• *Route*: ${route}\n\n` +
+            `Please confirm availability and share tariff.`
         );
 
         setTimeout(() => {
             window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`, '_blank');
-        }, 600);
+        }, 500);
     });
 
     // 11. DYNAMIC WHATSAPP LINKS
-    const customWaBtn = $('#customWhatsappBtn');
-    const directWaLink = $('#whatsappDirectLink');
-    const floatingWaBtn = $('#whatsappFloatingBtn');
+    const waBaseUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_WA_MSG)}`;
 
-    const generalWaUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(DEFAULT_WA_MESSAGE)}`;
-
-    [customWaBtn, directWaLink, floatingWaBtn].forEach(el => {
+    ['#announcementWa', '#customBannerWa', '#contactDirectWa', '#floatingWaPill'].forEach(sel => {
+        const el = $(sel);
         if (el) {
-            el.setAttribute('href', generalWaUrl);
+            el.setAttribute('href', waBaseUrl);
             el.setAttribute('target', '_blank');
             el.setAttribute('rel', 'noopener noreferrer');
         }
     });
 
+    // Vehicle WhatsApp Quote buttons
+    $$('.v-wa-btn').forEach(btn => {
+        const vName = btn.dataset.vehicle || 'Seater Vehicle';
+        const msg = encodeURIComponent(`Hello Sanchari World! Please share the per-km tariff and availability for ${vName}.`);
+        btn.setAttribute('href', `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`);
+        btn.setAttribute('target', '_blank');
+        btn.setAttribute('rel', 'noopener noreferrer');
+    });
+
     // 12. MAIN ENQUIRY FORM SUBMISSION
-    const enquiryForm = $('#enquiryForm');
-    const formStatusNote = $('#formStatusNote');
+    const mainForm = $('#studioEnquiryForm');
+    const formHelp = $('#studioFormHelp');
 
-    if (enquiryForm) {
-        enquiryForm.addEventListener('submit', (e) => {
+    if (mainForm) {
+        mainForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const formData = new FormData(enquiryForm);
-            const name = formData.get('name') || '';
-            const phone = formData.get('phone') || '';
-            const email = formData.get('email') || 'Not provided';
-            const service = formData.get('service') || '';
-            const route = formData.get('destination') || '';
-            const date = formData.get('date') || '';
-            const notes = formData.get('notes') || 'No special preferences';
+            const data = new FormData(mainForm);
+            const name = data.get('name') || '';
+            const phone = data.get('phone') || '';
+            const email = data.get('email') || 'Not provided';
+            const service = data.get('service') || '';
+            const route = data.get('destination') || '';
+            const date = data.get('date') || '';
+            const notes = data.get('notes') || 'No special preferences';
 
-            const subject = encodeURIComponent(`Sanchari World Trip Enquiry — ${service} (${route})`);
+            const subject = encodeURIComponent(`Sanchari World Enquiry — ${service} (${route})`);
             const body = encodeURIComponent(
-                `SANCHARI WORLD TRIP ENQUIRY\n` +
-                `============================\n\n` +
-                `Full Name: ${name}\n` +
-                `Mobile/WhatsApp: ${phone}\n` +
+                `SANCHARI WORLD TRIP ENQUIRY (OPTION 2)\n` +
+                `=====================================\n\n` +
+                `Name: ${name}\n` +
+                `Phone/WhatsApp: ${phone}\n` +
                 `Email: ${email}\n` +
                 `Service Needed: ${service}\n` +
-                `Destination / Route: ${route}\n` +
+                `Route / Destination: ${route}\n` +
                 `Travel Date: ${date}\n\n` +
-                `Special Requests / Notes:\n${notes}\n\n` +
-                `Submitted from sanchariworld.com`
+                `Special Notes:\n${notes}\n`
             );
 
-            if (formStatusNote) {
-                formStatusNote.textContent = 'Enquiry draft prepared. Opening your mail client...';
-                formStatusNote.style.color = 'var(--primary-gold)';
+            if (formHelp) {
+                formHelp.textContent = 'Enquiry draft ready. Opening your mail client...';
+                formHelp.style.color = 'var(--primary)';
             }
 
             showToast('Trip enquiry submitted! Opening your email app...');
 
-            // Open mail draft
             window.location.href = `mailto:${BUSINESS_EMAIL}?subject=${subject}&body=${body}`;
 
-            enquiryForm.reset();
+            mainForm.reset();
         });
     }
 
-    // 13. FOOTER NEWSLETTER SUBSCRIPTION
-    const newsletterForm = $('#footerNewsletter');
-    const newsletterMsg = $('#newsletterMsg');
+    // 13. FOOTER NEWSLETTER
+    const newsletterForm = $('#studioNewsletter');
+    const newsletterStatus = $('#studioNewsletterStatus');
 
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', (e) => {
@@ -458,26 +421,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (email) {
                 try {
-                    const subs = JSON.parse(localStorage.getItem('sanchari_subscribers') || '[]');
+                    const subs = JSON.parse(localStorage.getItem('sanchari_subscribers_opt2') || '[]');
                     if (!subs.includes(email)) {
                         subs.push(email);
-                        localStorage.setItem('sanchari_subscribers', JSON.stringify(subs));
+                        localStorage.setItem('sanchari_subscribers_opt2', JSON.stringify(subs));
                     }
-                } catch (err) {
-                    // Ignore storage quota or disabled storage
+                } catch (err) {}
+
+                if (newsletterStatus) {
+                    newsletterStatus.textContent = '✦ Subscribed! Thank you for joining Sanchari World.';
+                    newsletterStatus.style.color = '#34D399';
                 }
 
-                if (newsletterMsg) {
-                    newsletterMsg.textContent = '✦ Subscribed! Thank you for joining Sanchari World.';
-                    newsletterMsg.style.color = 'var(--accent-emerald)';
-                }
-
-                showToast('Subscribed! You will receive our seasonal travel recommendations.');
+                showToast('Thank you for subscribing to Sanchari World updates!');
                 newsletterForm.reset();
             }
         });
     }
 
-    // 14. LOG INITIALIZATION SUCCESS
-    console.log('Sanchari World (Option 2) initialized successfully.');
+    console.log('Sanchari World (Option 2 — Boutique Luxury) initialized.');
 });
