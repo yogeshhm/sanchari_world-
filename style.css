@@ -163,22 +163,22 @@ img {
 .hero {
     min-height: 100vh;
     position: relative;
-    isolation: isolate;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 120px clamp(20px, 4vw, 60px) 60px;
     color: #fff;
     overflow: hidden;
-    background: #031826;
+    background: #020f18;
 }
 
 .hero-video-wrap {
     position: absolute;
     inset: 0;
-    z-index: -3;
+    z-index: 1;
     overflow: hidden;
-    background: #031826;
+    background: #020f18;
+    pointer-events: none;
 }
 
 .hero-video {
@@ -189,13 +189,13 @@ img {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    filter: brightness(0.9) contrast(1.05);
+    filter: brightness(0.95) contrast(1.05);
 }
 
 .hero-bg {
     position: absolute;
     inset: 0;
-    z-index: -4;
+    z-index: 0;
     background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=2560&q=85');
     background-size: cover;
     background-position: center 40%;
@@ -205,12 +205,13 @@ img {
 .hero-shade {
     position: absolute;
     inset: 0;
-    z-index: -2;
+    z-index: 2;
+    pointer-events: none;
     background: 
-        radial-gradient(circle at 85% 25%, rgba(245, 158, 11, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 15% 75%, rgba(14, 116, 144, 0.25) 0%, transparent 50%),
-        linear-gradient(180deg, rgba(3, 24, 38, 0.65) 0%, rgba(3, 24, 38, 0.82) 50%, rgba(3, 24, 38, 0.98) 100%),
-        linear-gradient(90deg, rgba(3, 24, 38, 0.92) 0%, rgba(3, 24, 38, 0.72) 45%, rgba(3, 24, 38, 0.4) 100%);
+        radial-gradient(circle at 85% 25%, rgba(245, 158, 11, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 15% 75%, rgba(14, 116, 144, 0.18) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(2, 17, 27, 0.45) 0%, rgba(2, 17, 27, 0.6) 55%, rgba(2, 17, 27, 0.92) 100%),
+        linear-gradient(90deg, rgba(2, 17, 27, 0.7) 0%, rgba(2, 17, 27, 0.4) 50%, rgba(2, 17, 27, 0.2) 100%);
 }
 
 .hero-ambient-glow {
@@ -218,8 +219,8 @@ img {
     border-radius: 50%;
     filter: blur(90px);
     pointer-events: none;
-    z-index: -1;
-    opacity: 0.6;
+    z-index: 2;
+    opacity: 0.5;
 }
 
 .hero-ambient-glow.glow-1 {
@@ -250,7 +251,7 @@ img {
     max-width: 1280px;
     margin: 0 auto;
     position: relative;
-    z-index: 2;
+    z-index: 3;
     display: flex;
     flex-direction: column;
     gap: 48px;
