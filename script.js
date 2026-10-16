@@ -6,6 +6,7 @@ const $$ = (s, root=document) => [...root.querySelectorAll(s)];
 const toast = (message) => { const el=$('#toast'); el.textContent=message; el.classList.add('show'); clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove('show'),3200); };
 $('#year').textContent = new Date().getFullYear();
 const today = new Date(); const localToday = new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().slice(0,10); ['#travelDate','#formDate'].forEach(s=>{const el=$(s); if(el){el.min=localToday;}});
+const heroVid=$('#heroVideo'); if(heroVid){const p=heroVid.play();if(p&&p.catch)p.catch(()=>{});}
 const hamburger=$('#hamburger'), nav=$('#nav');
 hamburger.addEventListener('click',()=>{const open=nav.classList.toggle('open');hamburger.setAttribute('aria-expanded',String(open));hamburger.textContent=open?'×':'☰';});
 $$('#nav a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');hamburger.setAttribute('aria-expanded','false');hamburger.textContent='☰';}));
