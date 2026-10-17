@@ -5,69 +5,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Sanchari World — Option 2: Bespoke custom tour planner and verified chauffeur-driven seater rentals from 4-seater Sedans to 40-seater luxury coaches.">
-    <title>Sanchari World | Custom Tours & Seater Fleet Rental (Option 2)</title>
+        content="Sanchari World — Option 2: 3D WebGL Bespoke Custom Tours & Verified Chauffeur-Driven Seater Vehicle Rentals from 4-Seater Sedans to 40-Seater Luxury Coaches.">
+    <title>Sanchari World | 3D Custom Tours & Seater Fleet Rental</title>
+
+    <!-- WORLD-CLASS AWWWARDS TYPOGRAPHY: CLASH DISPLAY & SATOSHI -->
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+
+    <!-- GOOGLE FONTS FALLBACK (SYNE & PLUS JAKARTA SANS) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="theme-light-luxury">
-    <!-- TOP NOTIFICATION ANNOUNCEMENT BAR -->
-    <aside class="top-announcement-bar" aria-label="Announcement">
-        <div class="container announcement-inner">
-            <div class="announcement-text">
-                <span class="announcement-tag">✦ OPTION 2</span>
-                <span>We Make Custom Tours Based On Your Needs · 4 to 40-Seater Chauffeur Fleet Available</span>
+<body class="neo-luxury-body">
+    <!-- AMBIENT BACKGROUND GLOWS & MESH -->
+    <div class="ambient-mesh">
+        <div class="mesh-glow mesh-1"></div>
+        <div class="mesh-glow mesh-2"></div>
+        <div class="mesh-glow mesh-3"></div>
+        <div class="mesh-grid-overlay"></div>
+    </div>
+
+    <!-- HUD TELEMETRY TICKER -->
+    <aside class="hud-ticker-bar" aria-label="Live Telemetry">
+        <div class="container hud-ticker-inner">
+            <div class="hud-left">
+                <span class="live-pulse-dot"></span>
+                <span class="hud-tag">3D WEBGL ENGINE ACTIVE</span>
+                <span class="hud-sep">//</span>
+                <span class="hud-msg">We Make Custom Tours Based On Your Needs · 4 to 40 Seaters Available</span>
             </div>
-            <div class="announcement-contact">
-                <a href="tel:+919876543210" class="announcement-link">📞 +91 98765 43210</a>
-                <span class="announcement-sep">|</span>
-                <a href="#contact" class="announcement-link" id="announcementWa">💬 WhatsApp Us</a>
+            <div class="hud-right">
+                <span class="hud-geo">📍 HUB: BENGALURU, KA</span>
+                <span class="hud-sep">//</span>
+                <a href="tel:+919876543210" class="hud-link">📞 +91 98765 43210</a>
+                <span class="hud-sep">//</span>
+                <a href="#contact" class="hud-link highlight" id="tickerWaLink">💬 WhatsApp 24/7</a>
             </div>
         </div>
     </aside>
 
-    <!-- HEADER NAVIGATION -->
-    <header class="site-header" id="siteHeader">
-        <div class="container header-container">
-            <a class="brand-logo" href="#home" aria-label="Sanchari World Home">
-                <span class="brand-mark">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+    <!-- ULTRA-PREMIUM NAVIGATION -->
+    <header class="hud-header" id="hudHeader">
+        <div class="container hud-header-container">
+            <a class="brand-unit" href="#home" aria-label="Sanchari World Home">
+                <div class="brand-emblem">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
                     </svg>
-                </span>
-                <div class="brand-titles">
-                    <span class="brand-name">Sanchari World</span>
-                    <span class="brand-subtitle">CUSTOM TOURS · SEATER FLEET</span>
+                </div>
+                <div class="brand-text-block">
+                    <span class="brand-name">SANCHARI WORLD</span>
+                    <span class="brand-tagline">BESPOKE TOURS · SEATER FLEET</span>
                 </div>
             </a>
 
-            <nav class="nav-menu" id="navMenu" aria-label="Main Navigation">
-                <a class="nav-item active" href="#home">Home</a>
-                <a class="nav-item" href="#custom-tours">Custom Tours</a>
-                <a class="nav-item" href="#seaters">Book Seaters</a>
-                <a class="nav-item" href="#packages">Trip Packages</a>
-                <a class="nav-item" href="#why-sanchari">Why Us</a>
-                <a class="nav-item" href="#contact">Contact</a>
-                <a class="mobile-cta-btn" href="#custom-tours">Plan My Custom Tour ➔</a>
+            <nav class="hud-nav" id="hudNav" aria-label="Primary Navigation">
+                <a class="hud-nav-item active" href="#home">Home</a>
+                <a class="hud-nav-item" href="#custom-tours">Custom Tours</a>
+                <a class="hud-nav-item" href="#seaters">Book Seaters</a>
+                <a class="hud-nav-item" href="#estimator">3D Tour Estimator</a>
+                <a class="hud-nav-item" href="#packages">Trip Packages</a>
+                <a class="hud-nav-item" href="#why-us">Why Us</a>
+                <a class="hud-nav-item" href="#contact">Contact</a>
+                <a class="hud-mobile-cta" href="#estimator">Launch 3D Estimator ➔</a>
             </nav>
 
-            <div class="header-right-actions">
-                <a class="header-phone-btn" href="tel:+919876543210" title="Call Reservations">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                    </svg>
-                    <span>Instant Call</span>
-                </a>
-                <a class="primary-nav-btn" href="#custom-tours">
+            <div class="hud-header-actions">
+                <a class="hud-glass-btn" href="#custom-tours">
+                    <span class="hud-sparkle">✦</span>
                     <span>Plan Custom Tour</span>
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </a>
-                <button class="mobile-menu-trigger" id="mobileMenuTrigger" aria-label="Toggle navigation menu" aria-expanded="false">
+                <a class="hud-accent-btn" href="#seaters">
+                    <span>Book Seaters</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </a>
+                <button class="hud-burger-trigger" id="hudBurger" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -77,46 +93,46 @@
     </header>
 
     <main>
-        <!-- HERO SECTION: MODERN ASYMMETRICAL SPLIT LAYOUT -->
-        <section class="split-hero" id="home">
-            <div class="container split-hero-grid">
-                <!-- HERO LEFT COLUMN: COPY & INTERACTIVE BOOKING ENGINE -->
-                <div class="hero-left-content">
-                    <div class="hero-kicker-pill">
-                        <span class="kicker-sparkle">✦</span>
-                        <span>Option 2 · Boutique Luxury Travel & Chauffeur Fleet</span>
+        <!-- HERO SECTION: 3D WEBGL INTERACTIVE CANVAS & DUAL BOOKING ENGINE -->
+        <section class="hero-3d-section" id="home">
+            <div class="container hero-3d-grid">
+                <!-- HERO LEFT: COPY & ADVANCED BOOKING ENGINE -->
+                <div class="hero-3d-copy-column">
+                    <div class="hud-badge-pill">
+                        <span class="badge-ring"></span>
+                        <span class="badge-text">OPTION 2 · 3D WEBGL BESPOKE TRAVEL STUDIO</span>
                     </div>
 
-                    <h1 class="hero-main-heading">
-                        We Make <span class="emerald-text">Custom Tours</span><br>
-                        Based On Your Needs.
+                    <h1 class="hero-3d-heading">
+                        WE MAKE <span class="neon-emerald-text">CUSTOM TOURS</span><br>
+                        BASED ON YOUR NEEDS.
                     </h1>
 
-                    <p class="hero-subtext">
-                        No rigid groups or standard packages. Tell us where you want to go, choose your private seater vehicle (from 4-seater Sedans to 40-seater luxury coaches), and let our concierge craft your personalized holiday.
+                    <p class="hero-3d-subtext">
+                        Experience bespoke luxury travel across South India. Choose your verified private seater vehicle — from 4-seater Sedans and 7-seater Innova Crystas to 12–17 seater Tempos and 40-seater luxury coaches. Zero rigid group schedules.
                     </p>
 
-                    <!-- DUAL ENGINE SEARCH CARD -->
-                    <div class="booking-engine-card">
-                        <div class="engine-tab-bar" role="tablist">
-                            <button class="engine-tab active" id="tabSeaterEngine" role="tab" aria-selected="true" data-tab="seaterView">
-                                <span class="tab-emoji">🚘</span>
+                    <!-- DUAL ENGINE SEARCH CONSOLE -->
+                    <div class="hud-engine-console">
+                        <div class="console-tabs" role="tablist">
+                            <button class="console-tab-btn active" id="tabSeater" role="tab" aria-selected="true" data-target="seaterPane">
+                                <span class="tab-ico">🚘</span>
                                 <span>Book Seater Vehicle</span>
                             </button>
-                            <button class="engine-tab" id="tabTourEngine" role="tab" aria-selected="false" data-tab="tourView">
-                                <span class="tab-emoji">🗺️</span>
+                            <button class="console-tab-btn" id="tabTour" role="tab" aria-selected="false" data-target="tourPane">
+                                <span class="tab-ico">🗺️</span>
                                 <span>Plan Custom Tour</span>
                             </button>
                         </div>
 
-                        <!-- TAB VIEW 1: SEATER BOOKING -->
-                        <form class="engine-form active" id="seaterEngineForm">
-                            <div class="form-inputs-grid">
-                                <div class="form-field">
-                                    <label for="engineSeater">Seater Vehicle</label>
-                                    <div class="field-box">
-                                        <span class="field-icon">💺</span>
-                                        <select id="engineSeater" name="seaterType" required>
+                        <!-- PANE 1: SEATER BOOKING -->
+                        <form class="console-pane active" id="seaterPane">
+                            <div class="console-inputs-grid">
+                                <div class="console-field">
+                                    <label for="seaterSelect">Seater Capacity</label>
+                                    <div class="field-wrap">
+                                        <span class="field-glyph">💺</span>
+                                        <select id="seaterSelect" name="seaterType" required>
                                             <option value="4-Seater Sedan" selected>4-Seater Sedan (Dzire / Etios)</option>
                                             <option value="6-Seater SUV">6-Seater SUV (Ertiga / Carens)</option>
                                             <option value="7-Seater Premium SUV">7-Seater Innova Crysta</option>
@@ -127,11 +143,11 @@
                                     </div>
                                 </div>
 
-                                <div class="form-field">
-                                    <label for="enginePickup">Pickup City</label>
-                                    <div class="field-box">
-                                        <span class="field-icon">📍</span>
-                                        <select id="enginePickup" name="pickupCity" required>
+                                <div class="console-field">
+                                    <label for="pickupSelect">Pickup City</label>
+                                    <div class="field-wrap">
+                                        <span class="field-glyph">📍</span>
+                                        <select id="pickupSelect" name="pickupCity" required>
                                             <option value="Bengaluru" selected>Bengaluru</option>
                                             <option value="Mysuru">Mysuru</option>
                                             <option value="Mangaluru">Mangaluru</option>
@@ -141,210 +157,230 @@
                                     </div>
                                 </div>
 
-                                <div class="form-field">
-                                    <label for="engineRoute">Destination / Route</label>
-                                    <div class="field-box">
-                                        <span class="field-icon">🏁</span>
-                                        <input type="text" id="engineRoute" name="destination" placeholder="e.g. Coorg, Ooty, Wayanad" required>
+                                <div class="console-field">
+                                    <label for="routeInput">Destination / Route</label>
+                                    <div class="field-wrap">
+                                        <span class="field-glyph">🏁</span>
+                                        <input type="text" id="routeInput" name="destination" placeholder="e.g. Coorg, Ooty, Wayanad" required>
                                     </div>
                                 </div>
 
-                                <div class="form-field">
-                                    <label for="engineDate">Travel Date</label>
-                                    <div class="field-box">
-                                        <span class="field-icon">📅</span>
-                                        <input type="date" id="engineDate" name="date" required>
+                                <div class="console-field">
+                                    <label for="seaterDateInput">Travel Date</label>
+                                    <div class="field-wrap">
+                                        <span class="field-glyph">📅</span>
+                                        <input type="date" id="seaterDateInput" name="date" required>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="engine-submit-row">
-                                <button type="submit" class="engine-action-btn">
-                                    <span>Check Seater Availability & Quote</span>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                                </button>
-                            </div>
+                            <button type="submit" class="console-action-submit">
+                                <span>Check Availability & Get Instant Quote</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
                         </form>
 
-                        <!-- TAB VIEW 2: CUSTOM TOUR PLANNING -->
-                        <form class="engine-form" id="tourEngineForm">
-                            <div class="form-inputs-grid">
-                                <div class="form-field">
-                                    <label for="engineCustomDest">Where To?</label>
-                                    <div class="field-box">
-                                        <span class="field-icon">🌄</span>
-                                        <input type="text" id="engineCustomDest" name="destination" placeholder="e.g. Western Ghats, Coastal Kerala" required>
+                        <!-- PANE 2: CUSTOM TOUR PLANNING -->
+                        <form class="console-pane" id="tourPane">
+                            <div class="console-inputs-grid">
+                                <div class="console-field">
+                                    <label for="tourDestInput">Where To?</label>
+                                    <div class="field-wrap">
+                                        <span class="field-glyph">🌄</span>
+                                        <input type="text" id="tourDestInput" name="destination" placeholder="e.g. Western Ghats, Coastal Kerala" required>
                                     </div>
                                 </div>
 
-                                <div class="form-field">
-                                    <label for="engineDuration">Tour Duration</label>
-                                    <div class="field-box">
-                                        <span class="field-icon">⏱️</span>
-                                        <select id="engineDuration" name="duration" required>
+                                <div class="console-field">
+                                    <label for="durationSelect">Duration</label>
+                                    <div class="field-wrap">
+                                        <span class="field-glyph">⏱️</span>
+                                        <select id="durationSelect" name="duration" required>
                                             <option value="Weekend (2 Days / 1 Night)">2 Days / 1 Night</option>
-                                            <option value="Short Trip (3 Days / 2 Nights)" selected>3 Days / 2 Nights</option>
+                                            <option value="Short Getaway (3 Days / 2 Nights)" selected>3 Days / 2 Nights</option>
                                             <option value="Holiday (5 Days / 4 Nights)">5 Days / 4 Nights</option>
                                             <option value="Grand Tour (7+ Days)">7+ Days Custom</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="form-field">
-                                    <label for="enginePax">Total Passengers</label>
-                                    <div class="field-box">
-                                        <span class="field-icon">👥</span>
-                                        <select id="enginePax" name="passengers">
-                                            <option value="2 Travellers (Couple)">2 Pax (Couple)</option>
-                                            <option value="3-5 Travellers (Family)" selected>3–5 Pax (Family)</option>
-                                            <option value="6-12 Travellers (Group)">6–12 Pax (Group)</option>
-                                            <option value="12+ Travellers (Large Group)">12+ Pax (Large)</option>
+                                <div class="console-field">
+                                    <label for="paxSelect">Total Travellers</label>
+                                    <div class="field-wrap">
+                                        <span class="field-glyph">👥</span>
+                                        <select id="paxSelect" name="passengers">
+                                            <option value="2 Travellers (Couple)">Couple (2 Pax)</option>
+                                            <option value="3-5 Travellers (Family)" selected>Family (3–5 Pax)</option>
+                                            <option value="6-12 Travellers (Group)">Group (6–12 Pax)</option>
+                                            <option value="12+ Travellers (Large Group)">Large Group (12+ Pax)</option>
                                         </select>
                                     </div>
                                 </div>
 
-                                <div class="form-field">
-                                    <label for="engineTourDate">Starting Date</label>
-                                    <div class="field-box">
-                                        <span class="field-icon">📅</span>
-                                        <input type="date" id="engineTourDate" name="date" required>
+                                <div class="console-field">
+                                    <label for="tourDateInput">Start Date</label>
+                                    <div class="field-wrap">
+                                        <span class="field-glyph">📅</span>
+                                        <input type="date" id="tourDateInput" name="date" required>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="engine-submit-row">
-                                <button type="submit" class="engine-action-btn">
-                                    <span>Generate Custom Itinerary Plan</span>
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                                </button>
-                            </div>
+                            <button type="submit" class="console-action-submit">
+                                <span>Generate Custom Tour Blueprint</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
                         </form>
                     </div>
 
-                    <!-- TRUST PILLARS -->
-                    <div class="hero-trust-row">
-                        <div class="trust-cell">
-                            <span class="trust-check">✓</span>
-                            <span>100% Custom Routes</span>
+                    <!-- HERO TRUST TICKER -->
+                    <div class="hero-trust-metric-row">
+                        <div class="metric-item">
+                            <span class="metric-icon">✦</span>
+                            <span>100% Tailored Routes</span>
                         </div>
-                        <div class="trust-cell">
-                            <span class="trust-check">✓</span>
-                            <span>4 to 40 Seater Fleet</span>
+                        <div class="metric-item">
+                            <span class="metric-icon">✦</span>
+                            <span>4 to 40 Seaters</span>
                         </div>
-                        <div class="trust-cell">
-                            <span class="trust-check">✓</span>
+                        <div class="metric-item">
+                            <span class="metric-icon">✦</span>
                             <span>Commercial Verified Drivers</span>
                         </div>
-                        <div class="trust-cell">
-                            <span class="trust-check">✓</span>
-                            <span>Transparent Per-KM Billing</span>
+                        <div class="metric-item">
+                            <span class="metric-icon">✦</span>
+                            <span>All-Inclusive Billing</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- HERO RIGHT COLUMN: FRAMED CINEMATIC VIDEO SHOWCASE -->
-                <div class="hero-right-showcase">
-                    <div class="showcase-frame">
-                        <!-- VIDEO ELEMENT PLAYING USER'S MP4 -->
-                        <div class="showcase-video-wrapper">
-                            <video class="showcase-video" id="splitHeroVideo" autoplay muted loop playsinline preload="auto">
-                                <source src="assets/videos/347325_medium.mp4" type="video/mp4" id="splitVideoSource">
-                            </video>
-                            <div class="video-ambient-overlay"></div>
-                        </div>
-
-                        <!-- VIDEO SWITCHER DOCK ON TOP OF FRAME -->
-                        <div class="frame-switcher-dock">
-                            <span class="dock-label">🎬 Live Route Video:</span>
-                            <div class="dock-buttons">
-                                <button class="dock-btn active" data-src="assets/videos/347325_medium.mp4">Mountain Route</button>
-                                <button class="dock-btn" data-src="assets/videos/161071-822582138_medium.mp4">Coastal Trail</button>
+                <!-- HERO RIGHT: 3D WEBGL CANVAS & FLOATING VIDEO PORTAL -->
+                <div class="hero-3d-visual-column">
+                    <div class="webgl-stage-frame">
+                        <!-- 3D WEBGL CANVAS -->
+                        <div class="webgl-canvas-container" id="webglCanvasContainer">
+                            <canvas id="webglCanvas"></canvas>
+                            <div class="webgl-status-hud">
+                                <span class="hud-radar-blip"></span>
+                                <span class="hud-radar-text">INTERACTIVE 3D SOUTH INDIA TOUR GRAPH</span>
+                                <span class="hud-rotate-tip">🖱️ DRAG TO ROTATE 3D GLOBE</span>
                             </div>
                         </div>
 
-                        <!-- FLOATING HIGHLIGHT CARDS -->
-                        <div class="floating-badge badge-top-right">
-                            <span class="badge-icon">🛡️</span>
+                        <!-- FLOATING ACTIVE ROUTE HUD OVERLAY -->
+                        <div class="hud-route-telemetry" id="hudRouteCard">
+                            <div class="route-header">
+                                <span class="route-dot"></span>
+                                <strong id="hudRouteTitle">Bengaluru ➔ Coorg & Chikmagalur</strong>
+                            </div>
+                            <div class="route-metrics">
+                                <div><small>Distance</small><b id="hudRouteDist">260 km</b></div>
+                                <div><small>Scenic Time</small><b id="hudRouteTime">5.5 hrs</b></div>
+                                <div><small>Best Seater</small><b id="hudRouteVehicle">Innova / Sedan</b></div>
+                            </div>
+                        </div>
+
+                        <!-- EMBEDDED CINEMATIC VIDEO PORTAL (USING USER'S MP4 VIDEOS) -->
+                        <div class="cinematic-portal-box">
+                            <div class="portal-video-wrap">
+                                <video class="portal-video" id="portalVideo" autoplay muted loop playsinline preload="auto">
+                                    <source src="assets/videos/347325_medium.mp4" type="video/mp4" id="portalSource">
+                                </video>
+                                <div class="portal-video-shade"></div>
+                            </div>
+
+                            <div class="portal-controls-bar">
+                                <span class="portal-label">🎬 Route Stream:</span>
+                                <div class="portal-switch-buttons">
+                                    <button class="portal-btn active" data-src="assets/videos/347325_medium.mp4">Mountain Route</button>
+                                    <button class="portal-btn" data-src="assets/videos/161071-822582138_medium.mp4">Coastal Trail</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FLOATING TELEMETRY CHIPS -->
+                        <div class="floating-telemetry-chip chip-left">
+                            <span class="chip-ico">🛡️</span>
                             <div>
                                 <strong>100% Commercial Fleet</strong>
                                 <small>Verified Yellow-Board Cabs & Buses</small>
                             </div>
                         </div>
 
-                        <div class="floating-badge badge-bottom-left">
-                            <span class="badge-icon">⭐</span>
+                        <div class="floating-telemetry-chip chip-right">
+                            <span class="chip-ico">⭐</span>
                             <div>
-                                <strong>4.9 / 5 Guest Rating</strong>
-                                <small>Over 2,400+ customized journeys</small>
+                                <strong>4.9 / 5 Rating</strong>
+                                <small>Over 2,400+ customized tours</small>
                             </div>
-                        </div>
-
-                        <!-- FRAME CAPTION -->
-                        <div class="frame-bottom-caption">
-                            <span>Scenic destinations across Karnataka, Kerala & Tamil Nadu with private chauffeur</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION: WE MAKE CUSTOM TOURS BASED ON YOUR SERVICES -->
-        <section class="section custom-tour-studio" id="custom-tours">
+        <!-- SECTION 1: WE MAKE CUSTOM TOURS BASED ON YOUR SERVICES -->
+        <section class="neo-section" id="custom-tours">
             <div class="container">
-                <div class="section-title-wrap text-center">
-                    <span class="section-pill">HOW WE WORK</span>
-                    <h2 class="section-heading">We Make Custom Tours Based On Your Needs</h2>
-                    <p class="section-subtext">
-                        Every traveler is unique. We build itineraries from scratch around your dates, pace, budget, and group preferences.
+                <div class="section-kicker-header text-center">
+                    <span class="hud-kicker-badge">TAILORED EXPEDITIONS</span>
+                    <h2 class="section-big-title">We Make Custom Tours Based On Your Needs</h2>
+                    <p class="section-desc">
+                        No cookie-cutter itineraries or forced schedule stops. You select the vibe, destinations, pace, and vehicle capacity — our dedicated planners handle the rest.
                     </p>
                 </div>
 
-                <div class="custom-process-grid">
-                    <div class="process-card">
-                        <div class="process-num">01</div>
-                        <div class="process-emoji">🗺️</div>
+                <!-- 4-STEP BLUEPRINT TILES -->
+                <div class="custom-blueprint-grid">
+                    <div class="blueprint-card tilt-card" data-tilt>
+                        <div class="blueprint-card-glare"></div>
+                        <div class="step-indexer">01</div>
+                        <div class="step-glyph">🗺️</div>
                         <h3>Share Your Wishlist</h3>
-                        <p>Tell us what you love: misty coffee plantations, tranquil backwaters, heritage temples, or serene beaches.</p>
-                        <span class="process-tag">Your Preferences</span>
+                        <p>Tell us your preferred places, group size, and budget: misty coffee estates, serene backwaters, heritage temples, or sun-drenched beaches.</p>
+                        <div class="blueprint-footer-pill">Step 01 // Blueprint</div>
                     </div>
 
-                    <div class="process-card highlight-card">
-                        <div class="process-num">02</div>
-                        <div class="process-emoji">🚘</div>
+                    <div class="blueprint-card highlight tilt-card" data-tilt>
+                        <div class="blueprint-card-glare"></div>
+                        <div class="step-indexer">02</div>
+                        <div class="step-glyph">🚘</div>
                         <h3>Choose Your Seater</h3>
-                        <p>Select your ride: 4-seater Sedan, 6/7-seater Innova Crysta, 12/17-seater Tempo, or 40-seater Luxury Coach.</p>
-                        <span class="process-tag">Custom Vehicle</span>
+                        <p>Pick your private vehicle from 4-seater Sedans, 6/7-seater Innova Crystas, 12/17-seater Tempo Travellers, or 40-seater luxury coaches.</p>
+                        <div class="blueprint-footer-pill">Step 02 // Vehicle Match</div>
                     </div>
 
-                    <div class="process-card">
-                        <div class="process-num">03</div>
-                        <div class="process-emoji">📅</div>
-                        <h3>Get Handcrafted Plan</h3>
-                        <p>We send a tailored, hour-by-hour itinerary with recommended homestays, resorts, and scenic stops.</p>
-                        <span class="process-tag">Transparent Quote</span>
+                    <div class="blueprint-card tilt-card" data-tilt>
+                        <div class="blueprint-card-glare"></div>
+                        <div class="step-indexer">03</div>
+                        <div class="step-glyph">📋</div>
+                        <h3>Handcrafted Itinerary</h3>
+                        <p>We build an hour-by-hour travel plan with scenic pitstops, handpicked homestays/resorts, and transparent all-inclusive quotes.</p>
+                        <div class="blueprint-footer-pill">Step 03 // Route Design</div>
                     </div>
 
-                    <div class="process-card">
-                        <div class="process-num">04</div>
-                        <div class="process-emoji">✨</div>
-                        <h3>Enjoy Stress-Free Travel</h3>
-                        <p>Your verified chauffeur arrives on time. Relax with door-to-door pickup and 24/7 journey concierge support.</p>
-                        <span class="process-tag">Total Peace of Mind</span>
+                    <div class="blueprint-card tilt-card" data-tilt>
+                        <div class="blueprint-card-glare"></div>
+                        <div class="step-indexer">04</div>
+                        <div class="step-glyph">🛡️</div>
+                        <h3>Chauffeur At Your Door</h3>
+                        <p>Your commercial-verified driver arrives punctually. Enjoy 24/7 journey concierge support throughout your adventure.</p>
+                        <div class="blueprint-footer-pill">Step 04 // Seamless Travel</div>
                     </div>
                 </div>
 
-                <!-- INTERACTIVE CUSTOM TOUR BUILDER / CALLOUT -->
-                <div class="custom-tour-banner">
-                    <div class="banner-left">
-                        <span class="banner-badge">NEED A PERSONALIZED QUOTE?</span>
-                        <h3>Ready to plan a custom trip for your family or friends?</h3>
-                        <p>Our travel specialists respond with tailored route options and exact vehicle tariffs within 15 minutes.</p>
+                <!-- FULL-WIDTH CALLOUT WITH INSTANT WHATSAPP -->
+                <div class="custom-cta-hologram">
+                    <div class="cta-holo-copy">
+                        <span class="holo-tag">✦ INSTANT ITINERARY SPECIALIST</span>
+                        <h3>Ready to craft a one-of-a-kind holiday for your family or group?</h3>
+                        <p>Speak directly with our travel designers on WhatsApp for instant route recommendations and transparent vehicle pricing.</p>
                     </div>
-                    <div class="banner-right">
-                        <button class="banner-cta-btn open-modal-btn" data-item="Custom Tour Consultation" data-type="Custom Tour">
+                    <div class="cta-holo-actions">
+                        <button class="holo-quote-btn trigger-modal-btn" data-item="Custom Tour Blueprint" data-type="Custom Tour">
                             Request Custom Tour Plan
                         </button>
-                        <a class="banner-wa-btn" id="customBannerWa" href="#contact">
+                        <a class="holo-wa-btn" id="customTourWaBtn" href="#contact">
                             <span>Chat on WhatsApp</span>
                         </a>
                     </div>
@@ -352,153 +388,225 @@
             </div>
         </section>
 
-        <!-- SECTION: BOOK YOUR SEATER VEHICLES -->
-        <section class="section seaters-studio" id="seaters">
+        <!-- SECTION 2: INTERACTIVE 3D TOUR & COST ESTIMATOR -->
+        <section class="neo-section alt-bg" id="estimator">
             <div class="container">
-                <div class="section-title-wrap">
-                    <div class="title-left">
-                        <span class="section-pill">CHAUFFEUR RENTALS</span>
-                        <h2 class="section-heading">Book Your Seater Vehicles</h2>
-                        <p class="section-subtext">
-                            Verified commercial tourist vehicles with polite, experienced highway chauffeurs. Clean, comfortable, and maintained.
+                <div class="section-kicker-header text-center">
+                    <span class="hud-kicker-badge">LIVE TRIP CALCULATOR</span>
+                    <h2 class="section-big-title">Interactive Custom Tour Estimator</h2>
+                    <p class="section-desc">
+                        Select your destination, seater vehicle, and duration below to calculate your estimated route cost and generate a direct WhatsApp quote.
+                    </p>
+                </div>
+
+                <div class="estimator-console-card">
+                    <div class="estimator-controls-grid">
+                        <!-- DESTINATION PICKER -->
+                        <div class="est-group">
+                            <label class="est-label">1. Choose Destination Route</label>
+                            <div class="pill-selector-row" id="estDestOptions">
+                                <button type="button" class="est-pill active" data-dest="Coorg & Chikmagalur" data-km="550" data-days="3">Coorg & Chikmagalur</button>
+                                <button type="button" class="est-pill" data-dest="Wayanad & Ooty" data-km="650" data-days="4">Wayanad & Ooty</button>
+                                <button type="button" class="est-pill" data-dest="Hampi & Badami" data-km="750" data-days="3">Hampi & Badami</button>
+                                <button type="button" class="est-pill" data-dest="Gokarna Coastal Trail" data-km="980" data-days="4">Gokarna Coastal</button>
+                                <button type="button" class="est-pill" data-dest="Mysuru Heritage Trail" data-km="320" data-days="2">Mysuru Heritage</button>
+                            </div>
+                        </div>
+
+                        <!-- SEATER PICKER -->
+                        <div class="est-group">
+                            <label class="est-label">2. Choose Your Seater Vehicle</label>
+                            <div class="pill-selector-row" id="estVehicleOptions">
+                                <button type="button" class="est-pill active" data-rate="12" data-vehicle="4-Seater Sedan">4-Seater Sedan (₹12/km)</button>
+                                <button type="button" class="est-pill" data-rate="17" data-vehicle="6/7-Seater SUV (Innova)">6/7-Seater Innova (₹17/km)</button>
+                                <button type="button" class="est-pill" data-rate="24" data-vehicle="12-17 Seater Tempo">12–17 Seater Tempo (₹24/km)</button>
+                                <button type="button" class="est-pill" data-rate="45" data-vehicle="40-Seater Luxury Bus">40-Seater Coach (Custom)</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ESTIMATE OUTPUT BAR -->
+                    <div class="estimator-result-bar">
+                        <div class="est-metric">
+                            <small>Selected Route</small>
+                            <strong id="calcRouteName">Coorg & Chikmagalur</strong>
+                        </div>
+                        <div class="est-metric">
+                            <small>Approx. Distance</small>
+                            <strong id="calcDistance">550 km (Round Trip)</strong>
+                        </div>
+                        <div class="est-metric">
+                            <small>Selected Seater</small>
+                            <strong id="calcVehicle">4-Seater Sedan</strong>
+                        </div>
+                        <div class="est-metric highlight-metric">
+                            <small>Estimated Vehicle Base</small>
+                            <strong id="calcEstimatedCost">₹6,600*</strong>
+                        </div>
+                        <div class="est-action">
+                            <button type="button" class="est-submit-btn" id="estBookWaBtn">
+                                <span>Lock This Route on WhatsApp</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: BOOK YOUR SEATER VEHICLES -->
+        <section class="neo-section" id="seaters">
+            <div class="container">
+                <div class="section-kicker-header flex-header">
+                    <div>
+                        <span class="hud-kicker-badge">CHAUFFEUR FLEET</span>
+                        <h2 class="section-big-title">Book Your Seater Vehicles</h2>
+                        <p class="section-desc">
+                            All vehicles are commercially licensed yellow-board tourist cabs and coaches, driven by background-verified chauffeurs.
                         </p>
                     </div>
+
                     <!-- CATEGORY FILTER PILLS -->
-                    <div class="seaters-filter-bar">
-                        <button class="filter-btn active" data-filter="all">All Seaters</button>
-                        <button class="filter-btn" data-filter="4-seater">4-Seater</button>
-                        <button class="filter-btn" data-filter="6-seater">6/7-Seater</button>
-                        <button class="filter-btn" data-filter="tempo">12–17 Seater</button>
-                        <button class="filter-btn" data-filter="bus">40-Seater</button>
+                    <div class="fleet-filter-dock">
+                        <button class="fleet-filter-btn active" data-filter="all">All Seaters</button>
+                        <button class="fleet-filter-btn" data-filter="4-seater">4-Seater</button>
+                        <button class="fleet-filter-btn" data-filter="6-seater">6/7-Seater</button>
+                        <button class="fleet-filter-btn" data-filter="tempo">12–17 Seater</button>
+                        <button class="fleet-filter-btn" data-filter="bus">40-Seater</button>
                     </div>
                 </div>
 
-                <div class="seaters-showcase-grid">
+                <!-- 3D TILT VEHICLE SHOWCASE CARDS -->
+                <div class="seaters-3d-grid">
                     <!-- 4-SEATER SEDAN -->
-                    <article class="luxury-vehicle-card" data-category="4-seater">
-                        <div class="v-card-media">
+                    <article class="seater-3d-card tilt-card" data-tilt data-category="4-seater">
+                        <div class="seater-card-glare"></div>
+                        <div class="seater-media-box">
                             <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=85" alt="4-Seater Sedan" loading="lazy">
-                            <span class="v-seat-pill">4 SEATER</span>
+                            <span class="capacity-hud-badge">4 SEATER</span>
                         </div>
-                        <div class="v-card-content">
-                            <div class="v-title-row">
+                        <div class="seater-info-box">
+                            <div class="seater-header-row">
                                 <div>
                                     <h3>4-Seater Sedan</h3>
-                                    <span class="v-model-name">Swift Dzire / Toyota Etios</span>
+                                    <span class="seater-sub">Swift Dzire / Toyota Etios</span>
                                 </div>
-                                <div class="v-price-tag">
-                                    <small>From</small>
+                                <div class="seater-price-block">
+                                    <small>Tariff from</small>
                                     <b>₹12 <span>/ km</span></b>
                                 </div>
                             </div>
-                            <ul class="v-specs-list">
+                            <ul class="seater-spec-list">
                                 <li><span>💺 Capacity:</span> <b>4 Guests + Chauffeur</b></li>
                                 <li><span>🧳 Luggage:</span> <b>2 Large Bags + Handbags</b></li>
-                                <li><span>❄️ AC Comfort:</span> <b>Chilled Climate Control</b></li>
+                                <li><span>❄️ AC Comfort:</span> <b>Dual Zone Climate Control</b></li>
                                 <li><span>🛣️ Ideal For:</span> <b>Couples & Small Families</b></li>
                             </ul>
-                            <div class="v-action-buttons">
-                                <button class="v-book-btn open-modal-btn" data-item="4-Seater Sedan (Dzire/Etios)" data-type="Seater Vehicle">
+                            <div class="seater-cta-pair">
+                                <button class="seater-book-btn trigger-modal-btn" data-item="4-Seater Sedan (Dzire/Etios)" data-type="Seater Vehicle">
                                     Book Seater
                                 </button>
-                                <a class="v-wa-btn" href="#contact" data-vehicle="4-Seater Sedan">WhatsApp Quote</a>
+                                <a class="seater-wa-btn" href="#contact" data-vehicle="4-Seater Sedan">WhatsApp Quote</a>
                             </div>
                         </div>
                     </article>
 
                     <!-- 6/7-SEATER PREMIUM SUV -->
-                    <article class="luxury-vehicle-card" data-category="6-seater">
-                        <div class="v-card-media">
-                            <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=85" alt="6-Seater SUV" loading="lazy">
-                            <span class="v-seat-pill">6 / 7 SEATER</span>
-                            <span class="v-featured-tag">MOST POPULAR</span>
+                    <article class="seater-3d-card tilt-card" data-tilt data-category="6-seater">
+                        <div class="seater-card-glare"></div>
+                        <div class="seater-media-box">
+                            <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=900&q=85" alt="6/7-Seater SUV" loading="lazy">
+                            <span class="capacity-hud-badge">6 / 7 SEATER</span>
+                            <span class="most-popular-pill">MOST POPULAR</span>
                         </div>
-                        <div class="v-card-content">
-                            <div class="v-title-row">
+                        <div class="seater-info-box">
+                            <div class="seater-header-row">
                                 <div>
                                     <h3>6–7 Seater SUV</h3>
-                                    <span class="v-model-name">Toyota Innova Crysta / Ertiga</span>
+                                    <span class="seater-sub">Toyota Innova Crysta / Ertiga</span>
                                 </div>
-                                <div class="v-price-tag">
-                                    <small>From</small>
+                                <div class="seater-price-block">
+                                    <small>Tariff from</small>
                                     <b>₹17 <span>/ km</span></b>
                                 </div>
                             </div>
-                            <ul class="v-specs-list">
+                            <ul class="seater-spec-list">
                                 <li><span>💺 Capacity:</span> <b>6 or 7 Guests + Chauffeur</b></li>
                                 <li><span>🧳 Luggage:</span> <b>4 Bags + Roof Carrier</b></li>
-                                <li><span>❄️ AC Comfort:</span> <b>Rear AC Vents in All Rows</b></li>
-                                <li><span>🛣️ Ideal For:</span> <b>Family Vacations & Hills</b></li>
+                                <li><span>❄️ AC Comfort:</span> <b>Roof Vents in All Rows</b></li>
+                                <li><span>🛣️ Ideal For:</span> <b>Family Trips & Western Ghats</b></li>
                             </ul>
-                            <div class="v-action-buttons">
-                                <button class="v-book-btn open-modal-btn" data-item="6/7-Seater SUV (Innova Crysta)" data-type="Seater Vehicle">
+                            <div class="seater-cta-pair">
+                                <button class="seater-book-btn trigger-modal-btn" data-item="6/7-Seater Innova Crysta" data-type="Seater Vehicle">
                                     Book Seater
                                 </button>
-                                <a class="v-wa-btn" href="#contact" data-vehicle="6/7-Seater Innova">WhatsApp Quote</a>
+                                <a class="seater-wa-btn" href="#contact" data-vehicle="6/7-Seater Innova">WhatsApp Quote</a>
                             </div>
                         </div>
                     </article>
 
                     <!-- 12-17 SEATER TEMPO TRAVELLER -->
-                    <article class="luxury-vehicle-card" data-category="tempo">
-                        <div class="v-card-media">
-                            <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=900&q=85" alt="12-Seater Tempo Traveller" loading="lazy">
-                            <span class="v-seat-pill">12 / 17 SEATER</span>
+                    <article class="seater-3d-card tilt-card" data-tilt data-category="tempo">
+                        <div class="seater-card-glare"></div>
+                        <div class="seater-media-box">
+                            <img src="https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=900&q=85" alt="12-17 Seater Tempo" loading="lazy">
+                            <span class="capacity-hud-badge">12 / 17 SEATER</span>
                         </div>
-                        <div class="v-card-content">
-                            <div class="v-title-row">
+                        <div class="seater-info-box">
+                            <div class="seater-header-row">
                                 <div>
                                     <h3>12–17 Seater Tempo</h3>
-                                    <span class="v-model-name">Force Urbania & Deluxe Traveller</span>
+                                    <span class="seater-sub">Force Urbania & Deluxe Traveller</span>
                                 </div>
-                                <div class="v-price-tag">
-                                    <small>From</small>
+                                <div class="seater-price-block">
+                                    <small>Tariff from</small>
                                     <b>₹24 <span>/ km</span></b>
                                 </div>
                             </div>
-                            <ul class="v-specs-list">
+                            <ul class="seater-spec-list">
                                 <li><span>💺 Capacity:</span> <b>12 or 17 Pushback Recliners</b></li>
                                 <li><span>🧳 Luggage:</span> <b>Deep Dedicated Rear Boot</b></li>
                                 <li><span>❄️ AC Comfort:</span> <b>Dual High-Capacity Chiller AC</b></li>
                                 <li><span>🛣️ Ideal For:</span> <b>Group Tours & Pilgrimages</b></li>
                             </ul>
-                            <div class="v-action-buttons">
-                                <button class="v-book-btn open-modal-btn" data-item="12-17 Seater Tempo Traveller" data-type="Seater Vehicle">
+                            <div class="seater-cta-pair">
+                                <button class="seater-book-btn trigger-modal-btn" data-item="12-17 Seater Tempo Traveller" data-type="Seater Vehicle">
                                     Book Seater
                                 </button>
-                                <a class="v-wa-btn" href="#contact" data-vehicle="12-17 Seater Tempo">WhatsApp Quote</a>
+                                <a class="seater-wa-btn" href="#contact" data-vehicle="12-17 Seater Tempo">WhatsApp Quote</a>
                             </div>
                         </div>
                     </article>
 
                     <!-- 40-SEATER LUXURY COACH -->
-                    <article class="luxury-vehicle-card" data-category="bus">
-                        <div class="v-card-media">
+                    <article class="seater-3d-card tilt-card" data-tilt data-category="bus">
+                        <div class="seater-card-glare"></div>
+                        <div class="seater-media-box">
                             <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=85" alt="40-Seater Luxury Bus" loading="lazy">
-                            <span class="v-seat-pill">40 SEATER</span>
+                            <span class="capacity-hud-badge">40 SEATER</span>
                         </div>
-                        <div class="v-card-content">
-                            <div class="v-title-row">
+                        <div class="seater-info-box">
+                            <div class="seater-header-row">
                                 <div>
-                                    <h3>40-Seater Luxury Bus</h3>
-                                    <span class="v-model-name">Air Suspension AC Tourist Coach</span>
+                                    <h3>40-Seater Luxury Coach</h3>
+                                    <span class="seater-sub">Air Suspension Multi-Axle Bus</span>
                                 </div>
-                                <div class="v-price-tag">
-                                    <small>Route</small>
+                                <div class="seater-price-block">
+                                    <small>Custom Route</small>
                                     <b>Custom <span>Quote</span></b>
                                 </div>
                             </div>
-                            <ul class="v-specs-list">
+                            <ul class="seater-spec-list">
                                 <li><span>💺 Capacity:</span> <b>40 Pushback Semi-Sleepers</b></li>
                                 <li><span>🧳 Luggage:</span> <b>Massive Under-Belly Bays</b></li>
-                                <li><span>❄️ AC Comfort:</span> <b>Individual Air Vents & Audio</b></li>
-                                <li><span>🛣️ Ideal For:</span> <b>Weddings & Corporate Trips</b></li>
+                                <li><span>❄️ AC Comfort:</span> <b>Individual Overhead Air Vents</b></li>
+                                <li><span>🛣️ Ideal For:</span> <b>Weddings & Corporate Outings</b></li>
                             </ul>
-                            <div class="v-action-buttons">
-                                <button class="v-book-btn open-modal-btn" data-item="40-Seater Luxury Bus Coach" data-type="Seater Vehicle">
+                            <div class="seater-cta-pair">
+                                <button class="seater-book-btn trigger-modal-btn" data-item="40-Seater Luxury Coach Bus" data-type="Seater Vehicle">
                                     Book Seater
                                 </button>
-                                <a class="v-wa-btn" href="#contact" data-vehicle="40-Seater Bus">WhatsApp Quote</a>
+                                <a class="seater-wa-btn" href="#contact" data-vehicle="40-Seater Coach">WhatsApp Quote</a>
                             </div>
                         </div>
                     </article>
@@ -506,120 +614,124 @@
             </div>
         </section>
 
-        <!-- SECTION: TRIP PACKAGES (LOREM DEMO) -->
-        <section class="section packages-studio" id="packages">
+        <!-- SECTION 4: CURATED TRIP PACKAGES (LOREM DEMO) -->
+        <section class="neo-section alt-bg" id="packages">
             <div class="container">
-                <div class="section-title-wrap text-center">
-                    <span class="section-pill">CURATED EXPERIENCES</span>
-                    <h2 class="section-heading">Featured Trip Packages</h2>
-                    <p class="section-subtext">
-                        Sample holiday packages crafted with verified stays and private chauffeur vehicles. Fully customizable to your travel dates.
+                <div class="section-kicker-header text-center">
+                    <span class="hud-kicker-badge">FEATURED GETAWAYS</span>
+                    <h2 class="section-big-title">Curated Holiday Packages</h2>
+                    <p class="section-desc">
+                        Sample holiday packages crafted with verified resort stays and private chauffeur vehicles. Completely customizable to your preferences.
                     </p>
                 </div>
 
-                <div class="packages-showcase-grid">
-                    <!-- PACKAGE 1 -->
-                    <div class="package-studio-card">
-                        <div class="pkg-cover-img" style="background-image: url('https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=85');">
-                            <span class="pkg-category-tag">HILL STATION</span>
-                            <span class="pkg-time-tag">3 Days / 2 Nights</span>
+                <div class="packages-3d-grid">
+                    <!-- PKG 1 -->
+                    <div class="pkg-3d-card tilt-card" data-tilt>
+                        <div class="pkg-card-glare"></div>
+                        <div class="pkg-cover-box" style="background-image: url('https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=85');">
+                            <span class="pkg-tag">HILL STATION</span>
+                            <span class="pkg-duration-pill">3 Days / 2 Nights</span>
                         </div>
-                        <div class="pkg-details">
-                            <span class="pkg-geo">📍 Coorg & Chikmagalur</span>
+                        <div class="pkg-content-box">
+                            <span class="pkg-location-txt">📍 Coorg & Chikmagalur, Karnataka</span>
                             <h3>Misty Coffee Trails & Waterfalls</h3>
-                            <p>Private cab pickup, coffee estate plantation walk, Abbey Falls, Raja’s Seat, and authentic Malnad homestay stay.</p>
-                            <div class="pkg-features">
+                            <p>Private cab pickup, coffee plantation walk, Abbey Falls, Raja’s Seat, and authentic estate homestay experience.</p>
+                            <div class="pkg-amenities">
                                 <span>Private Cab</span>
-                                <span>Resort Stay</span>
+                                <span>Homestay</span>
                                 <span>Breakfast</span>
                             </div>
-                            <div class="pkg-bottom-row">
-                                <div class="pkg-price">
-                                    <small>Starting at</small>
+                            <div class="pkg-price-row">
+                                <div class="pkg-rate-txt">
+                                    <small>Starting from</small>
                                     <b>₹4,999 <span>/ person</span></b>
                                 </div>
-                                <button class="pkg-action-btn open-modal-btn" data-item="Coorg & Chikmagalur Tour (3D/2N)" data-type="Trip Package">
+                                <button class="pkg-reserve-btn trigger-modal-btn" data-item="Coorg Coffee Trails (3D/2N)" data-type="Trip Package">
                                     Book Package
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- PACKAGE 2 -->
-                    <div class="package-studio-card">
-                        <div class="pkg-cover-img" style="background-image: url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=85');">
-                            <span class="pkg-category-tag">BACKWATERS</span>
-                            <span class="pkg-time-tag">4 Days / 3 Nights</span>
+                    <!-- PKG 2 -->
+                    <div class="pkg-3d-card tilt-card" data-tilt>
+                        <div class="pkg-card-glare"></div>
+                        <div class="pkg-cover-box" style="background-image: url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=85');">
+                            <span class="pkg-tag">BACKWATERS</span>
+                            <span class="pkg-duration-pill">4 Days / 3 Nights</span>
                         </div>
-                        <div class="pkg-details">
-                            <span class="pkg-geo">📍 Wayanad & Alleppey</span>
+                        <div class="pkg-content-box">
+                            <span class="pkg-location-txt">📍 Wayanad & Alleppey, Kerala</span>
                             <h3>Kerala Serenity & Luxury Houseboat</h3>
                             <p>Banasura Sagar dam, spice gardens, overnight deluxe houseboat cruise with authentic Kerala traditional meals on board.</p>
-                            <div class="pkg-features">
+                            <div class="pkg-amenities">
                                 <span>Houseboat Cruise</span>
                                 <span>All Meals on Boat</span>
                                 <span>Private AC Cab</span>
                             </div>
-                            <div class="pkg-bottom-row">
-                                <div class="pkg-price">
-                                    <small>Starting at</small>
+                            <div class="pkg-price-row">
+                                <div class="pkg-rate-txt">
+                                    <small>Starting from</small>
                                     <b>₹7,499 <span>/ person</span></b>
                                 </div>
-                                <button class="pkg-action-btn open-modal-btn" data-item="Kerala Houseboat Escape (4D/3N)" data-type="Trip Package">
+                                <button class="pkg-reserve-btn trigger-modal-btn" data-item="Kerala Houseboat Escape (4D/3N)" data-type="Trip Package">
                                     Book Package
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- PACKAGE 3 -->
-                    <div class="package-studio-card">
-                        <div class="pkg-cover-img" style="background-image: url('https://images.unsplash.com/photo-1600100397608-f0107f2b8d5f?auto=format&fit=crop&w=800&q=85');">
-                            <span class="pkg-category-tag">HERITAGE</span>
-                            <span class="pkg-time-tag">2 Days / 1 Night</span>
+                    <!-- PKG 3 -->
+                    <div class="pkg-3d-card tilt-card" data-tilt>
+                        <div class="pkg-card-glare"></div>
+                        <div class="pkg-cover-box" style="background-image: url('https://images.unsplash.com/photo-1600100397608-f0107f2b8d5f?auto=format&fit=crop&w=800&q=85');">
+                            <span class="pkg-tag">HERITAGE</span>
+                            <span class="pkg-duration-pill">2 Days / 1 Night</span>
                         </div>
-                        <div class="pkg-details">
-                            <span class="pkg-geo">📍 Hampi & Badami</span>
+                        <div class="pkg-content-box">
+                            <span class="pkg-location-txt">📍 Hampi & Badami, Karnataka</span>
                             <h3>Royal Vijayanagara Heritage Trail</h3>
-                            <p>Explore UNESCO World Heritage stone chariot, Virupaksha temple, boulder-strewn Tungabhadra sunset with certified storytelling guide.</p>
-                            <div class="pkg-features">
+                            <p>Explore UNESCO World Heritage stone chariot, Virupaksha temple, boulder-strewn Tungabhadra sunset with certified guide.</p>
+                            <div class="pkg-amenities">
                                 <span>Heritage Guide</span>
                                 <span>AC Vehicle</span>
                                 <span>Hotel Stay</span>
                             </div>
-                            <div class="pkg-bottom-row">
-                                <div class="pkg-price">
-                                    <small>Starting at</small>
+                            <div class="pkg-price-row">
+                                <div class="pkg-rate-txt">
+                                    <small>Starting from</small>
                                     <b>₹3,999 <span>/ person</span></b>
                                 </div>
-                                <button class="pkg-action-btn open-modal-btn" data-item="Hampi Heritage Trail (2D/1N)" data-type="Trip Package">
+                                <button class="pkg-reserve-btn trigger-modal-btn" data-item="Hampi Heritage Trail (2D/1N)" data-type="Trip Package">
                                     Book Package
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- PACKAGE 4 -->
-                    <div class="package-studio-card">
-                        <div class="pkg-cover-img" style="background-image: url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=85');">
-                            <span class="pkg-category-tag">COASTAL</span>
-                            <span class="pkg-time-tag">3 Days / 2 Nights</span>
+                    <!-- PKG 4 -->
+                    <div class="pkg-3d-card tilt-card" data-tilt>
+                        <div class="pkg-card-glare"></div>
+                        <div class="pkg-cover-box" style="background-image: url('https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=85');">
+                            <span class="pkg-tag">COASTAL</span>
+                            <span class="pkg-duration-pill">3 Days / 2 Nights</span>
                         </div>
-                        <div class="pkg-details">
-                            <span class="pkg-geo">📍 Gokarna & Murudeshwar</span>
+                        <div class="pkg-content-box">
+                            <span class="pkg-location-txt">📍 Gokarna & Murudeshwar, Karnataka</span>
                             <h3>Sacred Coasts & Beach Trails</h3>
                             <p>Om Beach, Kudle beach café hopping, sunset beach trek, Yana monolith caves, and sea-facing Murudeshwar Shiva temple tour.</p>
-                            <div class="pkg-features">
+                            <div class="pkg-amenities">
                                 <span>Beach Resort</span>
                                 <span>Private Cab</span>
                                 <span>Temple Tour</span>
                             </div>
-                            <div class="pkg-bottom-row">
-                                <div class="pkg-price">
-                                    <small>Starting at</small>
+                            <div class="pkg-price-row">
+                                <div class="pkg-rate-txt">
+                                    <small>Starting from</small>
                                     <b>₹5,499 <span>/ person</span></b>
                                 </div>
-                                <button class="pkg-action-btn open-modal-btn" data-item="Gokarna Coastal Trail (3D/2N)" data-type="Trip Package">
+                                <button class="pkg-reserve-btn trigger-modal-btn" data-item="Gokarna Coastal Trail (3D/2N)" data-type="Trip Package">
                                     Book Package
                                 </button>
                             </div>
@@ -629,44 +741,44 @@
             </div>
         </section>
 
-        <!-- SECTION: WHY CHOOSE SANCHARI WORLD -->
-        <section class="section why-studio" id="why-sanchari">
+        <!-- SECTION 5: WHY SANCHARI WORLD -->
+        <section class="neo-section" id="why-us">
             <div class="container">
-                <div class="why-studio-grid">
-                    <div class="why-studio-copy">
-                        <span class="section-pill">THE SANCHARI STANDARD</span>
-                        <h2 class="section-heading">Why Discerning Travellers Choose Us</h2>
-                        <p class="section-subtext">
-                            We solve the common headaches of generic aggregators and rigid bus tours: transparent per-km billing, courteous experienced drivers, and 100% custom itinerary freedom.
+                <div class="why-hud-grid">
+                    <div class="why-hud-copy">
+                        <span class="hud-kicker-badge">THE SANCHARI ADVANTAGE</span>
+                        <h2 class="section-big-title">Built For Discerning Explorers</h2>
+                        <p class="section-desc">
+                            We bridge the gap between impersonal app aggregators and rigid bus tours: transparent per-km billing, courteous experienced drivers, and 100% custom itinerary freedom.
                         </p>
 
-                        <div class="why-pillars-list">
-                            <div class="pillar-item">
-                                <div class="pillar-icon">🛡️</div>
+                        <div class="why-pillars-console">
+                            <div class="pillar-box">
+                                <div class="p-icon">🛡️</div>
                                 <div>
                                     <h4>Yellow-Board Commercial Tourist Vehicles</h4>
                                     <p>Strictly commercial registered vehicles with passenger insurance, up-to-date fitness certificates, and daily sanitization.</p>
                                 </div>
                             </div>
 
-                            <div class="pillar-item">
-                                <div class="pillar-icon">👨‍✈️</div>
+                            <div class="pillar-box">
+                                <div class="p-icon">👨‍✈️</div>
                                 <div>
                                     <h4>Background-Verified Highway Chauffeurs</h4>
                                     <p>Courteous, non-smoking drivers fluent in hill-driving and local routes. Zero aggressive driving or hidden commissions.</p>
                                 </div>
                             </div>
 
-                            <div class="pillar-item">
-                                <div class="pillar-icon">💎</div>
+                            <div class="pillar-box">
+                                <div class="p-icon">💎</div>
                                 <div>
                                     <h4>Transparent All-Inclusive Billing</h4>
                                     <p>Detailed upfront tariff covering fuel, tolls, interstate permit charges, and chauffeur allowances. Never any surprise add-ons.</p>
                                 </div>
                             </div>
 
-                            <div class="pillar-item">
-                                <div class="pillar-icon">📞</div>
+                            <div class="pillar-box">
+                                <div class="p-icon">📞</div>
                                 <div>
                                     <h4>24/7 Dedicated Journey Concierge</h4>
                                     <p>Your dedicated travel manager is always a phone call or WhatsApp message away throughout your journey.</p>
@@ -675,31 +787,31 @@
                         </div>
                     </div>
 
-                    <div class="why-studio-stats">
-                        <div class="stats-card-main">
-                            <div class="stat-highlight">
-                                <span class="stat-big-num">15,000+</span>
-                                <span class="stat-big-label">Happy Guests Transported</span>
+                    <div class="why-hud-telemetry-panel">
+                        <div class="telemetry-box-inner">
+                            <div class="telemetry-main-stat">
+                                <span class="stat-number-glow">15,000+</span>
+                                <span class="stat-number-label">Happy Guests Transported</span>
                             </div>
-                            <div class="stats-mini-grid">
-                                <div class="stat-mini-box">
+                            <div class="telemetry-stats-2x2">
+                                <div class="mini-stat">
                                     <strong>4.9 ★</strong>
-                                    <span>Average Rating</span>
+                                    <span>Average Guest Rating</span>
                                 </div>
-                                <div class="stat-mini-box">
+                                <div class="mini-stat">
                                     <strong>100%</strong>
                                     <span>On-Time Pickup</span>
                                 </div>
-                                <div class="stat-mini-box">
+                                <div class="mini-stat">
                                     <strong>50+</strong>
                                     <span>Curated Routes</span>
                                 </div>
-                                <div class="stat-mini-box">
+                                <div class="mini-stat">
                                     <strong>24/7</strong>
-                                    <span>Route Assistance</span>
+                                    <span>Live Concierge</span>
                                 </div>
                             </div>
-                            <div class="stat-testimonial-quote">
+                            <div class="telemetry-quote-card">
                                 <p>“Sanchari World planned our 4-day Coorg trip with a 7-seater Innova Crysta. The car was spotless, driver was punctual and polite, and they accommodated our elderly parents' pace gracefully!”</p>
                                 <span>— Rajesh K., Bengaluru</span>
                             </div>
@@ -709,29 +821,29 @@
             </div>
         </section>
 
-        <!-- SECTION: CONTACT & TRIP ENQUIRY -->
-        <section class="section contact-studio" id="contact">
+        <!-- SECTION 6: CONTACT & ENQUIRY STUDIO -->
+        <section class="neo-section alt-bg" id="contact">
             <div class="container">
-                <div class="contact-studio-grid">
-                    <div class="contact-studio-info">
-                        <span class="section-pill">GET IN TOUCH</span>
-                        <h2 class="section-heading">Let's Plan Your Journey</h2>
-                        <p class="section-subtext">
+                <div class="contact-hud-grid">
+                    <div class="contact-hud-left">
+                        <span class="hud-kicker-badge">CONNECT DIRECTLY</span>
+                        <h2 class="section-big-title">Let’s Plan Your Journey</h2>
+                        <p class="section-desc">
                             Reach out for instant seater quotes, custom itinerary advice, or vehicle availability. Our team is active 7 days a week.
                         </p>
 
-                        <div class="contact-info-cards">
-                            <a class="c-info-card wa-accent" id="contactDirectWa" href="#contact">
-                                <div class="c-info-icon">💬</div>
+                        <div class="contact-hud-cards">
+                            <a class="c-hud-card wa-hud" id="directWaChat" href="#contact">
+                                <div class="c-hud-icon">💬</div>
                                 <div>
                                     <strong>Instant WhatsApp Chat</strong>
                                     <p>Fastest way to get quotes & vehicle photos</p>
-                                    <span class="c-action-link">Click to Chat on WhatsApp ➔</span>
+                                    <span class="c-hud-link">Click to Chat on WhatsApp ➔</span>
                                 </div>
                             </a>
 
-                            <div class="c-info-card">
-                                <div class="c-info-icon">📞</div>
+                            <div class="c-hud-card">
+                                <div class="c-hud-icon">📞</div>
                                 <div>
                                     <strong>Direct Phone Desk</strong>
                                     <p>+91 98765 43210 (Demo Contact)</p>
@@ -739,8 +851,8 @@
                                 </div>
                             </div>
 
-                            <div class="c-info-card">
-                                <div class="c-info-icon">✉️</div>
+                            <div class="c-hud-card">
+                                <div class="c-hud-icon">✉️</div>
                                 <div>
                                     <strong>Email Desk</strong>
                                     <p>hello@sanchariworld.com</p>
@@ -748,8 +860,8 @@
                                 </div>
                             </div>
 
-                            <div class="c-info-card">
-                                <div class="c-info-icon">📍</div>
+                            <div class="c-hud-card">
+                                <div class="c-hud-icon">📍</div>
                                 <div>
                                     <strong>Registered Office</strong>
                                     <p>MG Road, Bengaluru, Karnataka 560001, India</p>
@@ -758,32 +870,32 @@
                         </div>
                     </div>
 
-                    <div class="contact-studio-form-wrap">
-                        <form class="studio-enquiry-form" id="studioEnquiryForm">
-                            <div class="form-header">
+                    <div class="contact-hud-right">
+                        <form class="hud-enquiry-form" id="hudEnquiryForm">
+                            <div class="form-hud-title">
                                 <h3>Send Quick Enquiry</h3>
                                 <span>✦ Zero Booking Fees</span>
                             </div>
 
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="clientName">Full Name *</label>
-                                    <input type="text" id="clientName" name="name" placeholder="Your Full Name" required minlength="2">
+                            <div class="form-hud-fields">
+                                <div class="hud-input-group">
+                                    <label for="uName">Full Name *</label>
+                                    <input type="text" id="uName" name="name" placeholder="Your Full Name" required minlength="2">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="clientPhone">WhatsApp / Phone *</label>
-                                    <input type="tel" id="clientPhone" name="phone" placeholder="+91 98765 43210" required>
+                                <div class="hud-input-group">
+                                    <label for="uPhone">WhatsApp / Mobile *</label>
+                                    <input type="tel" id="uPhone" name="phone" placeholder="+91 98765 43210" required>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="clientEmail">Email Address</label>
-                                    <input type="email" id="clientEmail" name="email" placeholder="you@example.com">
+                                <div class="hud-input-group">
+                                    <label for="uEmail">Email Address</label>
+                                    <input type="email" id="uEmail" name="email" placeholder="you@example.com">
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="clientService">Service Needed *</label>
-                                    <select id="clientService" name="service" required>
+                                <div class="hud-input-group">
+                                    <label for="uService">Service Needed *</label>
+                                    <select id="uService" name="service" required>
                                         <option value="Custom Tour Planning">Custom Tour Planning (Tailored Route)</option>
                                         <option value="4-Seater Sedan Rental">4-Seater Sedan Rental</option>
                                         <option value="6/7-Seater SUV Rental">6/7-Seater SUV Rental (Innova Crysta)</option>
@@ -793,27 +905,27 @@
                                     </select>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="clientRoute">Pickup & Destination *</label>
-                                    <input type="text" id="clientRoute" name="destination" placeholder="e.g. Bengaluru to Coorg & Wayanad" required>
+                                <div class="hud-input-group">
+                                    <label for="uRoute">Pickup & Destination *</label>
+                                    <input type="text" id="uRoute" name="destination" placeholder="e.g. Bengaluru to Coorg & Wayanad" required>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="clientDate">Travel Date *</label>
-                                    <input type="date" id="clientDate" name="date" required>
+                                <div class="hud-input-group">
+                                    <label for="uDate">Travel Date *</label>
+                                    <input type="date" id="uDate" name="date" required>
                                 </div>
 
-                                <div class="form-group full-span">
-                                    <label for="clientNotes">Special Requests (Seater choice, hotel style, stops)</label>
-                                    <textarea id="clientNotes" name="notes" rows="3" placeholder="Tell us your preferences (e.g., family of 6 travelling with kids, need 7-seater Innova Crysta, preference for coffee estate homestay)..."></textarea>
+                                <div class="hud-input-group full-span">
+                                    <label for="uNotes">Tell us your preferences (Seater choice, hotel style, spots to visit)</label>
+                                    <textarea id="uNotes" name="notes" rows="3" placeholder="Tell us your preferences (e.g., family of 6 travelling with kids, need 7-seater Innova Crysta, preference for coffee estate homestay)..."></textarea>
                                 </div>
                             </div>
 
-                            <button type="submit" class="studio-submit-btn">
+                            <button type="submit" class="hud-submit-btn">
                                 <span>Submit Trip Enquiry</span>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
                             </button>
-                            <p class="form-help-text" id="studioFormHelp">Clicking submit creates your enquiry draft and connects with our team instantly.</p>
+                            <p class="form-hud-note" id="formHudNote">Clicking submit creates your enquiry draft and connects with our team instantly.</p>
                         </form>
                     </div>
                 </div>
@@ -822,24 +934,24 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="site-studio-footer">
-        <div class="container footer-studio-grid">
-            <div class="f-brand-col">
-                <a class="brand-logo" href="#home">
-                    <span class="brand-mark">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+    <footer class="hud-footer">
+        <div class="container hud-footer-grid">
+            <div class="f-col-brand">
+                <a class="brand-unit" href="#home">
+                    <div class="brand-emblem">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4">
                             <polygon points="3 11 22 2 13 21 11 13 3 11"></polygon>
                         </svg>
-                    </span>
-                    <div class="brand-titles">
-                        <span class="brand-name light">Sanchari World</span>
-                        <span class="brand-subtitle light">EXPLORE · TRAVEL · DISCOVER</span>
+                    </div>
+                    <div class="brand-text-block">
+                        <span class="brand-name">SANCHARI WORLD</span>
+                        <span class="brand-tagline">OPTION 2 · 3D WEBGL EDITION</span>
                     </div>
                 </a>
-                <p class="f-bio">
-                    Bespoke custom tour planners and trusted 4 to 40-seater chauffeur rental service based in Bengaluru, Karnataka.
+                <p class="f-desc">
+                    Karnataka's bespoke custom tour planners and dependable 4 to 40-seater chauffeur vehicle rentals.
                 </p>
-                <div class="f-social-links">
+                <div class="f-socials">
                     <a href="#contact" aria-label="Facebook">FB</a>
                     <a href="#contact" aria-label="Instagram">IG</a>
                     <a href="#contact" aria-label="YouTube">YT</a>
@@ -847,8 +959,8 @@
                 </div>
             </div>
 
-            <div class="f-nav-col">
-                <h4>Seater Vehicles</h4>
+            <div class="f-col-links">
+                <h4>Seater Rentals</h4>
                 <ul>
                     <li><a href="#seaters">4-Seater Sedans (Etios / Dzire)</a></li>
                     <li><a href="#seaters">6-Seater SUVs (Ertiga / Carens)</a></li>
@@ -858,7 +970,7 @@
                 </ul>
             </div>
 
-            <div class="f-nav-col">
+            <div class="f-col-links">
                 <h4>Custom Tours</h4>
                 <ul>
                     <li><a href="#custom-tours">Western Ghats Hill Station Tours</a></li>
@@ -869,75 +981,83 @@
                 </ul>
             </div>
 
-            <div class="f-newsletter-col">
-                <h4>Travel Newsletter</h4>
-                <p>Receive seasonal trip inspirations and exclusive seater rental offers.</p>
-                <form class="f-newsletter-form" id="studioNewsletter">
-                    <input type="email" placeholder="Your email address" required>
+            <div class="f-col-links">
+                <h4>Newsletter & Deals</h4>
+                <p>Receive seasonal discounts and offbeat weekend route guides.</p>
+                <form class="hud-newsletter-form" id="hudNewsletter">
+                    <input type="email" placeholder="Enter your email" required>
                     <button type="submit" aria-label="Subscribe">➔</button>
                 </form>
-                <small class="f-newsletter-status" id="studioNewsletterStatus"></small>
+                <small class="newsletter-status" id="newsletterStatus"></small>
             </div>
         </div>
 
-        <div class="footer-legal-bar">
-            <div class="container legal-inner">
-                <span>© <span id="studioYear"></span> Sanchari World (Option 2). All rights reserved.</span>
-                <span>Crafted for Extraordinary Travellers across India.</span>
+        <div class="hud-footer-bottom">
+            <div class="container footer-bottom-inner">
+                <span>© <span id="currentYear"></span> Sanchari World (Option 2 — 3D WebGL Edition). All rights reserved.</span>
+                <span>Designed with Precision Typography & WebGL Architecture.</span>
             </div>
         </div>
     </footer>
 
     <!-- FLOATING WHATSAPP PILL -->
-    <a class="floating-wa-pill" id="floatingWaPill" href="#contact" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
+    <a class="hud-floating-wa" id="hudFloatingWa" href="#contact" aria-label="Chat with Sanchari World on WhatsApp">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
         </svg>
-        <span class="floating-wa-text">Chat with Concierge</span>
+        <span class="floating-wa-text">WhatsApp 24/7</span>
     </a>
 
-    <!-- TOAST POPUP NOTIFICATION -->
-    <div class="studio-toast" id="studioToast" role="status" aria-live="polite"></div>
+    <!-- TOAST NOTIFICATION -->
+    <div class="hud-toast" id="hudToast" role="status" aria-live="polite"></div>
 
     <!-- UNIVERSAL BOOKING DIALOG MODAL -->
-    <dialog class="studio-modal" id="studioBookingModal">
-        <div class="modal-inner">
-            <button class="modal-close" id="studioModalClose" aria-label="Close dialog">×</button>
-            <div class="modal-badge">✦ SANCHARI WORLD CONCIERGE</div>
-            <h2 id="modalStudioTitle">Book Service</h2>
-            <p id="modalStudioSubtitle">Confirm your preferred route and travel date. We will send an instant quote.</p>
+    <dialog class="hud-modal" id="hudModal">
+        <div class="hud-modal-inner">
+            <button class="hud-modal-close" id="hudModalClose" aria-label="Close dialog">×</button>
+            <div class="hud-modal-kicker">✦ SANCHARI WORLD CONCIERGE</div>
+            <h2 id="modalTitle">Book Service</h2>
+            <p id="modalSubtitle">Confirm your preferred route and travel date. We will send an instant quote.</p>
 
-            <form class="modal-form" id="studioModalForm">
-                <input type="hidden" id="modalItemHolder" name="serviceItem">
-                <input type="hidden" id="modalTypeHolder" name="serviceType">
+            <form class="hud-modal-form" id="hudModalForm">
+                <input type="hidden" id="modalItem" name="serviceItem">
+                <input type="hidden" id="modalType" name="serviceType">
 
-                <div class="modal-grid">
-                    <div class="m-field">
+                <div class="modal-inputs-grid">
+                    <div class="m-group">
                         <label for="mName">Your Name *</label>
                         <input type="text" id="mName" required placeholder="Full Name">
                     </div>
-                    <div class="m-field">
-                        <label for="mPhone">WhatsApp / Phone *</label>
+                    <div class="m-group">
+                        <label for="mPhone">WhatsApp / Mobile *</label>
                         <input type="tel" id="mPhone" required placeholder="+91 98765 43210">
                     </div>
-                    <div class="m-field">
+                    <div class="m-group">
                         <label for="mDate">Travel Date *</label>
                         <input type="date" id="mDate" required>
                     </div>
-                    <div class="m-field">
-                        <label for="mRoute">Pickup & Destination *</label>
+                    <div class="m-group">
+                        <label for="mRoute">Pickup & Route *</label>
                         <input type="text" id="mRoute" required placeholder="e.g. Bengaluru to Coorg">
                     </div>
                 </div>
 
-                <div class="modal-buttons">
-                    <button type="submit" class="m-confirm-btn">Confirm & Chat on WhatsApp ➔</button>
-                    <button type="button" class="m-cancel-btn" id="studioModalCancel">Cancel</button>
+                <div class="modal-cta-row">
+                    <button type="submit" class="modal-submit-btn">Confirm & Send on WhatsApp ➔</button>
+                    <button type="button" class="modal-cancel-btn" id="hudModalCancel">Cancel</button>
                 </div>
             </form>
         </div>
     </dialog>
 
+    <!-- LOCAL THREE.JS & FALLBACK CDN -->
+    <script src="assets/js/three.min.js"></script>
+    <script>
+        // Fallback to CDN if local script fails for any reason
+        if (typeof THREE === 'undefined') {
+            document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 
