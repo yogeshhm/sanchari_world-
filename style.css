@@ -842,6 +842,212 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
+   HERO 3: SCROLL-DRIVEN REVERSE VIDEO SCRUBBING & SCROLLYTELLING
+   ========================================================================== */
+.scroll-video-section {
+    position: relative;
+    min-height: 250vh;
+    padding: 0;
+    display: block;
+}
+
+.scroll-video-section .sticky-video-stage {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.scroll-video-section .scroll-hero-content {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    pointer-events: auto;
+}
+
+/* FLOATING VIDEO SCRUB HUD OVERLAY */
+.video-scrub-hud {
+    position: absolute;
+    top: 24px;
+    right: 28px;
+    z-index: 25;
+    background: rgba(11, 14, 22, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 245, 160, 0.35);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75), 0 0 20px rgba(0, 245, 160, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 290px;
+    max-width: 380px;
+    pointer-events: auto;
+    transition: var(--transition);
+}
+
+.scrub-hud-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.scrub-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--neon-emerald);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.scrub-pulse-glyph {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--neon-emerald);
+    box-shadow: 0 0 10px var(--neon-emerald);
+    animation: pulseDot 1.8s infinite ease-in-out;
+}
+
+.scrub-time-readout {
+    font-family: monospace;
+    font-size: 12px;
+    font-weight: 700;
+    color: #F8FAFC;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.scrub-progress-track {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 999px;
+    overflow: hidden;
+    position: relative;
+}
+
+.scrub-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00F5A0 0%, #00D2FF 50%, #FFB800 100%);
+    box-shadow: 0 0 10px var(--neon-emerald);
+    width: 0%;
+    transition: width 0.08s linear;
+}
+
+.scrub-controls-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.scrub-ctrl-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(255, 255, 255, 0.06);
+    color: #CBD5E1;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.scrub-ctrl-btn svg {
+    stroke: currentColor;
+    flex-shrink: 0;
+}
+
+.scrub-ctrl-btn:hover {
+    color: #FFFFFF;
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+.scrub-ctrl-btn.active {
+    background: rgba(0, 245, 160, 0.18);
+    color: var(--neon-emerald);
+    border-color: rgba(0, 245, 160, 0.5);
+    box-shadow: 0 0 12px rgba(0, 245, 160, 0.25);
+}
+
+/* SCROLLYTELLING MILESTONES DECK */
+.scrolly-milestones-deck {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 22px auto 26px auto;
+    max-width: 900px;
+    width: 100%;
+}
+
+.scrolly-card {
+    background: rgba(11, 14, 22, 0.72);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    transition: all 0.3s ease;
+    text-align: left;
+    opacity: 0.55;
+    transform: translateY(4px);
+}
+
+.scrolly-card.active {
+    opacity: 1;
+    transform: translateY(0);
+    border-color: var(--neon-emerald);
+    background: rgba(11, 14, 22, 0.9);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 245, 160, 0.2);
+}
+
+.card-step-badge {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    color: var(--cyber-gold);
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.scrolly-card h4 {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 4px;
+}
+
+.scrolly-card p {
+    font-family: var(--font-body);
+    font-size: 12px;
+    line-height: 1.45;
+    color: #CBD5E1;
+    margin: 0;
+}
+
+/* ==========================================================================
    HERO 3D SECTION: 3D WEBGL GLOBE + DUAL SEARCH ENGINE
    ========================================================================== */
 .hero-3d-section {
@@ -2885,6 +3091,23 @@ input:focus, select:focus, textarea:focus {
     .hero-full-bg-section {
         padding: 60px 0 60px 0;
         min-height: auto;
+    }
+
+    .scroll-video-section {
+        min-height: 200vh !important;
+        padding: 0 !important;
+    }
+
+    .scrolly-milestones-deck {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .video-scrub-hud {
+        position: static;
+        margin: 16px auto 20px auto;
+        width: 100%;
+        max-width: 100%;
     }
 }
 

@@ -63,8 +63,8 @@
             <nav class="hud-nav" id="hudNav" aria-label="Primary Navigation">
                 <a class="hud-nav-item active" href="#hero-trial-1">Hero 1 (Mountain)</a>
                 <a class="hud-nav-item" href="#hero-trial-2">Hero 2 (Coast)</a>
-                <a class="hud-nav-item" href="#hero-trial-4">Hero 4 (Lagoon)</a>
-                <a class="hud-nav-item" href="#hero-trial-3">Hero 3 (3D WebGL)</a>
+                <a class="hud-nav-item" href="#hero-trial-3">Hero 3 (Lagoon Reverse-Scroll)</a>
+                <a class="hud-nav-item" href="#hero-trial-4">Hero 4 (3D WebGL)</a>
                 <a class="hud-nav-item" href="#custom-tours">Custom Tours</a>
                 <a class="hud-nav-item" href="#seaters">Book Seaters</a>
                 <a class="hud-nav-item" href="#estimator">3D Estimator</a>
@@ -110,13 +110,13 @@
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 18h20M2 6h20"></path></svg>
                         <span>Hero 2: Coastal Video</span>
                     </a>
-                    <a href="#hero-trial-4" class="dock-nav-btn" data-target="hero-trial-4">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18.5a3.5 3.5 0 0 1-5 0l-2.5-2.5a3.5 3.5 0 0 0-5 0l-2.5 2.5a3.5 3.5 0 0 1-5 0"></path><path d="M2 12h20M2 6h20"></path></svg>
-                        <span>Hero 4: Lagoon Video</span>
-                    </a>
                     <a href="#hero-trial-3" class="dock-nav-btn" data-target="hero-trial-3">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                        <span>Hero 3: Lagoon Reverse-Scroll</span>
+                    </a>
+                    <a href="#hero-trial-4" class="dock-nav-btn" data-target="hero-trial-4">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                        <span>Hero 3: Full 3D WebGL</span>
+                        <span>Hero 4: Full 3D WebGL</span>
                     </a>
                 </div>
 
@@ -231,19 +231,57 @@
         </section>
 
         <!-- ================================================================= -->
-        <!-- HERO 4: FULL BACKGROUND VIDEO (TURQUOISE LAGOON: 6983517-hd)     -->
+        <!-- HERO 3: SCROLL-DRIVEN REVERSE VIDEO (LAGOON: 6983517-hd)         -->
         <!-- ================================================================= -->
-        <section class="hero-full-bg-section hero-trial-section" id="hero-trial-4">
-            <div class="hero-full-video-stage">
-                <video class="hero-bg-video-stream" src="assets/videos/6983517-hd_1920_1080_24fps.mp4" poster="assets/videos/preview_6983517.jpg" autoplay muted loop playsinline preload="auto">
-                    <source src="assets/videos/6983517-hd_1920_1080_24fps.mp4" type="video/mp4">
-                </video>
+        <section class="hero-full-bg-section hero-trial-section scroll-video-section" id="hero-trial-3">
+            <!-- Pinned Video Stage -->
+            <div class="hero-full-video-stage sticky-video-stage">
+                <video class="hero-bg-video-stream scroll-scrub-video" id="scrollScrubVideo" src="assets/videos/6983517-hd_1920_1080_24fps.mp4" poster="assets/videos/preview_6983517.jpg" muted playsinline preload="auto"></video>
+
+                <!-- Floating Video Scrub HUD Overlay -->
+                <div class="video-scrub-hud" id="videoScrubHud" aria-label="Scroll Scrubbing Controls">
+                    <div class="scrub-hud-main">
+                        <div class="scrub-status-pill">
+                            <span class="scrub-pulse-glyph"></span>
+                            <span class="scrub-status-label" id="scrubStatusLabel">Scroll ↕ to Scrub & Reverse</span>
+                        </div>
+                        <div class="scrub-time-readout">
+                            <span id="scrubCurrentTime">00.0s</span> / <span id="scrubTotalTime">06.5s</span>
+                        </div>
+                    </div>
+
+                    <!-- Visual Progress Bar -->
+                    <div class="scrub-progress-track">
+                        <div class="scrub-progress-fill" id="scrubProgressFill" style="width: 0%;"></div>
+                    </div>
+
+                    <!-- Interactive Control Buttons -->
+                    <div class="scrub-controls-row">
+                        <button type="button" class="scrub-ctrl-btn active" id="btnScrollMode" title="Toggle Scroll Scrub Mode">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                            <span>Scroll Scrub (Reverse on Up)</span>
+                        </button>
+                        <button type="button" class="scrub-ctrl-btn" id="btnInvertDirection" title="Invert Direction: Down = Reverse">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
+                            <span id="invertDirectionText">Invert: Down = Reverse</span>
+                        </button>
+                        <button type="button" class="scrub-ctrl-btn" id="btnPingPongAuto" title="Auto Boomerang / Reverse Playback Loop">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            <span id="pingPongStatusText">Auto Boomerang</span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <div class="container hero-full-content">
+            <!-- Scrollytelling Content -->
+            <div class="container hero-full-content scroll-hero-content">
                 <div class="hud-badge-pill">
                     <span class="badge-ring"></span>
-                    <span class="badge-text">HERO TRIAL 4 · FULL BG VIDEO (TURQUOISE LAGOON & BOATING)</span>
+                    <span class="badge-text">HERO TRIAL 3 · SCROLL-DRIVEN REVERSE VIDEO (TURQUOISE LAGOON)</span>
+                    <span class="badge-sub-tip">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+                        Scroll Down = Play · Scroll Up = Reverse Video
+                    </span>
                 </div>
 
                 <h1 class="hero-3d-heading hero-custom-font">
@@ -252,8 +290,27 @@
                 </h1>
 
                 <p class="hero-3d-subtext">
-                    Crystal-clear waters, Honnavara backwater boating, and sun-kissed Dandeli & Goa retreats. Private door-to-door chauffeurs and premium sanitized fleets curated for your group.
+                    Experience scroll-linked reverse video storytelling. As you scroll down the page, watch private speedboats cruise across crystal lagoons — scroll back up to reverse time. 100% verified chauffeur fleets.
                 </p>
+
+                <!-- Scrollytelling Story Milestones -->
+                <div class="scrolly-milestones-deck">
+                    <div class="scrolly-card active" id="scrollyCard1">
+                        <span class="card-step-badge">Phase 01 · 00s</span>
+                        <h4>Honnavara Lagoon Departure</h4>
+                        <p>Private speedboats cast off across calm backwaters.</p>
+                    </div>
+                    <div class="scrolly-card" id="scrollyCard2">
+                        <span class="card-step-badge">Phase 02 · 03s</span>
+                        <h4>Deep Turquoise Channels</h4>
+                        <p>Cruising through secluded mangrove bays & water sports zones.</p>
+                    </div>
+                    <div class="scrolly-card" id="scrollyCard3">
+                        <span class="card-step-badge">Phase 03 · 06s</span>
+                        <h4>Private Sandbar Sanctuary</h4>
+                        <p>Docking at exclusive resort chalets for sunset leisure.</p>
+                    </div>
+                </div>
 
                 <!-- CLEAN HERO ACTION BUTTONS (FORM REMOVED FOR UNOBSTRUCTED CINEMATIC VIEW) -->
                 <div class="webgl-hero-actions">
@@ -281,9 +338,9 @@
         </section>
 
         <!-- ================================================================= -->
-        <!-- HERO 3: FULL BACKGROUND 3D WEBGL GRAPH & GLOBE                   -->
+        <!-- HERO 4: FULL BACKGROUND 3D WEBGL GRAPH & GLOBE                   -->
         <!-- ================================================================= -->
-        <section class="hero-full-bg-section hero-trial-section webgl-mode" id="hero-trial-3">
+        <section class="hero-full-bg-section hero-trial-section webgl-mode" id="hero-trial-4">
             <div class="hero-full-webgl-stage" id="webglCanvasContainer">
                 <canvas id="webglCanvas"></canvas>
                 <div class="hero-cinematic-shade webgl-shade"></div>
@@ -292,7 +349,7 @@
             <div class="container hero-full-content">
                 <div class="hud-badge-pill">
                     <span class="badge-ring"></span>
-                    <span class="badge-text">HERO TRIAL 3 · FULL-SCREEN 3D WEBGL ENGINE</span>
+                    <span class="badge-text">HERO TRIAL 4 · FULL-SCREEN 3D WEBGL ENGINE</span>
                     <span class="badge-sub-tip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="7"></rect><line x1="12" y1="6" x2="12" y2="10"></line></svg> Drag Anywhere To Rotate 3D Globe</span>
                 </div>
 
