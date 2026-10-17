@@ -1421,8 +1421,8 @@ input:focus, select:focus, textarea:focus {
    ========================================================================== */
 .packages-3d-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
 }
 
 .pkg-3d-card {
@@ -1515,6 +1515,25 @@ input:focus, select:focus, textarea:focus {
     color: #E2E8F0;
     padding: 3px 8px;
     border-radius: 4px;
+}
+
+.pkg-exact-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 13.5px;
+    color: #CBD5E1;
+    margin: 16px 0 24px 0;
+    flex-grow: 1;
+}
+
+.pkg-exact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    color: #F8FAFC;
+    line-height: 1.45;
 }
 
 .pkg-price-row {
