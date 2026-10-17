@@ -565,15 +565,23 @@ document.addEventListener('DOMContentLoaded', () => {
         vid.muted = true;
         vid.defaultMuted = true;
         vid.playsInline = true;
+        vid.setAttribute('muted', '');
+        vid.setAttribute('playsinline', '');
 
         const playVid = () => {
             const p = vid.play();
             if (p && p.catch) p.catch(() => {});
         };
 
+        if (vid.readyState >= 2) {
+            playVid();
+        } else {
+            vid.addEventListener('loadeddata', playVid, { once: true });
+            vid.addEventListener('canplay', playVid, { once: true });
+        }
         playVid();
 
-        ['click', 'touchstart', 'scroll'].forEach(evt => {
+        ['click', 'touchstart', 'scroll', 'mousemove'].forEach(evt => {
             window.addEventListener(evt, () => {
                 if (vid.paused) playVid();
             }, { once: true, passive: true });
