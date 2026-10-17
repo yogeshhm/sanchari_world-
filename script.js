@@ -576,20 +576,26 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollVideo.pause();
         scrollVideo.currentTime = 0;
         scrollVideo.muted = true;
+        scrollVideo.defaultMuted = true;
         scrollVideo.setAttribute('muted', '');
         scrollVideo.setAttribute('playsinline', '');
 
-        const ensurePaused = () => {
-            scrollVideo.pause();
-            scrollVideo.muted = true;
-        };
-
-        scrollVideo.addEventListener('loadedmetadata', ensurePaused, { once: true });
-        scrollVideo.addEventListener('play', () => {
-            // Keep strictly paused - user controls playback via scroll
-            if (scrollVideo.currentTime === 0 || !scrollVideo.seeking) {
+        // Preload video into memory Blob for instant, zero-latency seeking without HTTP Range roundtrips
+        const origSrc = scrollVideo.currentSrc || scrollVideo.src || 'assets/videos/6983517-hd_1920_1080_24fps.mp4';
+        fetch(origSrc)
+            .then(res => res.blob())
+            .then(blob => {
+                const blobUrl = URL.createObjectURL(blob);
+                const cur = scrollVideo.currentTime || 0;
+                scrollVideo.src = blobUrl;
+                scrollVideo.currentTime = cur;
                 scrollVideo.pause();
-            }
+            })
+            .catch(() => {});
+
+        scrollVideo.addEventListener('play', () => {
+            // Keep strictly paused - playback is scrubbed purely via scroll
+            scrollVideo.pause();
         });
     }
 
@@ -601,10 +607,59 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let targetProgress = 0;
-    let currentVidTime = 0;
-    let targetVidTime = 0;
-    let isTicking = false;
+    let currentProgress = 0;
+    let isLoopRunning = false;
     let lastActivePane = -1;
+
+    // Hardware-accelerated lock-step seeking state
+    let isSeeking = false;
+    let queuedSeekTime = null;
+    let seekWatchdog = null;
+
+    function dispatchVideoSeek(time) {
+        if (!scrollVideo) return;
+
+        // If the browser decoder is currently busy seeking, queue the newest timestamp
+        if (isSeeking || scrollVideo.seeking) {
+            queuedSeekTime = time;
+            return;
+        }
+
+        // Quantize: At 24fps, 1 frame is ~0.041s. Don't trigger seek for sub-frame differences
+        if (Math.abs(scrollVideo.currentTime - time) < 0.035) {
+            return;
+        }
+
+        isSeeking = true;
+        clearTimeout(seekWatchdog);
+        seekWatchdog = setTimeout(() => {
+            isSeeking = false;
+            if (queuedSeekTime !== null) {
+                const next = queuedSeekTime;
+                queuedSeekTime = null;
+                dispatchVideoSeek(next);
+            }
+        }, 75);
+
+        // Safari/WebKit fastSeek leverages hardware acceleration for ultra-fast frame display
+        if (typeof scrollVideo.fastSeek === 'function') {
+            scrollVideo.fastSeek(time);
+        } else {
+            scrollVideo.currentTime = time;
+        }
+    }
+
+    if (scrollVideo) {
+        scrollVideo.addEventListener('seeked', () => {
+            isSeeking = false;
+            clearTimeout(seekWatchdog);
+            if (queuedSeekTime !== null) {
+                const next = queuedSeekTime;
+                queuedSeekTime = null;
+                dispatchVideoSeek(next);
+            }
+        });
+    }
 
     function getScrollSectionProgress() {
         if (!scrollSection) return 0;
@@ -616,42 +671,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderScrollFrame() {
+        // Smooth exponential lerp
+        const pDiff = targetProgress - currentProgress;
+        if (Math.abs(pDiff) > 0.001) {
+            currentProgress += pDiff * 0.22;
+        } else {
+            currentProgress = targetProgress;
+        }
+
         const dur = (scrollVideo && scrollVideo.duration && !isNaN(scrollVideo.duration) && scrollVideo.duration > 0)
             ? scrollVideo.duration
             : 6.48;
 
-        targetVidTime = targetProgress * dur;
+        const targetTime = currentProgress * dur;
+        dispatchVideoSeek(targetTime);
 
-        // Smooth lerp
-        const diff = targetVidTime - currentVidTime;
-        if (Math.abs(diff) > 0.005) {
-            currentVidTime += diff * 0.18;
-        } else {
-            currentVidTime = targetVidTime;
-        }
-
-        if (scrollVideo) {
-            try {
-                if (Math.abs(scrollVideo.currentTime - currentVidTime) > 0.03) {
-                    scrollVideo.currentTime = currentVidTime;
-                }
-            } catch (e) {}
-        }
-
+        // Telemetry HUD updates smoothly
         if (progressFill) {
-            progressFill.style.width = (targetProgress * 100).toFixed(1) + '%';
+            progressFill.style.width = (currentProgress * 100).toFixed(1) + '%';
         }
         if (timerDigits) {
-            timerDigits.textContent = `${currentVidTime.toFixed(2)}s / ${dur.toFixed(2)}s`;
+            const displayTime = (scrollVideo && !isNaN(scrollVideo.currentTime)) ? scrollVideo.currentTime : targetTime;
+            timerDigits.textContent = `${displayTime.toFixed(2)}s / ${dur.toFixed(2)}s`;
         }
 
-        // Active pane threshold
+        // Active story pane switching
         let activeIndex = 0;
-        if (targetProgress >= 0.80) {
+        if (currentProgress >= 0.80) {
             activeIndex = 3;
-        } else if (targetProgress >= 0.55) {
+        } else if (currentProgress >= 0.55) {
             activeIndex = 2;
-        } else if (targetProgress >= 0.25) {
+        } else if (currentProgress >= 0.25) {
             activeIndex = 1;
         } else {
             activeIndex = 0;
@@ -667,10 +717,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        if (Math.abs(targetVidTime - currentVidTime) > 0.005) {
+        // Continue running RAF until both progress lerp and video seek are fully settled
+        if (Math.abs(targetProgress - currentProgress) > 0.001 || isSeeking || queuedSeekTime !== null) {
             requestAnimationFrame(renderScrollFrame);
         } else {
-            isTicking = false;
+            isLoopRunning = false;
         }
     }
 
@@ -680,8 +731,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (rect.bottom < 0 || rect.top > window.innerHeight) return;
 
         targetProgress = getScrollSectionProgress();
-        if (!isTicking) {
-            isTicking = true;
+        if (!isLoopRunning) {
+            isLoopRunning = true;
             requestAnimationFrame(renderScrollFrame);
         }
     }
@@ -689,14 +740,21 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', onScrollScrub, { passive: true });
     window.addEventListener('resize', () => {
         targetProgress = getScrollSectionProgress();
-        renderScrollFrame();
+        if (!isLoopRunning) {
+            isLoopRunning = true;
+            requestAnimationFrame(renderScrollFrame);
+        }
     }, { passive: true });
 
     // Initial sync
     setTimeout(() => {
         targetProgress = getScrollSectionProgress();
-        renderScrollFrame();
-    }, 150);
+        currentProgress = targetProgress;
+        if (!isLoopRunning) {
+            isLoopRunning = true;
+            requestAnimationFrame(renderScrollFrame);
+        }
+    }, 120);
 
     // Matching Expedition Card Booking Handlers
     $$('.exp-card-action[data-tour]').forEach(btn => {
