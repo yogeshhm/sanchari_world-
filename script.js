@@ -190,13 +190,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // South India Tour Hub & Destinations
-        const HUB = { name: 'Bengaluru (HQ)', lat: 12.97, lon: 77.59 };
+        const HUB = { name: 'Bengaluru (Majestic HQ)', lat: 12.97, lon: 77.59 };
         const DESTINATIONS = [
+            { name: 'Dandeli & Honnavara', lat: 15.24, lon: 74.62, dist: '460 km', time: '8 hrs', vehicle: 'Tempo / Innova' },
+            { name: 'Dharmasthala & Kukke', lat: 12.95, lon: 75.38, dist: '310 km', time: '6 hrs', vehicle: 'Sedan / Innova' },
+            { name: 'Goa Coastal Trail', lat: 15.29, lon: 74.12, dist: '590 km', time: '10 hrs', vehicle: 'Innova / Bus' },
             { name: 'Coorg & Chikmagalur', lat: 12.33, lon: 75.80, dist: '260 km', time: '5.5 hrs', vehicle: 'Innova / Sedan' },
-            { name: 'Wayanad & Ooty', lat: 11.68, lon: 76.13, dist: '280 km', time: '6 hrs', vehicle: 'Innova Crysta' },
-            { name: 'Hampi & Badami', lat: 15.33, lon: 76.46, dist: '340 km', time: '6.5 hrs', vehicle: 'Tempo / Sedan' },
-            { name: 'Gokarna Coast', lat: 14.54, lon: 74.31, dist: '490 km', time: '9 hrs', vehicle: 'Innova / Tempo' },
-            { name: 'Mysuru Heritage', lat: 12.29, lon: 76.63, dist: '150 km', time: '3 hrs', vehicle: 'Sedan / SUV' }
+            { name: 'Murudeshwar & Gokarna', lat: 14.54, lon: 74.31, dist: '490 km', time: '9 hrs', vehicle: 'Tempo / Innova' }
         ];
 
         const hubVec = latLonToVector3(HUB.lat, HUB.lon, GLOBE_RADIUS);
@@ -403,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // =========================================================================
     // 9. INTERACTIVE 3D TOUR & COST ESTIMATOR
     // =========================================================================
-    let currentDest = { name: 'Coorg & Chikmagalur', km: 550 };
+    let currentDest = { name: 'Dandeli, Honnavara & Murudeshwar', km: 920 };
     let currentVehicle = { name: '4-Seater Sedan', rate: 12 };
 
     const destPills = $$('#estDestOptions .est-pill');
