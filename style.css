@@ -37,8 +37,9 @@
     --radius-lg: 20px;
     --radius-xl: 28px;
     
-    --font-heading: 'Clash Display', 'Syne', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    --font-body: 'Satoshi', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-heading: 'Alata', sans-serif;
+    --font-body: 'Overpass', sans-serif;
+    --font-small: 'Overpass', sans-serif;
     
     --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -122,10 +123,43 @@ body.neo-luxury-body {
 
 /* TYPOGRAPHY */
 h1, h2, h3, h4 {
-    font-family: var(--font-heading);
+    font-family: var(--font-heading); /* 'Alata', sans-serif */
     color: var(--text-primary);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
+    line-height: 1.18;
+    letter-spacing: 0.2px;
+    font-weight: 400;
+}
+
+/* ENFORCE OVERPASS ON ALL SMALL AND BODY TEXT */
+small,
+label,
+.hud-tag,
+.hud-geo,
+.hud-msg,
+.hud-link,
+.badge-text,
+.metric-item,
+.est-pill,
+.pkg-exact-list,
+.pkg-exact-list li,
+.seater-spec-list,
+.seater-spec-list li,
+.form-hud-note,
+.f-desc,
+.f-col-links a,
+.footer-bottom-inner,
+.hud-radar-text,
+.hud-rotate-tip,
+.route-metrics,
+.portal-label,
+.portal-btn,
+.floating-telemetry-chip small,
+.blueprint-footer-pill,
+.holo-tag,
+.est-metric small,
+.seater-price-block small,
+.pkg-rate-txt small {
+    font-family: 'Overpass', sans-serif !important;
 }
 
 a {
@@ -1482,19 +1516,26 @@ input:focus, select:focus, textarea:focus {
 }
 
 .pkg-location-txt {
+    font-family: 'Overpass', sans-serif;
     font-size: 12px;
     font-weight: 700;
     color: var(--cyber-gold);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
 }
 
 .pkg-content-box h3 {
-    font-size: 18px;
+    font-family: 'Alata', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.2px;
     color: #FFFFFF;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .pkg-content-box p {
+    font-family: 'Overpass', sans-serif;
     font-size: 13.5px;
     color: var(--text-secondary);
     margin-bottom: 18px;
@@ -1509,6 +1550,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 .pkg-amenities span {
+    font-family: 'Overpass', sans-serif;
     font-size: 11px;
     font-weight: 600;
     background: rgba(255, 255, 255, 0.05);
@@ -1518,17 +1560,19 @@ input:focus, select:focus, textarea:focus {
 }
 
 .pkg-exact-list {
+    font-family: 'Overpass', sans-serif;
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
     font-size: 13.5px;
     color: #CBD5E1;
-    margin: 16px 0 24px 0;
+    margin: 14px 0 24px 0;
     flex-grow: 1;
 }
 
 .pkg-exact-list li {
+    font-family: 'Overpass', sans-serif;
     display: flex;
     align-items: flex-start;
     gap: 8px;
