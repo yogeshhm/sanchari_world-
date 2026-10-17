@@ -270,15 +270,30 @@ input:focus, select:focus, textarea:focus {
 }
 
 .hud-geo {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     color: var(--text-muted);
     font-weight: 600;
     font-size: 11px;
     letter-spacing: 0.5px;
 }
 
+.hud-geo svg {
+    color: var(--neon-emerald);
+    flex-shrink: 0;
+}
+
 .hud-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     color: var(--text-primary);
     font-weight: 600;
+}
+
+.hud-link svg {
+    flex-shrink: 0;
 }
 
 .hud-link:hover, .hud-link.highlight {
@@ -579,6 +594,15 @@ input:focus, select:focus, textarea:focus {
     font-size: 14px;
     font-weight: 700;
     color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.tab-ico {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: color 0.25s ease;
 }
 
 .console-tab-btn.active {
@@ -586,6 +610,10 @@ input:focus, select:focus, textarea:focus {
     color: #FFFFFF;
     border: 1px solid var(--border-glass);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.console-tab-btn.active .tab-ico {
+    color: var(--neon-emerald);
 }
 
 .console-pane {
@@ -623,7 +651,22 @@ input:focus, select:focus, textarea:focus {
     position: absolute;
     left: 14px;
     pointer-events: none;
-    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--neon-emerald);
+    opacity: 0.85;
+    transition: all 0.25s ease;
+}
+
+.field-glyph svg {
+    stroke: currentColor;
+}
+
+.field-wrap:focus-within .field-glyph {
+    opacity: 1;
+    color: var(--neon-emerald);
+    filter: drop-shadow(0 0 6px rgba(0, 245, 160, 0.6));
 }
 
 .field-wrap input,
@@ -748,8 +791,16 @@ input:focus, select:focus, textarea:focus {
 }
 
 .hud-rotate-tip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     color: var(--cyber-gold);
     font-weight: 700;
+}
+
+.hud-rotate-tip svg {
+    stroke: currentColor;
+    flex-shrink: 0;
 }
 
 /* FLOATING ACTIVE ROUTE HUD OVERLAY */
@@ -851,10 +902,18 @@ input:focus, select:focus, textarea:focus {
 }
 
 .portal-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
     font-size: 10.5px;
     font-weight: 800;
     color: var(--text-secondary);
     letter-spacing: 0.5px;
+}
+
+.portal-label svg {
+    stroke: var(--neon-emerald);
+    flex-shrink: 0;
 }
 
 .portal-switch-buttons {
@@ -907,7 +966,26 @@ input:focus, select:focus, textarea:focus {
 }
 
 .chip-ico {
-    font-size: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(0, 245, 160, 0.1);
+    color: var(--neon-emerald);
+    flex-shrink: 0;
+    border: 1px solid rgba(0, 245, 160, 0.2);
+}
+
+.chip-right .chip-ico {
+    background: rgba(255, 184, 0, 0.1);
+    color: var(--cyber-gold);
+    border-color: rgba(255, 184, 0, 0.2);
+}
+
+.chip-ico svg {
+    stroke: currentColor;
 }
 
 .chip-left {
@@ -1046,8 +1124,29 @@ input:focus, select:focus, textarea:focus {
 }
 
 .step-glyph {
-    font-size: 36px;
-    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    border-radius: var(--radius-md);
+    background: rgba(0, 245, 160, 0.08);
+    border: 1px solid rgba(0, 245, 160, 0.2);
+    color: var(--neon-emerald);
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0, 245, 160, 0.1);
+    transition: var(--transition);
+}
+
+.blueprint-card:hover .step-glyph {
+    background: rgba(0, 245, 160, 0.14);
+    border-color: var(--neon-emerald);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 245, 160, 0.25);
+}
+
+.step-glyph svg {
+    stroke: currentColor;
 }
 
 .blueprint-card h3 {
@@ -1406,8 +1505,22 @@ input:focus, select:focus, textarea:focus {
 
 .seater-spec-list li {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     color: var(--text-secondary);
+}
+
+.spec-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+}
+
+.spec-label svg {
+    color: var(--neon-emerald);
+    stroke: currentColor;
+    flex-shrink: 0;
 }
 
 .seater-spec-list b {
@@ -1522,6 +1635,15 @@ input:focus, select:focus, textarea:focus {
     color: var(--cyber-gold);
     margin-bottom: 8px;
     letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pkg-location-txt svg {
+    color: var(--cyber-gold);
+    stroke: currentColor;
+    flex-shrink: 0;
 }
 
 .pkg-content-box h3 {
@@ -1578,6 +1700,23 @@ input:focus, select:focus, textarea:focus {
     gap: 8px;
     color: #F8FAFC;
     line-height: 1.45;
+}
+
+.pkg-check {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(0, 245, 160, 0.12);
+    color: var(--neon-emerald);
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.pkg-check svg {
+    stroke: currentColor;
 }
 
 .pkg-price-row {
@@ -1647,8 +1786,28 @@ input:focus, select:focus, textarea:focus {
 }
 
 .p-icon {
-    font-size: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: var(--radius-sm);
+    background: rgba(0, 245, 160, 0.08);
+    border: 1px solid rgba(0, 245, 160, 0.2);
+    color: var(--neon-emerald);
     flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.pillar-box:hover .p-icon {
+    background: rgba(0, 245, 160, 0.16);
+    border-color: var(--neon-emerald);
+    transform: scale(1.06);
+    box-shadow: 0 0 20px rgba(0, 245, 160, 0.2);
+}
+
+.p-icon svg {
+    stroke: currentColor;
 }
 
 .pillar-box h4 {
@@ -1781,8 +1940,31 @@ input:focus, select:focus, textarea:focus {
 }
 
 .c-hud-icon {
-    font-size: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(0, 245, 160, 0.08);
+    border: 1px solid rgba(0, 245, 160, 0.2);
+    color: var(--neon-emerald);
     flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.c-hud-card.wa-hud .c-hud-icon {
+    background: rgba(37, 211, 102, 0.12);
+    border-color: rgba(37, 211, 102, 0.3);
+    color: #25D366;
+}
+
+.c-hud-card:hover .c-hud-icon {
+    transform: scale(1.06);
+}
+
+.c-hud-icon svg {
+    stroke: currentColor;
 }
 
 .c-hud-card strong {
