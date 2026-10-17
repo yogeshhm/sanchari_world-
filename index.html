@@ -61,9 +61,9 @@
             </a>
 
             <nav class="hud-nav" id="hudNav" aria-label="Primary Navigation">
-                <a class="hud-nav-item active" href="#hero-trial-1">Hero 1 (Mountain)</a>
-                <a class="hud-nav-item" href="#hero-trial-2">Hero 2 (Coast)</a>
-                <a class="hud-nav-item" href="#hero-trial-3">Hero 3 (Lagoon)</a>
+                <a class="hud-nav-item active" href="#hero-trial-1">Hero 1 (Lagoon Scroll)</a>
+                <a class="hud-nav-item" href="#hero-trial-2">Hero 2 (Mountain)</a>
+                <a class="hud-nav-item" href="#hero-trial-3">Hero 3 (Coast)</a>
                 <a class="hud-nav-item" href="#hero-trial-4">Hero 4 (3D WebGL)</a>
                 <a class="hud-nav-item" href="#custom-tours">Custom Tours</a>
                 <a class="hud-nav-item" href="#seaters">Book Seaters</a>
@@ -103,16 +103,16 @@
 
                 <div class="dock-nav-btns" role="tablist">
                     <a href="#hero-trial-1" class="dock-nav-btn active" data-target="hero-trial-1">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                        <span>Hero 1: Mountain Video</span>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18.5a3.5 3.5 0 0 1-5 0l-2.5-2.5a3.5 3.5 0 0 0-5 0l-2.5 2.5a3.5 3.5 0 0 1-5 0"></path><path d="M2 12h20M2 6h20"></path></svg>
+                        <span>Hero 1: Lagoon Scroll Video</span>
                     </a>
                     <a href="#hero-trial-2" class="dock-nav-btn" data-target="hero-trial-2">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 18h20M2 6h20"></path></svg>
-                        <span>Hero 2: Coastal Video</span>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        <span>Hero 2: Mountain Video</span>
                     </a>
                     <a href="#hero-trial-3" class="dock-nav-btn" data-target="hero-trial-3">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18.5a3.5 3.5 0 0 1-5 0l-2.5-2.5a3.5 3.5 0 0 0-5 0l-2.5 2.5a3.5 3.5 0 0 1-5 0"></path><path d="M2 12h20M2 6h20"></path></svg>
-                        <span>Hero 3: Lagoon Video</span>
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 18h20M2 6h20"></path></svg>
+                        <span>Hero 3: Coastal Video</span>
                     </a>
                     <a href="#hero-trial-4" class="dock-nav-btn" data-target="hero-trial-4">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
@@ -131,9 +131,210 @@
         </aside>
 
         <!-- ================================================================= -->
-        <!-- HERO 1: FULL BACKGROUND VIDEO (MOUNTAIN ROUTE: 347325_medium.mp4) -->
+        <!-- HERO 1: SCROLL-DRIVEN VIDEO STORYTELLING (LAGOON: 6983517-hd)     -->
         <!-- ================================================================= -->
-        <section class="hero-full-bg-section hero-trial-section" id="hero-trial-1">
+        <section class="hero-scroll-section hero-trial-section" id="hero-trial-1">
+            <div class="hero-scroll-stage">
+                <!-- Sticky Scrolled Video (Paused, No Autoplay) -->
+                <div class="hero-scroll-video-wrap">
+                    <video id="heroScrollVideo" class="hero-scroll-video" src="assets/videos/6983517-hd_1920_1080_24fps.mp4" poster="assets/videos/preview_6983517.jpg" muted playsinline preload="auto">
+                        <source src="assets/videos/6983517-hd_1920_1080_24fps.mp4" type="video/mp4">
+                    </video>
+                    <div class="hero-scroll-vignette"></div>
+                </div>
+
+                <!-- Floating Scrollytelling Telemetry HUD -->
+                <div class="hero-scroll-hud">
+                    <div class="scroll-hud-pill">
+                        <span class="hud-live-dot"></span>
+                        <span class="scroll-hud-title">SCROLL CONTROL · 6.5S LAGOON REEL</span>
+                        <span class="scroll-hud-step" id="scrollHudStep">1 / 4 · INTRO</span>
+                    </div>
+                    <div class="scroll-hud-progress-track">
+                        <div class="scroll-hud-progress-fill" id="scrollProgressFill"></div>
+                    </div>
+                    <div class="scroll-hud-timer">
+                        <span class="timer-digits" id="scrollTimerDigits">0.00s / 6.48s</span>
+                        <span class="timer-cue">Scrub on scroll ⤓</span>
+                    </div>
+                </div>
+
+                <!-- Cross-fading Narrative Track -->
+                <div class="container hero-scroll-content">
+                    <!-- PANE 1: Main Hero (0% - 25% Scroll) -->
+                    <div class="scroll-story-pane active" id="scrollPane1">
+                        <div class="hud-badge-pill">
+                            <span class="badge-ring"></span>
+                            <span class="badge-text">HERO TRIAL 1 · SCROLL-DRIVEN CINEMATIC VIDEO</span>
+                        </div>
+
+                        <h1 class="hero-3d-heading hero-custom-font">
+                            WE MAKE <span class="neon-emerald-text">CUSTOM TOURS</span><br>
+                            BASED ON YOUR NEEDS.
+                        </h1>
+
+                        <p class="hero-3d-subtext">
+                            Crystal-clear backwaters, private coastal boat expeditions & scenic South India trails. Scrub through this journey by scrolling down — perfectly synced with the 6.5s reel.
+                        </p>
+
+                        <div class="webgl-hero-actions">
+                            <a href="#custom-tours" class="webgl-action-btn primary-btn">
+                                <span>Plan Custom Tour</span>
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                            <a href="#seaters" class="webgl-action-btn secondary-btn">
+                                <span>Book Seater Fleet</span>
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg>
+                            </a>
+                        </div>
+
+                        <div class="scroll-instruction-cue">
+                            <div class="mouse-icon"><div class="mouse-wheel"></div></div>
+                            <span>Scroll down to play the video forward</span>
+                        </div>
+                    </div>
+
+                    <!-- PANE 2: Milestone 01 (25% - 55% Scroll) -->
+                    <div class="scroll-story-pane" id="scrollPane2">
+                        <div class="chapter-badge">
+                            <span class="chapter-num">01</span>
+                            <span class="chapter-title">COASTAL TRAIL HIGHLIGHT</span>
+                        </div>
+
+                        <h2 class="hero-story-title">
+                            HONNAVARA MANGROVES &<br>
+                            <span class="neon-emerald-text">SHARAVATHI ESTUARY</span>
+                        </h2>
+
+                        <p class="hero-story-desc">
+                            Drift across turquoise backwaters on handcrafted wooden boats. Exclusive jetty transfers with commercial yellow-board chauffeur waiting at the shore.
+                        </p>
+
+                        <div class="story-milestone-pills">
+                            <span class="milestone-pill">✦ Private Boat Safaris</span>
+                            <span class="milestone-pill">✦ Sharavathi River Mouth</span>
+                            <span class="milestone-pill">✦ Mangrove Eco-Walks</span>
+                        </div>
+                    </div>
+
+                    <!-- PANE 3: Milestone 02 (55% - 80% Scroll) -->
+                    <div class="scroll-story-pane" id="scrollPane3">
+                        <div class="chapter-badge">
+                            <span class="chapter-num">02</span>
+                            <span class="chapter-title">COMFORT & VEHICLE FLEET</span>
+                        </div>
+
+                        <h2 class="hero-story-title">
+                            SECLUDED RESORT STAYS &<br>
+                            <span class="neon-gold-text">DOOR-TO-DOOR FLEET</span>
+                        </h2>
+
+                        <p class="hero-story-desc">
+                            From riverside villas in Dandeli to golden sand beach resorts in Goa. Pure comfort with sanitized 4 to 40-seater air-conditioned vehicles.
+                        </p>
+
+                        <div class="story-milestone-pills">
+                            <span class="milestone-pill">✦ 4 to 40 Seaters</span>
+                            <span class="milestone-pill">✦ Chauffeur Food & Toll Included</span>
+                            <span class="milestone-pill">✦ Zero Rigid Timings</span>
+                        </div>
+                    </div>
+
+                    <!-- PANE 4: Milestone 03 / Matching Dummy Showcase Section (80% - 100% Scroll) -->
+                    <div class="scroll-story-pane" id="scrollPane4">
+                        <div class="chapter-badge">
+                            <span class="chapter-num">03</span>
+                            <span class="chapter-title">MATCHING EXPEDITIONS</span>
+                        </div>
+
+                        <h2 class="hero-story-title showcase-title">
+                            CURATED TOURS <span class="neon-emerald-text">MATCHING THIS EFFECT</span>
+                        </h2>
+
+                        <!-- MATCHING EXPEDITIONS CARDS (DUMMY SECTION MATCHING THE VIDEO) -->
+                        <div class="matching-expedition-grid">
+                            <!-- Card 1: Honnavara -->
+                            <div class="expedition-showcase-card">
+                                <div class="exp-card-header">
+                                    <span class="exp-tag">POPULAR COASTAL</span>
+                                    <div class="exp-pricing">
+                                        <span class="exp-price">₹3,249</span>
+                                        <span class="exp-unit">/ person</span>
+                                    </div>
+                                </div>
+                                <h3 class="exp-card-title">Honnavara & Murudeshwar</h3>
+                                <p class="exp-card-route">Sharavathi Estuary · Eco Beach · Shiva Temple</p>
+                                <div class="exp-card-meta">
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 2 Days / 1 Night</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg> 4–40 Seater</span>
+                                </div>
+                                <a href="#custom-tours" class="exp-card-action" data-tour="Honnavara & Murudeshwar">
+                                    <span>Book This Trip</span>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </a>
+                            </div>
+
+                            <!-- Card 2: Dandeli -->
+                            <div class="expedition-showcase-card featured">
+                                <div class="exp-card-header">
+                                    <span class="exp-tag gold-tag">ADVENTURE RETREAT</span>
+                                    <div class="exp-pricing">
+                                        <span class="exp-price">₹5,749</span>
+                                        <span class="exp-unit">/ person</span>
+                                    </div>
+                                </div>
+                                <h3 class="exp-card-title">Dandeli Kali Jungle</h3>
+                                <p class="exp-card-route">Whitewater Rafting · Kali Safari · Jungle Camp</p>
+                                <div class="exp-card-meta">
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 3 Days / 2 Nights</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg> Innova / Tempo</span>
+                                </div>
+                                <a href="#custom-tours" class="exp-card-action primary" data-tour="Dandeli Kali Jungle">
+                                    <span>Book This Trip</span>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </a>
+                            </div>
+
+                            <!-- Card 3: Goa -->
+                            <div class="expedition-showcase-card">
+                                <div class="exp-card-header">
+                                    <span class="exp-tag">BEACH & CRUISE</span>
+                                    <div class="exp-pricing">
+                                        <span class="exp-price">₹5,200</span>
+                                        <span class="exp-unit">/ person</span>
+                                    </div>
+                                </div>
+                                <h3 class="exp-card-title">Goa Coastal & Island Hopping</h3>
+                                <p class="exp-card-route">Private Yacht Cruise · South Goa Beach Villas</p>
+                                <div class="exp-card-meta">
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> 4 Days / 3 Nights</span>
+                                    <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg> 4–40 Seater</span>
+                                </div>
+                                <a href="#custom-tours" class="exp-card-action" data-tour="Goa Coastal Cruise">
+                                    <span>Book This Trip</span>
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="webgl-hero-actions" style="margin-top: 18px; margin-bottom: 0;">
+                            <a href="#custom-tours" class="webgl-action-btn primary-btn">
+                                <span>Plan Custom Tour</span>
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </a>
+                            <a href="#hero-trial-2" class="webgl-action-btn secondary-btn">
+                                <span>Next: Mountain Video ➔</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- HERO 2: FULL BACKGROUND VIDEO (MOUNTAIN ROUTE: 347325_medium.mp4) -->
+        <!-- ================================================================= -->
+        <section class="hero-full-bg-section hero-trial-section" id="hero-trial-2">
             <div class="hero-full-video-stage">
                 <video class="hero-bg-video-stream" src="assets/videos/347325_medium.mp4" autoplay muted loop playsinline preload="auto">
                     <source src="assets/videos/347325_medium.mp4" type="video/mp4">
@@ -143,7 +344,7 @@
             <div class="container hero-full-content">
                 <div class="hud-badge-pill">
                     <span class="badge-ring"></span>
-                    <span class="badge-text">HERO TRIAL 1 · FULL BG VIDEO (MOUNTAIN ROUTE)</span>
+                    <span class="badge-text">HERO TRIAL 2 · FULL BG VIDEO (MOUNTAIN ROUTE)</span>
                 </div>
 
                 <h1 class="hero-3d-heading hero-custom-font">
@@ -181,9 +382,9 @@
         </section>
 
         <!-- ================================================================= -->
-        <!-- HERO 2: FULL BACKGROUND VIDEO (COASTAL TRAIL: 161071-822582138)  -->
+        <!-- HERO 3: FULL BACKGROUND VIDEO (COASTAL TRAIL: 161071-822582138)  -->
         <!-- ================================================================= -->
-        <section class="hero-full-bg-section hero-trial-section" id="hero-trial-2">
+        <section class="hero-full-bg-section hero-trial-section" id="hero-trial-3">
             <div class="hero-full-video-stage">
                 <video class="hero-bg-video-stream" src="assets/videos/161071-822582138_medium.mp4" autoplay muted loop playsinline preload="auto">
                     <source src="assets/videos/161071-822582138_medium.mp4" type="video/mp4">
@@ -193,7 +394,7 @@
             <div class="container hero-full-content">
                 <div class="hud-badge-pill">
                     <span class="badge-ring"></span>
-                    <span class="badge-text">HERO TRIAL 2 · FULL BG VIDEO (COASTAL TRAIL)</span>
+                    <span class="badge-text">HERO TRIAL 3 · FULL BG VIDEO (COASTAL TRAIL)</span>
                 </div>
 
                 <h1 class="hero-3d-heading hero-custom-font">
@@ -203,56 +404,6 @@
 
                 <p class="hero-3d-subtext">
                     From scenic seaside drives to tropical Western Ghats. Handcrafted custom itineraries with 100% verified yellow-board commercial fleet and background-checked highway chauffeurs.
-                </p>
-
-                <!-- CLEAN HERO ACTION BUTTONS (FORM REMOVED FOR UNOBSTRUCTED CINEMATIC VIEW) -->
-                <div class="webgl-hero-actions">
-                    <a href="#custom-tours" class="webgl-action-btn primary-btn">
-                        <span>Plan Custom Tour</span>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                    </a>
-                    <a href="#seaters" class="webgl-action-btn secondary-btn">
-                        <span>Book Seater Fleet</span>
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg>
-                    </a>
-                    <a href="#estimator" class="webgl-action-btn gold-btn">
-                        <span class="hud-sparkle">✦</span>
-                        <span>3D Cost Estimator</span>
-                    </a>
-                </div>
-
-                <div class="hero-trust-metric-row">
-                    <div class="metric-item"><span class="metric-icon">✦</span><span>100% Tailored Routes</span></div>
-                    <div class="metric-item"><span class="metric-icon">✦</span><span>4 to 40 Seaters</span></div>
-                    <div class="metric-item"><span class="metric-icon">✦</span><span>Commercial Verified Drivers</span></div>
-                    <div class="metric-item"><span class="metric-icon">✦</span><span>All-Inclusive Billing</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ================================================================= -->
-        <!-- HERO 3: FULL BACKGROUND VIDEO (TURQUOISE LAGOON: 6983517-hd)     -->
-        <!-- ================================================================= -->
-        <section class="hero-full-bg-section hero-trial-section" id="hero-trial-3">
-            <div class="hero-full-video-stage">
-                <video class="hero-bg-video-stream" src="assets/videos/6983517-hd_1920_1080_24fps.mp4" poster="assets/videos/preview_6983517.jpg" autoplay muted loop playsinline preload="auto">
-                    <source src="assets/videos/6983517-hd_1920_1080_24fps.mp4" type="video/mp4">
-                </video>
-            </div>
-
-            <div class="container hero-full-content">
-                <div class="hud-badge-pill">
-                    <span class="badge-ring"></span>
-                    <span class="badge-text">HERO TRIAL 3 · FULL BG VIDEO (TURQUOISE LAGOON & BOATING)</span>
-                </div>
-
-                <h1 class="hero-3d-heading hero-custom-font">
-                    WE MAKE <span class="neon-emerald-text">CUSTOM TOURS</span><br>
-                    BASED ON YOUR NEEDS.
-                </h1>
-
-                <p class="hero-3d-subtext">
-                    Crystal-clear waters, Honnavara backwater boating, and sun-kissed Dandeli & Goa retreats. Private door-to-door chauffeurs and premium sanitized fleets curated for your group.
                 </p>
 
                 <!-- CLEAN HERO ACTION BUTTONS (FORM REMOVED FOR UNOBSTRUCTED CINEMATIC VIEW) -->

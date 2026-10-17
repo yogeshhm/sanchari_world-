@@ -558,6 +558,158 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // =========================================================================
+    // 10B. HERO 1: SCROLL-DRIVEN VIDEO SCROLLYTELLING & FRAME SCRUBBER
+    // =========================================================================
+    const scrollSection = document.getElementById('hero-trial-1');
+    const scrollVideo = document.getElementById('heroScrollVideo');
+    const progressFill = document.getElementById('scrollProgressFill');
+    const timerDigits = document.getElementById('scrollTimerDigits');
+    const hudStep = document.getElementById('scrollHudStep');
+    const scrollPanes = [
+        document.getElementById('scrollPane1'),
+        document.getElementById('scrollPane2'),
+        document.getElementById('scrollPane3'),
+        document.getElementById('scrollPane4')
+    ];
+
+    if (scrollVideo) {
+        scrollVideo.pause();
+        scrollVideo.currentTime = 0;
+        scrollVideo.muted = true;
+        scrollVideo.setAttribute('muted', '');
+        scrollVideo.setAttribute('playsinline', '');
+
+        const ensurePaused = () => {
+            scrollVideo.pause();
+            scrollVideo.muted = true;
+        };
+
+        scrollVideo.addEventListener('loadedmetadata', ensurePaused, { once: true });
+        scrollVideo.addEventListener('play', () => {
+            // Keep strictly paused - user controls playback via scroll
+            if (scrollVideo.currentTime === 0 || !scrollVideo.seeking) {
+                scrollVideo.pause();
+            }
+        });
+    }
+
+    const SCENE_NAMES = [
+        '1 / 4 · INTRO',
+        '2 / 4 · HONNAVARA',
+        '3 / 4 · SEATER FLEET',
+        '4 / 4 · MATCHING TOURS'
+    ];
+
+    let targetProgress = 0;
+    let currentVidTime = 0;
+    let targetVidTime = 0;
+    let isTicking = false;
+    let lastActivePane = -1;
+
+    function getScrollSectionProgress() {
+        if (!scrollSection) return 0;
+        const rect = scrollSection.getBoundingClientRect();
+        const totalDist = rect.height - window.innerHeight;
+        if (totalDist <= 0) return 0;
+        const progress = (-rect.top) / totalDist;
+        return Math.max(0, Math.min(1, progress));
+    }
+
+    function renderScrollFrame() {
+        const dur = (scrollVideo && scrollVideo.duration && !isNaN(scrollVideo.duration) && scrollVideo.duration > 0)
+            ? scrollVideo.duration
+            : 6.48;
+
+        targetVidTime = targetProgress * dur;
+
+        // Smooth lerp
+        const diff = targetVidTime - currentVidTime;
+        if (Math.abs(diff) > 0.005) {
+            currentVidTime += diff * 0.18;
+        } else {
+            currentVidTime = targetVidTime;
+        }
+
+        if (scrollVideo) {
+            try {
+                if (Math.abs(scrollVideo.currentTime - currentVidTime) > 0.03) {
+                    scrollVideo.currentTime = currentVidTime;
+                }
+            } catch (e) {}
+        }
+
+        if (progressFill) {
+            progressFill.style.width = (targetProgress * 100).toFixed(1) + '%';
+        }
+        if (timerDigits) {
+            timerDigits.textContent = `${currentVidTime.toFixed(2)}s / ${dur.toFixed(2)}s`;
+        }
+
+        // Active pane threshold
+        let activeIndex = 0;
+        if (targetProgress >= 0.80) {
+            activeIndex = 3;
+        } else if (targetProgress >= 0.55) {
+            activeIndex = 2;
+        } else if (targetProgress >= 0.25) {
+            activeIndex = 1;
+        } else {
+            activeIndex = 0;
+        }
+
+        if (activeIndex !== lastActivePane) {
+            lastActivePane = activeIndex;
+            scrollPanes.forEach((pane, idx) => {
+                if (pane) pane.classList.toggle('active', idx === activeIndex);
+            });
+            if (hudStep && SCENE_NAMES[activeIndex]) {
+                hudStep.textContent = SCENE_NAMES[activeIndex];
+            }
+        }
+
+        if (Math.abs(targetVidTime - currentVidTime) > 0.005) {
+            requestAnimationFrame(renderScrollFrame);
+        } else {
+            isTicking = false;
+        }
+    }
+
+    function onScrollScrub() {
+        if (!scrollSection) return;
+        const rect = scrollSection.getBoundingClientRect();
+        if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+
+        targetProgress = getScrollSectionProgress();
+        if (!isTicking) {
+            isTicking = true;
+            requestAnimationFrame(renderScrollFrame);
+        }
+    }
+
+    window.addEventListener('scroll', onScrollScrub, { passive: true });
+    window.addEventListener('resize', () => {
+        targetProgress = getScrollSectionProgress();
+        renderScrollFrame();
+    }, { passive: true });
+
+    // Initial sync
+    setTimeout(() => {
+        targetProgress = getScrollSectionProgress();
+        renderScrollFrame();
+    }, 150);
+
+    // Matching Expedition Card Booking Handlers
+    $$('.exp-card-action[data-tour]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const tourName = btn.dataset.tour || 'Selected Expedition';
+            if (typeof openModal === 'function') {
+                openModal(tourName, 'Matching Expedition Package');
+            }
+        });
+    });
+
+    // =========================================================================
     // 11. FULL BACKGROUND VIDEO AUTOPLAY & STREAM HANDLING
     // =========================================================================
     const heroVideos = $$('.hero-bg-video-stream');

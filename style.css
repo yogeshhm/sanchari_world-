@@ -646,7 +646,457 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* ==========================================================================
-   FULL BACKGROUND HERO SECTIONS (HERO TRIAL 1, 2, 3)
+   HERO 1: SCROLL-DRIVEN VIDEO SCROLLYTELLING & MATCHING SHOWCASE SECTION
+   ========================================================================== */
+.hero-scroll-section {
+    position: relative;
+    min-height: 380vh;
+    height: 380vh;
+    width: 100%;
+    background: #06070B;
+    border-bottom: 1px solid var(--border-glass);
+}
+
+.hero-scroll-stage {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-scroll-video-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.hero-scroll-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+    opacity: 1 !important;
+    filter: none !important;
+}
+
+.hero-scroll-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: radial-gradient(circle at center, rgba(6, 7, 11, 0.22) 0%, rgba(6, 7, 11, 0.72) 100%),
+                linear-gradient(180deg, rgba(6, 7, 11, 0.6) 0%, rgba(6, 7, 11, 0.1) 40%, rgba(6, 7, 11, 0.8) 100%);
+}
+
+/* FLOATING SCROLLYTELLING TELEMETRY HUD */
+.hero-scroll-hud {
+    position: absolute;
+    top: 105px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(10, 14, 24, 0.82);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    padding: 8px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65), 0 0 20px rgba(0, 245, 160, 0.08);
+    pointer-events: none;
+    max-width: 90vw;
+}
+
+.scroll-hud-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.hud-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--neon-emerald);
+    box-shadow: 0 0 10px var(--neon-emerald);
+    animation: livePulse 1.8s infinite;
+}
+
+@keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.scroll-hud-title {
+    color: #E2E8F0;
+    white-space: nowrap;
+}
+
+.scroll-hud-step {
+    color: var(--cyber-gold);
+    background: rgba(255, 184, 0, 0.14);
+    padding: 2px 7px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 184, 0, 0.25);
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.scroll-hud-progress-track {
+    width: 90px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.scroll-hud-progress-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--neon-emerald), #00F5A0, #00D9F5);
+    transition: width 0.08s linear;
+}
+
+.scroll-hud-timer {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.timer-digits {
+    font-family: var(--font-mono, monospace);
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.timer-cue {
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+/* CROSS-FADING NARRATIVE TRACK */
+.hero-scroll-content {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    pointer-events: none;
+}
+
+.scroll-story-pane {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 80px 16px 30px 16px;
+}
+
+.scroll-story-pane.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.chapter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 245, 160, 0.1);
+    border: 1px solid rgba(0, 245, 160, 0.3);
+    border-radius: 999px;
+    padding: 4px 14px;
+    margin-bottom: 18px;
+}
+
+.chapter-num {
+    font-family: var(--font-mono, monospace);
+    font-weight: 800;
+    font-size: 12px;
+    color: var(--neon-emerald);
+}
+
+.chapter-title {
+    font-size: 11px;
+    font-weight: 700;
+    color: #FFF;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.hero-story-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(30px, 4.2vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    color: #FFFFFF;
+    text-shadow: 0 4px 28px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9);
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.hero-story-title.showcase-title {
+    font-size: clamp(22px, 3.2vw, 34px);
+    margin-bottom: 16px;
+}
+
+.hero-story-desc {
+    font-size: clamp(14px, 1.8vw, 17px);
+    line-height: 1.6;
+    color: #E2E8F0;
+    max-width: 680px;
+    margin: 0 auto 22px auto;
+    text-shadow: 0 2px 14px rgba(0,0,0,0.85);
+}
+
+.story-milestone-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.milestone-pill {
+    background: rgba(10, 16, 26, 0.82);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #FFFFFF;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+}
+
+.scroll-instruction-cue {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 22px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #CBD5E1;
+    background: rgba(6, 7, 11, 0.65);
+    padding: 7px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+}
+
+.mouse-icon {
+    width: 14px;
+    height: 22px;
+    border: 2px solid var(--neon-emerald);
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.mouse-wheel {
+    width: 2px;
+    height: 5px;
+    background: var(--neon-emerald);
+    border-radius: 2px;
+    position: absolute;
+    top: 4px;
+    animation: mouseWheelScrub 1.6s infinite;
+}
+
+@keyframes mouseWheelScrub {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(6px); opacity: 0; }
+}
+
+/* MATCHING EXPEDITION SHOWCASE GRID (DUMMY SECTION MATCHING THE VIDEO) */
+.matching-expedition-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.expedition-showcase-card {
+    background: rgba(12, 16, 26, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    padding: 16px 18px;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55);
+}
+
+.expedition-showcase-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 245, 160, 0.5);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 245, 160, 0.15);
+}
+
+.expedition-showcase-card.featured {
+    border-color: rgba(255, 184, 0, 0.45);
+    background: rgba(16, 22, 34, 0.92);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 184, 0, 0.12);
+}
+
+.exp-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.exp-tag {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--neon-emerald);
+    background: rgba(0, 245, 160, 0.12);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.exp-tag.gold-tag {
+    color: var(--cyber-gold);
+    background: rgba(255, 184, 0, 0.15);
+}
+
+.exp-pricing {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+}
+
+.exp-price {
+    font-size: 17px;
+    font-weight: 800;
+    color: #FFFFFF;
+    font-family: 'Outfit', sans-serif;
+}
+
+.exp-unit {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+.exp-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+    line-height: 1.25;
+}
+
+.exp-card-route {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.exp-card-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: #CBD5E1;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.exp-card-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.exp-card-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFF;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: 0.2s ease;
+    width: 100%;
+}
+
+.exp-card-action:hover {
+    background: rgba(0, 245, 160, 0.2);
+    border-color: var(--neon-emerald);
+    color: var(--neon-emerald);
+}
+
+.exp-card-action.primary {
+    background: linear-gradient(135deg, #FFB800 0%, #FF9500 100%);
+    color: #06070B;
+    border: none;
+    box-shadow: 0 4px 14px rgba(255, 184, 0, 0.3);
+}
+
+.exp-card-action.primary:hover {
+    background: linear-gradient(135deg, #FFC425 0%, #FFA520 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(255, 184, 0, 0.45);
+}
+
+/* ==========================================================================
+   FULL BACKGROUND HERO SECTIONS (HERO TRIAL 2, 3, 4)
    ========================================================================== */
 .hero-full-bg-section {
     position: relative;
@@ -2886,6 +3336,16 @@ input:focus, select:focus, textarea:focus {
         padding: 60px 0 60px 0;
         min-height: auto;
     }
+
+    .hero-scroll-section {
+        min-height: 340vh;
+        height: 340vh;
+    }
+
+    .matching-expedition-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -2905,6 +3365,63 @@ input:focus, select:focus, textarea:focus {
     .font-pill-btn {
         padding: 3px 8px;
         font-size: 11px;
+    }
+
+    .hero-scroll-section {
+        min-height: 320vh;
+        height: 320vh;
+    }
+
+    .hero-scroll-hud {
+        top: 80px;
+        padding: 5px 12px;
+        gap: 8px;
+        width: calc(100% - 24px);
+        max-width: 360px;
+        justify-content: space-between;
+    }
+
+    .scroll-hud-title {
+        display: none;
+    }
+
+    .scroll-hud-progress-track {
+        width: 60px;
+    }
+
+    .scroll-story-pane {
+        padding: 85px 12px 20px 12px;
+    }
+
+    .matching-expedition-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-height: 52vh;
+        overflow-y: auto;
+        padding-right: 4px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .expedition-showcase-card {
+        padding: 12px 14px;
+    }
+
+    .exp-card-route {
+        margin-bottom: 6px;
+    }
+
+    .exp-card-meta {
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+    }
+
+    .hero-story-title {
+        font-size: 26px;
+    }
+
+    .hero-story-title.showcase-title {
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
     .hero-full-bg-section {
