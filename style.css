@@ -906,11 +906,14 @@ input:focus, select:focus, textarea:focus {
 }
 
 .neon-emerald-text,
-.hero-gold-text {
-    background: linear-gradient(135deg, #FFFFFF 0%, #FFE699 35%, #FFB800 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 20px rgba(255, 184, 0, 0.5));
+.hero-gold-text,
+.hero-highlight-title {
+    color: #FFFFFF !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    filter: none !important;
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9) !important;
 }
 
 .hero-3d-subtext {
@@ -919,13 +922,13 @@ input:focus, select:focus, textarea:focus {
     margin-bottom: 28px;
     max-width: 680px;
     line-height: 1.65;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
-    background: rgba(10, 14, 22, 0.6);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    border-radius: 999px;
-    padding: 10px 24px;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95);
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
 }
 
 /* DUAL ENGINE CONSOLE */
