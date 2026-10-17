@@ -46,9 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .toISOString()
         .slice(0, 10);
 
-    ['#seaterDateInput', '#tourDateInput', '#uDate', '#mDate'].forEach(sel => {
-        const input = $(sel);
-        if (input) input.min = minDateStr;
+    $$('input[type="date"], .date-min-today').forEach(input => {
+        input.min = minDateStr;
     });
 
     // 5. STICKY HUD HEADER & ACTIVE SCROLL SPY
@@ -129,7 +128,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (canvas && container && typeof THREE !== 'undefined') {
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const getContainerW = () => container.clientWidth || window.innerWidth;
+        const getContainerH = () => container.clientHeight || window.innerHeight;
+
+        const camera = new THREE.PerspectiveCamera(45, getContainerW() / getContainerH(), 0.1, 1000);
         camera.position.z = 12.5;
 
         const renderer = new THREE.WebGLRenderer({
@@ -138,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alpha: true,
             powerPreference: 'high-performance'
         });
-        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setSize(getContainerW(), getContainerH());
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
         const globeGroup = new THREE.Group();
@@ -280,9 +282,16 @@ document.addEventListener('DOMContentLoaded', () => {
         let targetRotationX = 0.35;
         let targetRotationY = -1.95;
 
-        container.addEventListener('pointerdown', (e) => {
-            isDragging = true;
-            previousMousePosition = { x: e.clientX, y: e.clientY };
+        const heroTrial3 = document.getElementById('hero-trial-3');
+        const dragTargets = [container, heroTrial3].filter(Boolean);
+        dragTargets.forEach(tgt => {
+            tgt.addEventListener('pointerdown', (e) => {
+                if (e.target.closest('.hud-engine-console') || e.target.closest('a') || e.target.closest('button')) {
+                    return;
+                }
+                isDragging = true;
+                previousMousePosition = { x: e.clientX, y: e.clientY };
+            });
         });
 
         window.addEventListener('pointermove', (e) => {
@@ -357,14 +366,16 @@ document.addEventListener('DOMContentLoaded', () => {
         animate();
 
         // Responsive resize
-        window.addEventListener('resize', () => {
+        const handleResize = () => {
             if (!container) return;
-            const w = container.clientWidth;
-            const h = container.clientHeight;
+            const w = getContainerW();
+            const h = getContainerH();
             camera.aspect = w / h;
             camera.updateProjectionMatrix();
             renderer.setSize(w, h);
-        });
+        };
+        window.addEventListener('resize', handleResize);
+        setTimeout(handleResize, 120);
     }
 
     // =========================================================================
@@ -462,135 +473,171 @@ document.addEventListener('DOMContentLoaded', () => {
     updateEstimator();
 
     // =========================================================================
-    // 10. DUAL ENGINE BOOKING CONSOLE (HERO TABS)
+    // 10. UNIVERSAL DUAL ENGINE BOOKING CONSOLE (ALL HERO INSTANCES)
     // =========================================================================
-    const tabSeater = $('#tabSeater');
-    const tabTour = $('#tabTour');
-    const seaterPane = $('#seaterPane');
-    const tourPane = $('#tourPane');
+    $$('.hud-engine-console').forEach(consoleEl => {
+        const tabBtns = $$('.console-tab-btn', consoleEl);
+        const panes = $$('.console-pane', consoleEl);
 
-    tabSeater?.addEventListener('click', () => {
-        tabSeater.classList.add('active');
-        tabSeater.setAttribute('aria-selected', 'true');
-        tabTour?.classList.remove('active');
-        tabTour?.setAttribute('aria-selected', 'false');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.dataset.target;
+                tabBtns.forEach(b => {
+                    const isActive = b === btn;
+                    b.classList.toggle('active', isActive);
+                    b.setAttribute('aria-selected', String(isActive));
+                });
+                panes.forEach(pane => {
+                    pane.classList.toggle('active', pane.id === targetId);
+                });
+            });
+        });
 
-        seaterPane?.classList.add('active');
-        tourPane?.classList.remove('active');
-    });
+        // Seater Form Submission
+        $$('.seater-form', consoleEl).forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const data = new FormData(form);
+                const seater = data.get('seaterType') || 'Seater Vehicle';
+                const pickup = data.get('pickupCity') || '';
+                const drop = data.get('destination') || '';
+                const date = data.get('date') || '';
 
-    tabTour?.addEventListener('click', () => {
-        tabTour.classList.add('active');
-        tabTour.setAttribute('aria-selected', 'true');
-        tabSeater?.classList.remove('active');
-        tabSeater?.setAttribute('aria-selected', 'false');
+                const sSelect = $('#uService');
+                const rInput = $('#uRoute');
+                const dInput = $('#uDate');
+                const nInput = $('#uNotes');
 
-        tourPane?.classList.add('active');
-        seaterPane?.classList.remove('active');
-    });
-
-    // Seater Form Submission
-    seaterPane?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const data = new FormData(seaterPane);
-        const seater = data.get('seaterType') || 'Seater Vehicle';
-        const pickup = data.get('pickupCity') || '';
-        const drop = data.get('destination') || '';
-        const date = data.get('date') || '';
-
-        const sSelect = $('#uService');
-        const rInput = $('#uRoute');
-        const dInput = $('#uDate');
-        const nInput = $('#uNotes');
-
-        if (sSelect) {
-            for (let opt of sSelect.options) {
-                if (opt.value.toLowerCase().includes(seater.toLowerCase().split(' ')[0])) {
-                    opt.selected = true;
-                    break;
+                if (sSelect) {
+                    for (let opt of sSelect.options) {
+                        if (opt.value.toLowerCase().includes(seater.toLowerCase().split(' ')[0])) {
+                            opt.selected = true;
+                            break;
+                        }
+                    }
                 }
-            }
-        }
-        if (rInput) rInput.value = `${pickup} to ${drop}`;
-        if (dInput) dInput.value = date;
-        if (nInput) {
-            nInput.value = `Seater Booking Request:\nVehicle: ${seater}\nRoute: ${pickup} to ${drop}\nTravel Date: ${date}`;
-        }
+                if (rInput) rInput.value = `${pickup} to ${drop}`;
+                if (dInput) dInput.value = date;
+                if (nInput) {
+                    nInput.value = `Seater Booking Request:\nVehicle: ${seater}\nRoute: ${pickup} to ${drop}\nTravel Date: ${date}`;
+                }
 
-        $('#contact')?.scrollIntoView({ behavior: 'smooth' });
-        $('#uName')?.focus();
+                $('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                $('#uName')?.focus();
+                showToast(`Selected ${seater}. Please fill your contact details below to get instant quote!`);
+            });
+        });
 
-        showToast(`Selected ${seater}. Please fill your contact details below to get instant quote!`);
-    });
+        // Tour Form Submission
+        $$('.tour-form', consoleEl).forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const data = new FormData(form);
+                const dest = data.get('destination') || '';
+                const duration = data.get('duration') || '';
+                const pax = data.get('passengers') || '';
+                const date = data.get('date') || '';
 
-    // Tour Form Submission
-    tourPane?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const data = new FormData(tourPane);
-        const dest = data.get('destination') || '';
-        const duration = data.get('duration') || '';
-        const pax = data.get('passengers') || '';
-        const date = data.get('date') || '';
+                const sSelect = $('#uService');
+                const rInput = $('#uRoute');
+                const dInput = $('#uDate');
+                const nInput = $('#uNotes');
 
-        const sSelect = $('#uService');
-        const rInput = $('#uRoute');
-        const dInput = $('#uDate');
-        const nInput = $('#uNotes');
+                if (sSelect) sSelect.value = 'Custom Tour Planning';
+                if (rInput) rInput.value = dest;
+                if (dInput) dInput.value = date;
+                if (nInput) {
+                    nInput.value = `Custom Tour Request:\nDestination: ${dest}\nDuration: ${duration}\nTravellers: ${pax}\nStart Date: ${date}`;
+                }
 
-        if (sSelect) sSelect.value = 'Custom Tour Planning';
-        if (rInput) rInput.value = dest;
-        if (dInput) dInput.value = date;
-        if (nInput) {
-            nInput.value = `Custom Tour Request:\nDestination: ${dest}\nDuration: ${duration}\nTravellers: ${pax}\nStart Date: ${date}`;
-        }
-
-        $('#contact')?.scrollIntoView({ behavior: 'smooth' });
-        $('#uName')?.focus();
-
-        showToast(`Custom tour to ${dest} pre-filled. Please complete your details below!`);
+                $('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                $('#uName')?.focus();
+                showToast(`Custom tour to ${dest} pre-filled. Please complete your details below!`);
+            });
+        });
     });
 
     // =========================================================================
-    // 11. EMBEDDED CINEMATIC VIDEO PORTAL SWITCHER
+    // 11. FULL BACKGROUND VIDEO AUTOPLAY & STREAM HANDLING
     // =========================================================================
-    const portalVid = $('#portalVideo');
-    const portalBtns = $$('.portal-btn');
+    const heroVideos = $$('.hero-bg-video-stream');
+    heroVideos.forEach(vid => {
+        vid.muted = true;
+        vid.defaultMuted = true;
+        vid.playsInline = true;
 
-    if (portalVid) {
-        portalVid.muted = true;
-        portalVid.defaultMuted = true;
-        portalVid.playsInline = true;
-
-        const tryPlay = () => {
-            const p = portalVid.play();
+        const playVid = () => {
+            const p = vid.play();
             if (p && p.catch) p.catch(() => {});
         };
 
-        tryPlay();
+        playVid();
 
         ['click', 'touchstart', 'scroll'].forEach(evt => {
             window.addEventListener(evt, () => {
-                if (portalVid.paused) tryPlay();
+                if (vid.paused) playVid();
             }, { once: true, passive: true });
         });
+    });
 
-        portalBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                portalBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+    // =========================================================================
+    // 12. HERO TRIAL DOCK CONTROLLER & LIVE FONT SWITCHER
+    // =========================================================================
+    const dockNavBtns = $$('.dock-nav-btn');
+    const heroSections = $$('.hero-trial-section');
+    const fontPillBtns = $$('.font-pill-btn');
 
-                const newSrc = btn.dataset.src;
-                if (!newSrc) return;
-
-                portalVid.pause();
-                portalVid.src = newSrc;
-                portalVid.load();
-                portalVid.play().catch(() => {});
-
-                showToast(`Switched view to ${btn.textContent.trim()}`);
-            });
+    // Dock Navigation Smooth Scroll & Active Indicator
+    dockNavBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = btn.dataset.target;
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+                dockNavBtns.forEach(b => b.classList.toggle('active', b === btn));
+            }
         });
+    });
+
+    // Scroll Spy for Hero Trial Sections & Dock Buttons
+    if ('IntersectionObserver' in window && heroSections.length > 0) {
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    dockNavBtns.forEach(btn => {
+                        btn.classList.toggle('active', btn.dataset.target === id);
+                    });
+                }
+            });
+        }, { threshold: 0.4 });
+
+        heroSections.forEach(section => heroObserver.observe(section));
     }
+
+    // Dynamic Font Selector (Applies Exclusively to Hero Heading)
+    const FONT_LABELS = {
+        syne: 'Syne (Neo-Geometric Luxury)',
+        clash: 'Clash Display (Ultra Modern)',
+        outfit: 'Outfit (Minimalist Premium)',
+        alata: 'Alata (Classical Balance)'
+    };
+
+    fontPillBtns.forEach(pill => {
+        pill.addEventListener('click', () => {
+            const chosenFont = pill.dataset.font;
+            if (!chosenFont) return;
+
+            fontPillBtns.forEach(p => p.classList.toggle('active', p === pill));
+
+            // Remove previous font mode classes from body
+            document.body.classList.remove('font-mode-syne', 'font-mode-clash', 'font-mode-outfit', 'font-mode-alata');
+            document.body.classList.add(`font-mode-${chosenFont}`);
+
+            showToast(`Hero title font switched to: ${FONT_LABELS[chosenFont] || chosenFont}`);
+        });
+    });
 
     // =========================================================================
     // 12. SEATERS CATEGORY FILTER DOCK

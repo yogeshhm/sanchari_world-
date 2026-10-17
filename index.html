@@ -8,10 +8,11 @@
         content="Sanchari World — Option 2: 3D WebGL Bespoke Custom Tours & Verified Chauffeur-Driven Seater Vehicle Rentals from 4-Seater Sedans to 40-Seater Luxury Coaches.">
     <title>Sanchari World | 3D Custom Tours & Seater Fleet Rental</title>
 
-    <!-- GOOGLE FONTS: ALATA (HEADINGS & PACKAGE TITLES) & OVERPASS (BODY & SMALL TEXT) -->
+    <!-- GOOGLE FONTS: ALATA (PACKAGE TITLES), OVERPASS (BODY & SMALL TEXT), SYNE & OUTFIT (TRIAL HEADINGS) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Overpass:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Outfit:wght@600;700;800;900&family=Overpass:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -60,11 +61,13 @@
             </a>
 
             <nav class="hud-nav" id="hudNav" aria-label="Primary Navigation">
-                <a class="hud-nav-item active" href="#home">Home</a>
+                <a class="hud-nav-item active" href="#hero-trial-1">Hero 1 (Mountain)</a>
+                <a class="hud-nav-item" href="#hero-trial-2">Hero 2 (Coast)</a>
+                <a class="hud-nav-item" href="#hero-trial-3">Hero 3 (3D WebGL)</a>
                 <a class="hud-nav-item" href="#custom-tours">Custom Tours</a>
                 <a class="hud-nav-item" href="#seaters">Book Seaters</a>
-                <a class="hud-nav-item" href="#estimator">3D Tour Estimator</a>
-                <a class="hud-nav-item" href="#packages">Trip Packages</a>
+                <a class="hud-nav-item" href="#estimator">3D Estimator</a>
+                <a class="hud-nav-item" href="#packages">Packages</a>
                 <a class="hud-nav-item" href="#why-us">Why Us</a>
                 <a class="hud-nav-item" href="#contact">Contact</a>
                 <a class="hud-mobile-cta" href="#estimator">Launch 3D Estimator ➔</a>
@@ -89,228 +92,509 @@
     </header>
 
     <main>
-        <!-- HERO SECTION: 3D WEBGL INTERACTIVE CANVAS & DUAL BOOKING ENGINE -->
-        <section class="hero-3d-section" id="home">
-            <div class="container hero-3d-grid">
-                <!-- HERO LEFT: COPY & ADVANCED BOOKING ENGINE -->
-                <div class="hero-3d-copy-column">
-                    <div class="hud-badge-pill">
-                        <span class="badge-ring"></span>
-                        <span class="badge-text">OPTION 2 · 3D WEBGL BESPOKE TRAVEL STUDIO</span>
+        <!-- STICKY HERO TRIAL CONTROLLER DOCK -->
+        <aside class="hero-trial-dock-bar" id="heroTrialDock" aria-label="Hero Trial Switcher">
+            <div class="container hero-trial-dock-inner">
+                <div class="dock-badge">
+                    <span class="pulse-dot"></span>
+                    <span>HERO TRIAL DOCK</span>
+                </div>
+
+                <div class="dock-nav-btns" role="tablist">
+                    <a href="#hero-trial-1" class="dock-nav-btn active" data-target="hero-trial-1">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        <span>Hero 1: Mountain Video</span>
+                    </a>
+                    <a href="#hero-trial-2" class="dock-nav-btn" data-target="hero-trial-2">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M2 18h20M2 6h20"></path></svg>
+                        <span>Hero 2: Coastal Video</span>
+                    </a>
+                    <a href="#hero-trial-3" class="dock-nav-btn" data-target="hero-trial-3">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        <span>Hero 3: Full 3D WebGL</span>
+                    </a>
+                </div>
+
+                <div class="dock-font-selector">
+                    <span class="dock-font-lbl">Title Font:</span>
+                    <button type="button" class="font-pill-btn active" data-font="syne">Syne</button>
+                    <button type="button" class="font-pill-btn" data-font="clash">Clash</button>
+                    <button type="button" class="font-pill-btn" data-font="outfit">Outfit</button>
+                    <button type="button" class="font-pill-btn" data-font="alata">Alata</button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- ================================================================= -->
+        <!-- HERO 1: FULL BACKGROUND VIDEO (MOUNTAIN ROUTE: 347325_medium.mp4) -->
+        <!-- ================================================================= -->
+        <section class="hero-full-bg-section hero-trial-section" id="hero-trial-1">
+            <div class="hero-full-video-stage">
+                <video class="hero-bg-video-stream" autoplay muted loop playsinline preload="auto">
+                    <source src="assets/videos/347325_medium.mp4" type="video/mp4">
+                </video>
+                <div class="hero-cinematic-shade mountain-shade"></div>
+            </div>
+
+            <div class="container hero-full-content">
+                <div class="hud-badge-pill">
+                    <span class="badge-ring"></span>
+                    <span class="badge-text">HERO TRIAL 1 · FULL BG VIDEO (MOUNTAIN ROUTE)</span>
+                </div>
+
+                <h1 class="hero-3d-heading hero-custom-font">
+                    WE MAKE <span class="neon-emerald-text">CUSTOM TOURS</span><br>
+                    BASED ON YOUR NEEDS.
+                </h1>
+
+                <p class="hero-3d-subtext">
+                    Experience bespoke luxury travel across South India with cinematic mountain vistas. Choose your verified private seater vehicle — from 4-seater Sedans and 7-seater Innova Crystas to 12–17 seater Tempos and 40-seater luxury coaches. Zero rigid group schedules.
+                </p>
+
+                <!-- DUAL ENGINE SEARCH CONSOLE 1 -->
+                <div class="hud-engine-console">
+                    <div class="console-tabs" role="tablist">
+                        <button type="button" class="console-tab-btn active" data-target="seaterPane1" role="tab" aria-selected="true">
+                            <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg></span>
+                            <span>Book Seater Vehicle</span>
+                        </button>
+                        <button type="button" class="console-tab-btn" data-target="tourPane1" role="tab" aria-selected="false">
+                            <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg></span>
+                            <span>Plan Custom Tour</span>
+                        </button>
                     </div>
 
-                    <h1 class="hero-3d-heading">
-                        WE MAKE <span class="neon-emerald-text">CUSTOM TOURS</span><br>
-                        BASED ON YOUR NEEDS.
-                    </h1>
-
-                    <p class="hero-3d-subtext">
-                        Experience bespoke luxury travel across South India. Choose your verified private seater vehicle — from 4-seater Sedans and 7-seater Innova Crystas to 12–17 seater Tempos and 40-seater luxury coaches. Zero rigid group schedules.
-                    </p>
-
-                    <!-- DUAL ENGINE SEARCH CONSOLE -->
-                    <div class="hud-engine-console">
-                        <div class="console-tabs" role="tablist">
-                            <button class="console-tab-btn active" id="tabSeater" role="tab" aria-selected="true" data-target="seaterPane">
-                                <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg></span>
-                                <span>Book Seater Vehicle</span>
-                            </button>
-                            <button class="console-tab-btn" id="tabTour" role="tab" aria-selected="false" data-target="tourPane">
-                                <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg></span>
-                                <span>Plan Custom Tour</span>
-                            </button>
-                        </div>
-
-                        <!-- PANE 1: SEATER BOOKING -->
-                        <form class="console-pane active" id="seaterPane">
-                            <div class="console-inputs-grid">
-                                <div class="console-field">
-                                    <label for="seaterSelect">Seater Capacity</label>
-                                    <div class="field-wrap">
-                                        <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 18H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2z"></path><path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3"></path></svg></span>
-                                        <select id="seaterSelect" name="seaterType" required>
-                                            <option value="4-Seater Sedan" selected>4-Seater Sedan (Dzire / Etios)</option>
-                                            <option value="6-Seater SUV">6-Seater SUV (Ertiga / Carens)</option>
-                                            <option value="7-Seater Premium SUV">7-Seater Innova Crysta</option>
-                                            <option value="12-Seater Tempo">12-Seater Tempo Traveller</option>
-                                            <option value="17-Seater Tempo">17-Seater Luxury Tempo</option>
-                                            <option value="40-Seater Luxury Bus">40-Seater AC Luxury Coach</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="console-field">
-                                    <label for="pickupSelect">Pickup City</label>
-                                    <div class="field-wrap">
-                                        <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
-                                        <select id="pickupSelect" name="pickupCity" required>
-                                            <option value="Bengaluru" selected>Bengaluru</option>
-                                            <option value="Mysuru">Mysuru</option>
-                                            <option value="Mangaluru">Mangaluru</option>
-                                            <option value="Coimbatore">Coimbatore</option>
-                                            <option value="Other">Other City</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="console-field">
-                                    <label for="routeInput">Destination / Route</label>
-                                    <div class="field-wrap">
-                                        <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></span>
-                                        <input type="text" id="routeInput" name="destination" placeholder="e.g. Coorg, Ooty, Wayanad" required>
-                                    </div>
-                                </div>
-
-                                <div class="console-field">
-                                    <label for="seaterDateInput">Travel Date</label>
-                                    <div class="field-wrap">
-                                        <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
-                                        <input type="date" id="seaterDateInput" name="date" required>
-                                    </div>
+                    <form class="console-pane active seater-form" id="seaterPane1">
+                        <div class="console-inputs-grid">
+                            <div class="console-field">
+                                <label for="seaterSelect1">Seater Capacity</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 18H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2z"></path><path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3"></path></svg></span>
+                                    <select id="seaterSelect1" name="seaterType" required>
+                                        <option value="4-Seater Sedan" selected>4-Seater Sedan (Dzire / Etios)</option>
+                                        <option value="6-Seater SUV">6-Seater SUV (Ertiga / Carens)</option>
+                                        <option value="7-Seater Premium SUV">7-Seater Innova Crysta</option>
+                                        <option value="12-Seater Tempo">12-Seater Tempo Traveller</option>
+                                        <option value="17-Seater Tempo">17-Seater Luxury Tempo</option>
+                                        <option value="40-Seater Luxury Bus">40-Seater AC Luxury Coach</option>
+                                    </select>
                                 </div>
                             </div>
 
-                            <button type="submit" class="console-action-submit">
-                                <span>Check Availability & Get Instant Quote</span>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </button>
-                        </form>
-
-                        <!-- PANE 2: CUSTOM TOUR PLANNING -->
-                        <form class="console-pane" id="tourPane">
-                            <div class="console-inputs-grid">
-                                <div class="console-field">
-                                    <label for="tourDestInput">Where To?</label>
-                                    <div class="field-wrap">
-                                        <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"></path></svg></span>
-                                        <input type="text" id="tourDestInput" name="destination" placeholder="e.g. Western Ghats, Coastal Kerala" required>
-                                    </div>
-                                </div>
-
-                                <div class="console-field">
-                                    <label for="durationSelect">Duration</label>
-                                    <div class="field-wrap">
-                                        <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
-                                        <select id="durationSelect" name="duration" required>
-                                            <option value="Weekend (2 Days / 1 Night)">2 Days / 1 Night</option>
-                                            <option value="Short Getaway (3 Days / 2 Nights)" selected>3 Days / 2 Nights</option>
-                                            <option value="Holiday (5 Days / 4 Nights)">5 Days / 4 Nights</option>
-                                            <option value="Grand Tour (7+ Days)">7+ Days Custom</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="console-field">
-                                    <label for="paxSelect">Total Travellers</label>
-                                    <div class="field-wrap">
-                                        <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
-                                        <select id="paxSelect" name="passengers">
-                                            <option value="2 Travellers (Couple)">Couple (2 Pax)</option>
-                                            <option value="3-5 Travellers (Family)" selected>Family (3–5 Pax)</option>
-                                            <option value="6-12 Travellers (Group)">Group (6–12 Pax)</option>
-                                            <option value="12+ Travellers (Large Group)">Large Group (12+ Pax)</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="console-field">
-                                    <label for="tourDateInput">Start Date</label>
-                                    <div class="field-wrap">
-                                        <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
-                                        <input type="date" id="tourDateInput" name="date" required>
-                                    </div>
+                            <div class="console-field">
+                                <label for="pickupSelect1">Pickup City</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+                                    <select id="pickupSelect1" name="pickupCity" required>
+                                        <option value="Bengaluru" selected>Bengaluru</option>
+                                        <option value="Mysuru">Mysuru</option>
+                                        <option value="Mangaluru">Mangaluru</option>
+                                        <option value="Coimbatore">Coimbatore</option>
+                                        <option value="Other">Other City</option>
+                                    </select>
                                 </div>
                             </div>
 
-                            <button type="submit" class="console-action-submit">
-                                <span>Generate Custom Tour Blueprint</span>
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </button>
-                        </form>
+                            <div class="console-field">
+                                <label for="routeInput1">Destination / Route</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></span>
+                                    <input type="text" id="routeInput1" name="destination" placeholder="e.g. Coorg, Ooty, Wayanad" required>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="seaterDateInput1">Travel Date</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                                    <input type="date" id="seaterDateInput1" name="date" class="date-min-today" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="console-action-submit">
+                            <span>Check Availability & Get Instant Quote</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </form>
+
+                    <form class="console-pane tour-form" id="tourPane1">
+                        <div class="console-inputs-grid">
+                            <div class="console-field">
+                                <label for="tourDestInput1">Where To?</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"></path></svg></span>
+                                    <input type="text" id="tourDestInput1" name="destination" placeholder="e.g. Western Ghats, Coastal Kerala" required>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="durationSelect1">Duration</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
+                                    <select id="durationSelect1" name="duration" required>
+                                        <option value="Weekend (2 Days / 1 Night)">2 Days / 1 Night</option>
+                                        <option value="Short Getaway (3 Days / 2 Nights)" selected>3 Days / 2 Nights</option>
+                                        <option value="Holiday (5 Days / 4 Nights)">5 Days / 4 Nights</option>
+                                        <option value="Grand Tour (7+ Days)">7+ Days Custom</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="paxSelect1">Total Travellers</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+                                    <select id="paxSelect1" name="passengers">
+                                        <option value="2 Travellers (Couple)">Couple (2 Pax)</option>
+                                        <option value="3-5 Travellers (Family)" selected>Family (3–5 Pax)</option>
+                                        <option value="6-12 Travellers (Group)">Group (6–12 Pax)</option>
+                                        <option value="12+ Travellers (Large Group)">Large Group (12+ Pax)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="tourDateInput1">Start Date</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                                    <input type="date" id="tourDateInput1" name="date" class="date-min-today" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="console-action-submit">
+                            <span>Generate Custom Tour Blueprint</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="hero-trust-metric-row">
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>100% Tailored Routes</span></div>
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>4 to 40 Seaters</span></div>
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>Commercial Verified Drivers</span></div>
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>All-Inclusive Billing</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- HERO 2: FULL BACKGROUND VIDEO (COASTAL TRAIL: 161071-822582138)  -->
+        <!-- ================================================================= -->
+        <section class="hero-full-bg-section hero-trial-section" id="hero-trial-2">
+            <div class="hero-full-video-stage">
+                <video class="hero-bg-video-stream" autoplay muted loop playsinline preload="auto">
+                    <source src="assets/videos/161071-822582138_medium.mp4" type="video/mp4">
+                </video>
+                <div class="hero-cinematic-shade coastal-shade"></div>
+            </div>
+
+            <div class="container hero-full-content">
+                <div class="hud-badge-pill">
+                    <span class="badge-ring"></span>
+                    <span class="badge-text">HERO TRIAL 2 · FULL BG VIDEO (COASTAL TRAIL)</span>
+                </div>
+
+                <h1 class="hero-3d-heading hero-custom-font">
+                    WE MAKE <span class="neon-emerald-text">CUSTOM TOURS</span><br>
+                    BASED ON YOUR NEEDS.
+                </h1>
+
+                <p class="hero-3d-subtext">
+                    From scenic seaside drives to tropical Western Ghats. Handcrafted custom itineraries with 100% verified yellow-board commercial fleet and background-checked highway chauffeurs.
+                </p>
+
+                <!-- DUAL ENGINE SEARCH CONSOLE 2 -->
+                <div class="hud-engine-console">
+                    <div class="console-tabs" role="tablist">
+                        <button type="button" class="console-tab-btn active" data-target="seaterPane2" role="tab" aria-selected="true">
+                            <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg></span>
+                            <span>Book Seater Vehicle</span>
+                        </button>
+                        <button type="button" class="console-tab-btn" data-target="tourPane2" role="tab" aria-selected="false">
+                            <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg></span>
+                            <span>Plan Custom Tour</span>
+                        </button>
                     </div>
 
-                    <!-- HERO TRUST TICKER -->
-                    <div class="hero-trust-metric-row">
-                        <div class="metric-item">
-                            <span class="metric-icon">✦</span>
-                            <span>100% Tailored Routes</span>
+                    <form class="console-pane active seater-form" id="seaterPane2">
+                        <div class="console-inputs-grid">
+                            <div class="console-field">
+                                <label for="seaterSelect2">Seater Capacity</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 18H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2z"></path><path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3"></path></svg></span>
+                                    <select id="seaterSelect2" name="seaterType" required>
+                                        <option value="4-Seater Sedan" selected>4-Seater Sedan (Dzire / Etios)</option>
+                                        <option value="6-Seater SUV">6-Seater SUV (Ertiga / Carens)</option>
+                                        <option value="7-Seater Premium SUV">7-Seater Innova Crysta</option>
+                                        <option value="12-Seater Tempo">12-Seater Tempo Traveller</option>
+                                        <option value="17-Seater Tempo">17-Seater Luxury Tempo</option>
+                                        <option value="40-Seater Luxury Bus">40-Seater AC Luxury Coach</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="pickupSelect2">Pickup City</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+                                    <select id="pickupSelect2" name="pickupCity" required>
+                                        <option value="Bengaluru" selected>Bengaluru</option>
+                                        <option value="Mysuru">Mysuru</option>
+                                        <option value="Mangaluru">Mangaluru</option>
+                                        <option value="Coimbatore">Coimbatore</option>
+                                        <option value="Other">Other City</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="routeInput2">Destination / Route</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></span>
+                                    <input type="text" id="routeInput2" name="destination" placeholder="e.g. Gokarna, Goa, Udupi" required>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="seaterDateInput2">Travel Date</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                                    <input type="date" id="seaterDateInput2" name="date" class="date-min-today" required>
+                                </div>
+                            </div>
                         </div>
-                        <div class="metric-item">
-                            <span class="metric-icon">✦</span>
-                            <span>4 to 40 Seaters</span>
+
+                        <button type="submit" class="console-action-submit">
+                            <span>Check Availability & Get Instant Quote</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </form>
+
+                    <form class="console-pane tour-form" id="tourPane2">
+                        <div class="console-inputs-grid">
+                            <div class="console-field">
+                                <label for="tourDestInput2">Where To?</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"></path></svg></span>
+                                    <input type="text" id="tourDestInput2" name="destination" placeholder="e.g. Coastal Karnataka & Goa" required>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="durationSelect2">Duration</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
+                                    <select id="durationSelect2" name="duration" required>
+                                        <option value="Weekend (2 Days / 1 Night)">2 Days / 1 Night</option>
+                                        <option value="Short Getaway (3 Days / 2 Nights)" selected>3 Days / 2 Nights</option>
+                                        <option value="Holiday (5 Days / 4 Nights)">5 Days / 4 Nights</option>
+                                        <option value="Grand Tour (7+ Days)">7+ Days Custom</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="paxSelect2">Total Travellers</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+                                    <select id="paxSelect2" name="passengers">
+                                        <option value="2 Travellers (Couple)">Couple (2 Pax)</option>
+                                        <option value="3-5 Travellers (Family)" selected>Family (3–5 Pax)</option>
+                                        <option value="6-12 Travellers (Group)">Group (6–12 Pax)</option>
+                                        <option value="12+ Travellers (Large Group)">Large Group (12+ Pax)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="tourDateInput2">Start Date</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                                    <input type="date" id="tourDateInput2" name="date" class="date-min-today" required>
+                                </div>
+                            </div>
                         </div>
-                        <div class="metric-item">
-                            <span class="metric-icon">✦</span>
-                            <span>Commercial Verified Drivers</span>
-                        </div>
-                        <div class="metric-item">
-                            <span class="metric-icon">✦</span>
-                            <span>All-Inclusive Billing</span>
-                        </div>
+
+                        <button type="submit" class="console-action-submit">
+                            <span>Generate Custom Tour Blueprint</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="hero-trust-metric-row">
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>100% Tailored Routes</span></div>
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>4 to 40 Seaters</span></div>
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>Commercial Verified Drivers</span></div>
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>All-Inclusive Billing</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- HERO 3: FULL BACKGROUND 3D WEBGL GRAPH & GLOBE                   -->
+        <!-- ================================================================= -->
+        <section class="hero-full-bg-section hero-trial-section webgl-mode" id="hero-trial-3">
+            <div class="hero-full-webgl-stage" id="webglCanvasContainer">
+                <canvas id="webglCanvas"></canvas>
+                <div class="hero-cinematic-shade webgl-shade"></div>
+            </div>
+
+            <div class="container hero-full-content">
+                <div class="hud-badge-pill">
+                    <span class="badge-ring"></span>
+                    <span class="badge-text">HERO TRIAL 3 · FULL-SCREEN 3D WEBGL ENGINE</span>
+                    <span class="badge-sub-tip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="7"></rect><line x1="12" y1="6" x2="12" y2="10"></line></svg> Drag Anywhere To Rotate 3D Globe</span>
+                </div>
+
+                <h1 class="hero-3d-heading hero-custom-font">
+                    WE MAKE <span class="neon-emerald-text">CUSTOM TOURS</span><br>
+                    BASED ON YOUR NEEDS.
+                </h1>
+
+                <p class="hero-3d-subtext">
+                    Interactive 3D WebGL tour mapping South India's premier circuits. Real-time telemetry, transparent pricing, and instant WhatsApp booking.
+                </p>
+
+                <!-- FLOATING ACTIVE ROUTE HUD OVERLAY -->
+                <div class="hud-route-telemetry webgl-hero-telemetry" id="hudRouteCard">
+                    <div class="route-header">
+                        <span class="route-dot"></span>
+                        <strong id="hudRouteTitle">Bengaluru ➔ Coorg & Chikmagalur</strong>
+                    </div>
+                    <div class="route-metrics">
+                        <div><small>Distance</small><b id="hudRouteDist">260 km</b></div>
+                        <div><small>Scenic Time</small><b id="hudRouteTime">5.5 hrs</b></div>
+                        <div><small>Best Seater</small><b id="hudRouteVehicle">Innova / Sedan</b></div>
                     </div>
                 </div>
 
-                <!-- HERO RIGHT: 3D WEBGL CANVAS & FLOATING VIDEO PORTAL -->
-                <div class="hero-3d-visual-column">
-                    <div class="webgl-stage-frame">
-                        <!-- 3D WEBGL CANVAS -->
-                        <div class="webgl-canvas-container" id="webglCanvasContainer">
-                            <canvas id="webglCanvas"></canvas>
-                            <div class="webgl-status-hud">
-                                <span class="hud-radar-blip"></span>
-                                <span class="hud-radar-text">INTERACTIVE 3D SOUTH INDIA TOUR GRAPH</span>
-                                <span class="hud-rotate-tip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="7"></rect><line x1="12" y1="6" x2="12" y2="10"></line></svg> DRAG TO ROTATE 3D GLOBE</span>
-                            </div>
-                        </div>
+                <!-- DUAL ENGINE SEARCH CONSOLE 3 -->
+                <div class="hud-engine-console">
+                    <div class="console-tabs" role="tablist">
+                        <button type="button" class="console-tab-btn active" data-target="seaterPane3" role="tab" aria-selected="true">
+                            <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"></path><circle cx="7" cy="17" r="2"></circle><path d="M9 17h6"></path><circle cx="17" cy="17" r="2"></circle></svg></span>
+                            <span>Book Seater Vehicle</span>
+                        </button>
+                        <button type="button" class="console-tab-btn" data-target="tourPane3" role="tab" aria-selected="false">
+                            <span class="tab-ico"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg></span>
+                            <span>Plan Custom Tour</span>
+                        </button>
+                    </div>
 
-                        <!-- FLOATING ACTIVE ROUTE HUD OVERLAY -->
-                        <div class="hud-route-telemetry" id="hudRouteCard">
-                            <div class="route-header">
-                                <span class="route-dot"></span>
-                                <strong id="hudRouteTitle">Bengaluru ➔ Coorg & Chikmagalur</strong>
-                            </div>
-                            <div class="route-metrics">
-                                <div><small>Distance</small><b id="hudRouteDist">260 km</b></div>
-                                <div><small>Scenic Time</small><b id="hudRouteTime">5.5 hrs</b></div>
-                                <div><small>Best Seater</small><b id="hudRouteVehicle">Innova / Sedan</b></div>
-                            </div>
-                        </div>
-
-                        <!-- EMBEDDED CINEMATIC VIDEO PORTAL (USING USER'S MP4 VIDEOS) -->
-                        <div class="cinematic-portal-box">
-                            <div class="portal-video-wrap">
-                                <video class="portal-video" id="portalVideo" autoplay muted loop playsinline preload="auto">
-                                    <source src="assets/videos/347325_medium.mp4" type="video/mp4" id="portalSource">
-                                </video>
-                                <div class="portal-video-shade"></div>
+                    <form class="console-pane active seater-form" id="seaterPane3">
+                        <div class="console-inputs-grid">
+                            <div class="console-field">
+                                <label for="seaterSelect3">Seater Capacity</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 18H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2z"></path><path d="M8 7V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3"></path></svg></span>
+                                    <select id="seaterSelect3" name="seaterType" required>
+                                        <option value="4-Seater Sedan" selected>4-Seater Sedan (Dzire / Etios)</option>
+                                        <option value="6-Seater SUV">6-Seater SUV (Ertiga / Carens)</option>
+                                        <option value="7-Seater Premium SUV">7-Seater Innova Crysta</option>
+                                        <option value="12-Seater Tempo">12-Seater Tempo Traveller</option>
+                                        <option value="17-Seater Tempo">17-Seater Luxury Tempo</option>
+                                        <option value="40-Seater Luxury Bus">40-Seater AC Luxury Coach</option>
+                                    </select>
+                                </div>
                             </div>
 
-                            <div class="portal-controls-bar">
-                                <span class="portal-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg> Route Stream:</span>
-                                <div class="portal-switch-buttons">
-                                    <button class="portal-btn active" data-src="assets/videos/347325_medium.mp4">Mountain Route</button>
-                                    <button class="portal-btn" data-src="assets/videos/161071-822582138_medium.mp4">Coastal Trail</button>
+                            <div class="console-field">
+                                <label for="pickupSelect3">Pickup City</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+                                    <select id="pickupSelect3" name="pickupCity" required>
+                                        <option value="Bengaluru" selected>Bengaluru</option>
+                                        <option value="Mysuru">Mysuru</option>
+                                        <option value="Mangaluru">Mangaluru</option>
+                                        <option value="Coimbatore">Coimbatore</option>
+                                        <option value="Other">Other City</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="routeInput3">Destination / Route</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg></span>
+                                    <input type="text" id="routeInput3" name="destination" placeholder="e.g. Coorg, Chikmagalur, Hampi" required>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="seaterDateInput3">Travel Date</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                                    <input type="date" id="seaterDateInput3" name="date" class="date-min-today" required>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- FLOATING TELEMETRY CHIPS -->
-                        <div class="floating-telemetry-chip chip-left">
-                            <span class="chip-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
-                            <div>
-                                <strong>100% Commercial Fleet</strong>
-                                <small>Verified Yellow-Board Cabs & Buses</small>
+                        <button type="submit" class="console-action-submit">
+                            <span>Check Availability & Get Instant Quote</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </form>
+
+                    <form class="console-pane tour-form" id="tourPane3">
+                        <div class="console-inputs-grid">
+                            <div class="console-field">
+                                <label for="tourDestInput3">Where To?</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"></path></svg></span>
+                                    <input type="text" id="tourDestInput3" name="destination" placeholder="e.g. Western Ghats, Coastal Kerala" required>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="durationSelect3">Duration</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
+                                    <select id="durationSelect3" name="duration" required>
+                                        <option value="Weekend (2 Days / 1 Night)">2 Days / 1 Night</option>
+                                        <option value="Short Getaway (3 Days / 2 Nights)" selected>3 Days / 2 Nights</option>
+                                        <option value="Holiday (5 Days / 4 Nights)">5 Days / 4 Nights</option>
+                                        <option value="Grand Tour (7+ Days)">7+ Days Custom</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="paxSelect3">Total Travellers</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></span>
+                                    <select id="paxSelect3" name="passengers">
+                                        <option value="2 Travellers (Couple)">Couple (2 Pax)</option>
+                                        <option value="3-5 Travellers (Family)" selected>Family (3–5 Pax)</option>
+                                        <option value="6-12 Travellers (Group)">Group (6–12 Pax)</option>
+                                        <option value="12+ Travellers (Large Group)">Large Group (12+ Pax)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="console-field">
+                                <label for="tourDateInput3">Start Date</label>
+                                <div class="field-wrap">
+                                    <span class="field-glyph"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+                                    <input type="date" id="tourDateInput3" name="date" class="date-min-today" required>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="floating-telemetry-chip chip-right">
-                            <span class="chip-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
-                            <div>
-                                <strong>4.9 / 5 Rating</strong>
-                                <small>Over 2,400+ customized tours</small>
-                            </div>
-                        </div>
-                    </div>
+                        <button type="submit" class="console-action-submit">
+                            <span>Generate Custom Tour Blueprint</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="hero-trust-metric-row">
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>100% Tailored Routes</span></div>
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>4 to 40 Seaters</span></div>
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>Commercial Verified Drivers</span></div>
+                    <div class="metric-item"><span class="metric-icon">✦</span><span>All-Inclusive Billing</span></div>
                 </div>
             </div>
         </section>
